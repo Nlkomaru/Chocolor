@@ -10,6 +10,11 @@ export default async function handleRequest(
     routerContext: EntryContext,
     _loadContext: AppLoadContext,
 ) {
+    // Copy the incoming status code to a local variable so we can mutate it without
+    // reassigning to the function parameter (which is considered bad style and breaks
+    // Biome's noParameterAssign rule)
+    let statusCode = responseStatusCode;
+
     let shellRendered = false;
     const userAgent = request.headers.get("user-agent");
 
@@ -17,7 +22,7 @@ export default async function handleRequest(
         <ServerRouter context={routerContext} url={request.url} />,
         {
             onError(error: unknown) {
-                responseStatusCode = 500;
+                statusCode = 500;
                 // Log streaming rendering errors from inside the shell.  Don't log
                 // errors encountered during initial shell rendering since they'll
                 // reject and get logged in handleDocumentRequest.
@@ -38,6 +43,6 @@ export default async function handleRequest(
     responseHeaders.set("Content-Type", "text/html");
     return new Response(body, {
         headers: responseHeaders,
-        status: responseStatusCode,
+        status: statusCode,
     });
 }

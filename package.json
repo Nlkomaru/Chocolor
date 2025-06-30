@@ -20,6 +20,8 @@
         "@fontsource/zen-kaku-gothic-new": "^5.2.6",
         "autoprefixer": "^10.4.21",
         "isbot": "^5.1.27",
+        "jimp": "^1.6.0",
+        "jotai": "^2.12.5",
         "next-themes": "^0.4.6",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",

@@ -1,0 +1,56 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    env:
+      CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+      CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+      R2_PUBLIC_URL: ${{ secrets.R2_PUBLIC_URL }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22]
+    timeout-minutes: 10
+    name: Deploy
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          run_install: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+        # Node.jsのインストール
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache-dependency-path: ./pnpm-lock.yaml
+          cache: 'pnpm'
+
+      - name: Install
+        run: pnpm install
+
+      - name: Build pages
+        run: pnpm run build:cf
+        
+      - name: Deploy pages preview
+        id: deploy-pages-preview
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_KEY }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
