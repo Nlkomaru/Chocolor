@@ -1,6 +1,6 @@
 import { Button, HStack, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { ImageUpload } from "../components/image-upload";
+import { ImageUpload } from "../components/molecules/image-upload";
 import { getStats } from "../lib/stats";
 import type { Route } from "./+types/home";
 
@@ -34,6 +34,7 @@ export default function Home(_: Route.ComponentProps) {
                     colorScheme="blue"
                     accept="image/*"
                     maxFiles={1}
+                    type="source"
                     onFilesChange={setSourceFile}
                 />
 
@@ -43,6 +44,7 @@ export default function Home(_: Route.ComponentProps) {
                     description="参考となる色の画像を選択"
                     colorScheme="green"
                     accept="image/*"
+                    type="target"
                     maxFiles={1}
                     onFilesChange={setTargetFile}
                 />

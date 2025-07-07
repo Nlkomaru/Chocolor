@@ -1,6 +1,6 @@
 import { Box, VStack } from "@chakra-ui/react";
 import { Outlet } from "react-router";
-import { Header } from "../components/header";
+import { Header } from "../components/organisms/header";
 
 export default function RootLayout() {
     return (
