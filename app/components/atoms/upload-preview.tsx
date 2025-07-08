@@ -1,7 +1,7 @@
 "use client";
 
 import { FileUpload, Float, useFileUploadContext } from "@chakra-ui/react";
-import { LuX } from "react-icons/lu";
+import { X } from "lucide-react";
 import { sva } from "../../../styled-system/css";
 
 // Define simple style for the preview image
@@ -56,7 +56,7 @@ export const UploadPreview = () => {
                         borderRadius="full"
                         _hover={{ bg: "red.600" }}
                     >
-                        <LuX />
+                        <X />
                     </FileUpload.ItemDeleteTrigger>
                 </Float>
             </FileUpload.Item>

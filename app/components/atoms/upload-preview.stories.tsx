@@ -12,9 +12,7 @@ const meta: Meta<typeof UploadPreview> = {
                     {/* Trigger to upload an image so that the preview can display */}
                     <FileUpload.HiddenInput style={{ display: "none" }} />
                     <FileUpload.Trigger asChild>
-                        <Button variant="outline" colorScheme="blue">
-                            画像をアップロード
-                        </Button>
+                        <Button variant="outline">画像をアップロード</Button>
                     </FileUpload.Trigger>
                     <Story />
                 </VStack>

@@ -1,10 +1,10 @@
 "use client";
 
 import { Button, FileUpload, Heading, Text, VStack } from "@chakra-ui/react";
-import { LuFileImage } from "react-icons/lu";
-import { sva } from "../../../styled-system/css"; // panda-cssのsvaを利用するため、パスを修正
+import { FileImage } from "lucide-react";
 import { getImageInfo } from "~/lib/image";
 import type { ImageData } from "~/type";
+import { sva } from "../../../styled-system/css"; // panda-cssのsvaを利用するため、パスを修正
 import { UploadPreview } from "../atoms/upload-preview";
 
 // panda-cssのsvaでスタイルバリアントを定義
@@ -22,20 +22,18 @@ interface ImageUploadProps {
     title: string;
     type: "target" | "source";
     description: string;
-    colorScheme?: string;
     accept: string;
     maxFiles?: number;
-    onFilesChange?: (imageData: ImageData) => void;
+    onImageChange?: (details: ImageData) => void;
 }
 
 export const ImageUpload = ({
     title,
     type: _type,
     description,
-    colorScheme = "blue",
     accept,
     maxFiles = 1,
-    onFilesChange,
+    onImageChange,
 }: ImageUploadProps) => {
     // svaで生成したスタイルを適用
     const styles = imageUploadStyles();
@@ -53,25 +51,19 @@ export const ImageUpload = ({
                     maxFiles={maxFiles}
                     onFileChange={async (details) => {
                         // ファイル変更時のコールバック
-                        if (onFilesChange) {
+                        if (onImageChange) {
                             const imageData = await getImageInfo(
                                 details.acceptedFiles[0] ?? null,
                             );
-                            onFilesChange(imageData);
+                            onImageChange(imageData);
                         }
                     }}
                 >
                     {/* Hidden inputはChakraのまま、Buttonや他のUIはそのまま */}
                     <FileUpload.HiddenInput style={{ display: "none" }} />
                     <FileUpload.Trigger asChild>
-                        <Button
-                            variant="solid"
-                            colorScheme={colorScheme}
-                            size="lg"
-                            p={6}
-                            w="full"
-                        >
-                            <LuFileImage />
+                        <Button variant="solid" size="lg" p={6} w="full">
+                            <FileImage />
                             画像をアップロード
                         </Button>
                     </FileUpload.Trigger>

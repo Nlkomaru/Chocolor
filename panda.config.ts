@@ -1,21 +1,5 @@
-import { defineGlobalStyles, defineTextStyles } from "@chakra-ui/react";
+import { defineGlobalStyles } from "@chakra-ui/react";
 import { defineConfig } from "@pandacss/dev";
-
-const textStyles = defineTextStyles({
-    body: {
-        description: "The body text style - used in paragraphs",
-        value: {
-            fontFamily: "Poppins, Zen Kaku Gothic New, Fluent Emoji Color",
-            fontSize: {
-                base: "md",
-                md: "md",
-                lg: "lg",
-            },
-            lineHeight: "1.8",
-            fontWeight: "400",
-        },
-    },
-});
 
 const globalCss = defineGlobalStyles({
     // リセットスタイル - 白色の縁を削除
@@ -48,10 +32,7 @@ export default defineConfig({
 
     // Useful for theme customization
     theme: {
-        extend: {
-            // @ts-ignore
-            textStyles,
-        },
+        extend: {},
     },
     jsxFramework: "react",
 

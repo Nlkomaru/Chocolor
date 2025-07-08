@@ -20,7 +20,7 @@
 
 
 ## このアプリケーションの概要
-「color-migrator」という、ウェブアプリケーションです。  
+「chocolor」という、ウェブアプリケーションです。  
 2枚の画像を受け取り、画像の色を変換する機能を提供します。
 
 ## 主な技術スタック
@@ -46,6 +46,77 @@
 - クラスのmain関数が長くなる場合、適切な粒度でメソッドを分割してください。
 - 書籍「リーダブルコード」のようなベストプラクティスを常に適用してください。
 - コードの意図・背景などのコメントを各行に積極的に入れてください。
+- ファイルの命名規則としては、kebab-caseを使用してください。
+
+
+# コンポーネントについて
+
+## コンポーネントの命名規則
+
+- コンポーネントの命名規則は、kebab-caseを使用してください。
+
+## コンポーネントのディレクトリ構成
+
+- コンポーネントは、`app/components`ディレクトリ配下に配置してください。
+- コンポーネントは、
+    - `app/components/atoms`
+    - `app/components/molecules`
+    - `app/components/organisms`
+    - `app/components/templates`
+    の4つのディレクトリに分類してください。
+- organisms < molecules < atomsの順で子になっていくため上位を参照することがないようにしてください。(moleculesがorganismsを参照することはない)
+
+## コンポーネントの実装
+
+- 実装の際には、stateのバケツリレーを避けるためにjotaiを利用してください。
+- コンポーネントを記述した場合、storybookのstoryを記述してください。
+
+## 例
+
+### SVA
+
+```tsx
+import { sva } from '../styled-system/css'
+ 
+const checkbox = sva({
+  slots: ['root', 'control', 'label'],
+  base: {
+    root: { display: 'flex', alignItems: 'center', gap: '2' },
+    control: { borderWidth: '1px', borderRadius: 'sm' },
+    label: { marginStart: '2' }
+  },
+  variants: {
+    size: {
+      sm: {
+        control: { width: '8', height: '8' },
+        label: { fontSize: 'sm' }
+      },
+      md: {
+        control: { width: '10', height: '10' },
+        label: { fontSize: 'md' }
+      }
+    }
+  },
+  defaultVariants: {
+    size: 'sm'
+  }
+})
+
+import { css } from '../styled-system/css'
+import { checkbox } from './checkbox.recipe'
+ 
+const Checkbox = () => {
+  const classes = checkbox({ size: 'sm' })
+
+  return (
+    <label className={classes.root}>
+      <input type="checkbox" className={css({ srOnly: true })} />
+      <div className={classes.control} />
+      <span className={classes.label}>Checkbox Label</span>
+    </label>
+  )
+}
+```
 
 
 ## ディレクトリ配置規則

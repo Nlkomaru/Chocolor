@@ -21,7 +21,8 @@
             "!**/styled-system",
             "!**/src/components/ui",
             "!**/cloudflare-env.d.ts",
-            "!worker-configuration.d.ts"
+            "!worker-configuration.d.ts",
+            "!**/theme/**"
         ],
         "lineWidth": 80
     },
@@ -36,7 +37,8 @@
             "!**/styled-system",
             "!**/src/components/ui",
             "!**/cloudflare-env.d.ts",
-            "!worker-configuration.d.ts"
+            "!worker-configuration.d.ts",
+            "!**/theme/**"
         ],
         "rules": {
             "recommended": true,
