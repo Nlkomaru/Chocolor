@@ -21,7 +21,7 @@ const config: StorybookConfig = {
             },
         },
     },
-    viteFinal: async (config, { configType }) => {
+    viteFinal: async (config) => {
         config.esbuild = {
             ...config.esbuild,
             jsx: "automatic",

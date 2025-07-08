@@ -11,8 +11,10 @@ import { Provider } from "~/components/ui/provider";
 import type { Route } from "./+types/root";
 import stylesheet from "./app.css?url";
 
-import "@fontsource/poppins";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/700.css";
 import "@fontsource/zen-kaku-gothic-new/500.css";
+
 import { css } from "@/styled-system/css";
 
 export const links: Route.LinksFunction = () => [

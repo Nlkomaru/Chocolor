@@ -22,7 +22,8 @@
             "!**/src/components/ui",
             "!**/cloudflare-env.d.ts",
             "!worker-configuration.d.ts",
-            "!**/theme/**"
+            "!**/theme/**",
+            "!**/.vscode/**"
         ],
         "lineWidth": 80
     },
@@ -38,13 +39,11 @@
             "!**/src/components/ui",
             "!**/cloudflare-env.d.ts",
             "!worker-configuration.d.ts",
-            "!**/theme/**"
+            "!**/theme/**",
+            "!**/.vscode/**"
         ],
         "rules": {
             "recommended": true,
-            "correctness": {
-                "noUnusedImports": "error"
-            },
             "suspicious": {
                 "noConsole": {
                     "level": "error",

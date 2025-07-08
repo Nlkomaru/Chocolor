@@ -43,14 +43,12 @@ const layoutStyles = sva({
 
 interface LayoutProps {
     children: React.ReactNode;
-    title?: string;
     navbarItems?: MenuButtonProps[];
     footerItems?: FooterItem[];
 }
 
 export const Layout = ({
     children,
-    title = "Chocolor",
     navbarItems = NAVIGATION_LINKS,
     footerItems = FOOTER_LINKS,
 }: LayoutProps) => {

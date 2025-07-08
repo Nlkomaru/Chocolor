@@ -16,7 +16,7 @@ const verticalMenuStyles = sva({
             flexDirection: "column",
             height: "100vh",
             justifyContent: "space-between",
-        }
+        },
     },
 });
 

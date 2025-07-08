@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FileText, Home, Image as ImageIcon, Settings } from "lucide-react";
 import { VerticalMenu } from "./vertical-menu";
 
 const meta: Meta<typeof VerticalMenu> = {

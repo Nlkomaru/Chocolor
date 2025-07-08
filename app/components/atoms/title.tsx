@@ -1,5 +1,5 @@
+import { VStack } from "@chakra-ui/react";
 import { sva } from "@/styled-system/css";
-import { Heading, VStack } from "@chakra-ui/react";
 
 const titleStyles = sva({
     slots: ["container", "title", "description"],
@@ -24,15 +24,15 @@ const titleStyles = sva({
     },
 });
 
-export const Title = ({ className }: { className?: string }) => {
+export const Title = () => {
     const classes = titleStyles();
-    return <>
+    return (
         <VStack gap={2} className={classes.container}>
-            <Heading className={classes.title}>Chocolor</Heading>
+            <h1 className={classes.title}>Chocolor</h1>
             <span className={classes.description}>
-            「ちょこっと色を変えたい！」を実現するウェブアプリケーションです。
+                「ちょこっと色を変えたい！」を実現するウェブアプリケーションです。
             </span>
             {/* <Pen size={24} /> */}
         </VStack>
-    </>;
+    );
 };

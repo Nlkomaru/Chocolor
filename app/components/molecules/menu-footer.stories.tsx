@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Home, Search, Settings } from "lucide-react";
 import { type FooterItem, MenuFooter } from "./menu-footer";
 
 const items = [

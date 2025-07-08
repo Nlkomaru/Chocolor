@@ -1,7 +1,5 @@
-import { Button, HStack, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { HStack, Text } from "@chakra-ui/react";
 import { ImageUpload } from "../components/molecules/image-upload";
-import { getStats } from "../lib/stats";
 import type { Route } from "./+types/home";
 
 export function meta(_: Route.MetaArgs) {

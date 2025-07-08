@@ -64,7 +64,8 @@ export const MenuFooter = ({
                 ))}
             </div>
             <div className={classes.text}>
-                No right reserved Written by Nikomaru
+                No right reserved Written by{" "}
+                <Link to="https://github.com/nlkomaru">Nikomaru</Link>
             </div>
         </div>
     );

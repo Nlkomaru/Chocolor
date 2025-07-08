@@ -1,4 +1,4 @@
-import { Home, Info, Settings, History } from "lucide-react";
+import { History, Home, Info, Settings } from "lucide-react";
 import type { MenuButtonProps } from "../components/atoms/menu-button";
 import type { FooterItem } from "../components/molecules/menu-footer";
 
@@ -43,6 +43,6 @@ export const FOOTER_LINKS: FooterItem[] = [
     {
         id: "github",
         label: "Github",
-        path: "https://github.com/nlkomaru",
+        path: "https://github.com/nlkomaru/chocolor",
     },
 ];
