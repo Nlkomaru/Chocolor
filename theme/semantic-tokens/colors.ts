@@ -630,16 +630,18 @@ export const colors = defineSemanticTokens.colors({
         },
         muted: {
             value: {
-                _light: "{colors.cyan.200}",
-                _dark: "{colors.cyan.800}",
+                _light: "{colors.rose.200}",
+                _dark: "{colors.rose.800}",
             },
         },
+        //対応済み
         emphasized: {
             value: {
-                _light: "{colors.cyan.300}",
-                _dark: "{colors.cyan.700}",
+                _light: "{colors.rose.300}",
+                _dark: "{colors.rose.700}",
             },
         },
+        //対応済み
         solid: {
             value: {
                 _light: "{colors.wafer.800}",

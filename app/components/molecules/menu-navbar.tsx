@@ -1,7 +1,7 @@
 "use client";
 
-import { Heading, VStack } from "@chakra-ui/react";
-import { Home, Info, Settings } from "lucide-react";
+import { VStack } from "@chakra-ui/react";
+import { NAVIGATION_LINKS } from "~/lib/links";
 import { sva } from "../../../styled-system/css";
 import { MenuButton, type MenuButtonProps } from "../atoms/menu-button";
 
@@ -18,32 +18,13 @@ const menuNavbarStyles = sva({
     },
 });
 
-const defaultItems = [
-    {
-        id: "home",
-        label: "Home",
-        icon: <Home />,
-        path: "/",
-    },
-    {
-        id: "about",
-        label: "About",
-        icon: <Info />,
-        path: "/about",
-    },
-    {
-        id: "settings",
-        label: "Settings",
-        icon: <Settings />,
-        path: "/settings",
-    },
-];
+export type NavbarItem = MenuButtonProps;
 
 export const MenuNavbar = ({
-    items = defaultItems,
+    items = NAVIGATION_LINKS,
     className,
 }: {
-    items?: MenuButtonProps[];
+    items?: NavbarItem[];
     className?: string;
 }) => {
     const classes = menuNavbarStyles();
@@ -51,8 +32,8 @@ export const MenuNavbar = ({
     return (
         <div className={`${classes.container} ${className || ""}`}>
             <VStack gap={2} align="stretch">
-                {items.map(({ id, ...buttonProps }) => (
-                    <MenuButton key={id} id={id} {...buttonProps} />
+                {items.map(({ ...buttonProps }) => (
+                    <MenuButton key={buttonProps.label} {...buttonProps} />
                 ))}
             </VStack>
         </div>

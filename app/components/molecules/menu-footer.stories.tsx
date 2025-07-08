@@ -20,7 +20,6 @@ const items = [
     },
 ];
 
-
 const meta: Meta<typeof MenuFooter> = {
     title: "Molecules/MenuFooter",
     component: MenuFooter,

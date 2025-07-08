@@ -2,7 +2,12 @@ import "../app/app.css";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react-vite";
 import { Provider as JotaiProvider } from "jotai";
+import * as React from "react";
 import { themes } from "storybook/theming";
+import {
+    reactRouterParameters,
+    withRouter,
+} from "storybook-addon-remix-react-router";
 import { Provider } from "../app/components/ui/provider";
 
 export const parameters = {
@@ -19,6 +24,12 @@ const preview: Preview = {
                 order: ["Organisms", "Molecules", "Atoms"],
             },
         },
+        reactRouter: reactRouterParameters({
+            location: {
+                pathParams: { userId: "42" },
+            },
+            routing: { path: "/" },
+        }),
         docs: {
             theme: themes.light,
         },
@@ -58,6 +69,7 @@ const preview: Preview = {
             defaultTheme: "light",
             themes: { light: "", dark: "dark" },
         }),
+        withRouter,
     ],
 };
 

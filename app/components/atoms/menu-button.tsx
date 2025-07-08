@@ -11,17 +11,17 @@ const menuButtonStyles = sva({
     base: {
         root: {
             display: "flex",
-            width: "20rem",
-            height: "4rem",
+            width: "280px",
+            height: "3rem",
             minWidth: "4rem",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "4rem",
+            justifyContent: "flex-start",
+            gap: "2rem",
+            paddingLeft: "1rem",
             borderRadius: "0 100rem 100rem 0",
         },
         label: {
             display: "flex",
-            alignItems: "center",
+            paddingLeft: "1rem",
             gap: "2rem",
         },
     },
@@ -43,7 +43,7 @@ export interface MenuButtonProps {
  * allows composition inside molecules like MenuNavbar / MenuFooter.
  */
 export const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>(
-    function MenuButton({ id, label, icon, path, disabled, className }, ref) {
+    function MenuButton({ label, icon, path, disabled, className }, ref) {
         const classes = menuButtonStyles();
         const location = useLocation();
         return (
@@ -52,7 +52,7 @@ export const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>(
                 className={`${classes.root} ${className || ""}`}
                 variant={path === location.pathname ? "solid" : "ghost"}
                 disabled={disabled}
-                size="2xl"
+                size="xl"
                 asChild
             >
                 {/* Render icon + label */}

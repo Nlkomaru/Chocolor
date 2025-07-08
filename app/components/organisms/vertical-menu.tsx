@@ -1,10 +1,10 @@
 "use client";
 
+import { Box } from "@chakra-ui/react";
 import { sva } from "../../../styled-system/css";
-import type { MenuButtonProps } from "../atoms/menu-button";
 import { Title } from "../atoms/title";
 import { type FooterItem, MenuFooter } from "../molecules/menu-footer";
-import { MenuNavbar } from "../molecules/menu-navbar";
+import { MenuNavbar, type NavbarItem } from "../molecules/menu-navbar";
 
 // Container style
 const verticalMenuStyles = sva({
@@ -14,25 +14,34 @@ const verticalMenuStyles = sva({
             width: "100%",
             display: "flex",
             flexDirection: "column",
-            height: "100%",
-        },
+            height: "100vh",
+            justifyContent: "space-between",
+        }
     },
 });
 
 export interface VerticalMenuProps {
     className?: string;
-    navbarItems?: MenuButtonProps[];
+    navbarItems?: NavbarItem[];
     footerItems?: FooterItem[];
 }
 
-export const VerticalMenu = ({ className }: VerticalMenuProps) => {
+export const VerticalMenu = ({
+    className,
+    navbarItems = [],
+    footerItems = [],
+}: VerticalMenuProps) => {
     const classes = verticalMenuStyles();
 
     return (
         <div className={`${classes.container} ${className || ""}`}>
             <Title />
-            <MenuNavbar />
-            <MenuFooter />
+            <MenuNavbar items={navbarItems} />
+            {/* footerItemの数が0でも表示する */}
+
+            <Box mt="auto">
+                <MenuFooter items={footerItems} />
+            </Box>
         </div>
     );
 };

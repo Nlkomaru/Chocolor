@@ -1,8 +1,9 @@
 import { VStack } from "@chakra-ui/react";
 import { sva } from "../../../styled-system/css";
+import { FOOTER_LINKS, NAVIGATION_LINKS } from "../../lib/links";
+import type { MenuButtonProps } from "../atoms/menu-button";
 import type { FooterItem } from "../molecules/menu-footer";
 import { VerticalMenu } from "../organisms/vertical-menu";
-import { MenuButtonProps } from "../atoms/menu-button";
 
 // panda-cssのsvaでスタイルバリアントを定義
 const layoutStyles = sva({
@@ -22,8 +23,9 @@ const layoutStyles = sva({
             boxShadow: "sm",
         },
         sidebar: {
-            width: "250px",
+            width: "320px",
             height: "100vh",
+            bgColor: "var(--chakra-colors-potato-100)/40",
         },
         main: {
             flex: 1,
@@ -46,19 +48,11 @@ interface LayoutProps {
     footerItems?: FooterItem[];
 }
 
-const defaultNavbarItems: MenuButtonProps[] = [
-    {
-        id: "home",
-        label: "Home",
-        path: "/",
-    },
-];
-
 export const Layout = ({
     children,
     title = "Chocolor",
-    navbarItems = defaultNavbarItems,
-    footerItems = [],
+    navbarItems = NAVIGATION_LINKS,
+    footerItems = FOOTER_LINKS,
 }: LayoutProps) => {
     // svaで生成したスタイルを適用
     const styles = layoutStyles();

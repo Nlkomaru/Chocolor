@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "react-router";
+import { FOOTER_LINKS } from "~/lib/links";
 import { sva } from "../../../styled-system/css";
 
 export interface FooterItem {
@@ -9,36 +10,15 @@ export interface FooterItem {
     path: string;
 }
 
-const defaultItems = [
-    {
-        id: "open-source",
-        label: "Open Source License",
-        path: "/license",
-    },
-    {
-        id: "privacy-policy",
-        label: "Privacy Policy",
-        path: "/privacy",
-    },
-    {
-        id: "github",
-        label: "Github",
-        path: "https://github.com/nikomaru",
-    },
-];
-
 // Footer全体のスタイル
 const menuFooterCustomStyles = sva({
     slots: ["container", "column", "row", "text"],
     base: {
         container: {
-            paddingLeft: "30px",
-            paddingRight: "30px",
-            paddingTop: "40px",
-            paddingBottom: "40px",
-            position: "absolute",
-            left: 0,
-            top: 0,
+            paddingLeft: "2rem",
+            paddingRight: "1rem",
+            paddingTop: "1rem",
+            paddingBottom: "1rem",
             display: "inline-flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -59,7 +39,6 @@ const menuFooterCustomStyles = sva({
             textAlign: "center",
             color: "black",
             fontSize: "12px",
-            fontFamily: "Inter, sans-serif",
             fontWeight: 400,
             lineHeight: "16px",
             wordWrap: "break-word",
@@ -68,7 +47,7 @@ const menuFooterCustomStyles = sva({
 });
 
 export const MenuFooter = ({
-    items = defaultItems,
+    items = FOOTER_LINKS,
     className,
 }: {
     items?: FooterItem[];
@@ -85,7 +64,7 @@ export const MenuFooter = ({
                 ))}
             </div>
             <div className={classes.text}>
-                No right reserved Written by nikomaru
+                No right reserved Written by Nikomaru
             </div>
         </div>
     );

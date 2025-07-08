@@ -8,43 +8,7 @@ const meta: Meta<typeof VerticalMenu> = {
     parameters: {
         layout: "padded",
     },
-    args: {
-        navbarItems: [
-            {
-                id: "home",
-                label: "ホーム",
-                icon: <Home />,
-                path: "/",
-            },
-            {
-                id: "image-processing",
-                label: "画像処理",
-                icon: <ImageIcon />,
-                path: "/image-processing",
-                current: true,
-            },
-            {
-                id: "settings",
-                label: "設定",
-                icon: <Settings />,
-                path: "/settings",
-            },
-            {
-                id: "docs",
-                label: "ドキュメント",
-                icon: <FileText />,
-                path: "/docs",
-                disabled: true,
-            },
-        ],
-        footerItems: [
-            {
-                id: "settings",
-                label: "設定",
-                path: "/settings",
-            },
-        ],
-    },
+    args: {},
 };
 
 export default meta;
