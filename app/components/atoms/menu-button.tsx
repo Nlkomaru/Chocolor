@@ -23,6 +23,8 @@ const menuButtonStyles = sva({
             display: "flex",
             paddingLeft: "1rem",
             gap: "2rem",
+            alignItems: "center",
+            justifyContent: "center",
         },
     },
 });

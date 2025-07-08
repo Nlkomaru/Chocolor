@@ -13,7 +13,6 @@ export function ColorModeProvider(props: ColorModeProviderProps) {
     return (
         <ThemeProvider
             attribute="class"
-            defaultTheme={"light"}
             enableSystem={false}
             disableTransitionOnChange
             {...props}
@@ -65,13 +64,15 @@ export const ColorModeButton = React.forwardRef<
                 onClick={toggleColorMode}
                 variant="ghost"
                 aria-label="Toggle color mode"
-                size="sm"
                 ref={ref}
                 {...props}
                 css={{
                     _icon: {
                         width: "5",
                         height: "5",
+                    },
+                    _hover: {
+                        bg: "var(--chakra-colors-wafer-200)/40",
                     },
                 }}
             >

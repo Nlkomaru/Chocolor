@@ -25,7 +25,10 @@ const layoutStyles = sva({
         sidebar: {
             width: "320px",
             height: "100vh",
-            bgColor: "var(--chakra-colors-potato-100)/40",
+            bgColor: {
+                _light: "var(--chakra-colors-potato-100)/40",
+                _dark: "var(--chakra-colors-wafer-1200)",
+            },
         },
         main: {
             flex: 1,
@@ -34,7 +37,7 @@ const layoutStyles = sva({
         },
         content: {
             flex: 1,
-            padding: "2rem",
+            padding: "0 2rem",
             maxWidth: "1200px",
             margin: "0 auto",
         },

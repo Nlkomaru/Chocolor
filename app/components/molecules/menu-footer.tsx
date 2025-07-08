@@ -1,8 +1,10 @@
 "use client";
 
+import { HStack } from "@chakra-ui/react";
 import { Link } from "react-router";
 import { FOOTER_LINKS } from "~/lib/links";
 import { sva } from "../../../styled-system/css";
+import { ColorSwitch } from "../atoms/color-switch";
 
 export interface FooterItem {
     id: string;
@@ -12,7 +14,7 @@ export interface FooterItem {
 
 // Footer全体のスタイル
 const menuFooterCustomStyles = sva({
-    slots: ["container", "column", "row", "text"],
+    slots: ["container", "column", "row", "text", "colorSwitch"],
     base: {
         container: {
             paddingLeft: "2rem",
@@ -31,17 +33,19 @@ const menuFooterCustomStyles = sva({
             justifyContent: "flex-start",
             alignItems: "flex-start",
             gap: "8px",
+            fontWeight: 500,
         },
         row: {
             // rowは不要だが、拡張性のためslotを用意
         },
         text: {
-            textAlign: "center",
-            color: "black",
+            textAlign: "left",
             fontSize: "12px",
             fontWeight: 400,
-            lineHeight: "16px",
-            wordWrap: "break-word",
+            lineHeight: "1.5",
+        },
+        colorSwitch: {
+            paddingLeft: "2rem",
         },
     },
 });
@@ -63,10 +67,18 @@ export const MenuFooter = ({
                     </Link>
                 ))}
             </div>
-            <div className={classes.text}>
-                No right reserved Written by{" "}
-                <Link to="https://github.com/nlkomaru">Nikomaru</Link>
-            </div>
+            <HStack>
+                <div className={classes.text}>
+                    No right reserved
+                    <br />
+                    Written by{" "}
+                    <Link to="https://github.com/nlkomaru">Nikomaru</Link> in
+                    2025
+                </div>
+                <div className={classes.colorSwitch}>
+                    <ColorSwitch />
+                </div>
+            </HStack>
         </div>
     );
 };

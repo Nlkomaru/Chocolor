@@ -4,7 +4,7 @@ import type { Route } from "./+types/home";
 
 export function meta(_: Route.MetaArgs) {
     return [
-        { title: "Color Migrator" },
+        { title: "Chocolor | 「ちょこっと色を変えたい！」を実現するアプリ" },
         { name: "description", content: "画像の色変換アプリケーション" },
     ];
 }
