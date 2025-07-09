@@ -35,7 +35,7 @@ const licenseCardStyles = sva({
             fontSize: "xs",
             color: "fg.muted",
             fontWeight: "thin",
-        }
+        },
     },
 });
 
@@ -43,8 +43,6 @@ const licenseCardStyles = sva({
 export interface LicenseCardProps {
     /** Full package identifier, e.g. "react@18.2.0" */
     pkg: string;
-    /** SPDX license string */
-    license: string;
     /** Repository URL */
     repository?: string;
     /** Publisher (author) */
@@ -56,7 +54,6 @@ export interface LicenseCardProps {
  */
 export const LicenseCard = ({
     pkg,
-    license,
     repository,
     publisher,
 }: LicenseCardProps) => {
@@ -69,7 +66,14 @@ export const LicenseCard = ({
 
     const content = (
         <>
-            <Heading as="h3" className={classes.heading} display="flex" alignItems="center" gap="1" fontWeight="normal">
+            <Heading
+                as="h3"
+                className={classes.heading}
+                display="flex"
+                alignItems="center"
+                gap="1"
+                fontWeight="normal"
+            >
                 {name}
                 {repository && <ExternalLink size={12} />}
             </Heading>
@@ -82,7 +86,11 @@ export const LicenseCard = ({
 
     return repository ? (
         <LinkBox as="article" className={classes.root}>
-            <LinkOverlay href={repository} target="_blank" rel="noopener noreferrer">
+            <LinkOverlay
+                href={repository}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 {content}
             </LinkOverlay>
         </LinkBox>

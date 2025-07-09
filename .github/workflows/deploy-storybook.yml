@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy Storybook
 
 on:
   workflow_dispatch:
@@ -44,12 +44,13 @@ jobs:
       - name: Install
         run: pnpm install
 
-      - name: Build pages
-        run: pnpm run build
+      - name: Build storybook
+        run: pnpm run build:story
         
-      - name: Deploy pages
-        id: deploy-pages
+      - name: Deploy storybook
+        id: deploy-storybook
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_KEY }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: deploy -c wrangler-storybook.jsonc 

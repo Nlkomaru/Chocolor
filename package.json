@@ -10,6 +10,7 @@
         "build:story": "storybook build",
         "deploy": "pnpm run build && wrangler deploy",
         "check": "biome check --write ./",
+        "check:unsafe": "biome check --unsafe --write ./",
         "gen:types": "wrangler types && react-router typegen && tsc -b",
         "gen:license": "pnpm dlx license-checker-rseidelsohn --json --out './app/routes/license/data.json'"
     },

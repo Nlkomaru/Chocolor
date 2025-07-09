@@ -9,10 +9,10 @@ const meta: Meta<typeof LicenseCard> = {
         pkg: "react@18.2.0",
         license: "MIT",
         repository: "https://github.com/facebook/react",
-        publisher: "Facebook"
+        publisher: "Facebook",
     },
 };
 
 export default meta;
 
-export const Primary: StoryObj<typeof LicenseCard> = {}; 
+export const Primary: StoryObj<typeof LicenseCard> = {};

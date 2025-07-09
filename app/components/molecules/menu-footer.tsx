@@ -14,7 +14,7 @@ export interface FooterItem {
 
 // Footer全体のスタイル
 const menuFooterCustomStyles = sva({
-    slots: ["container", "column", "row", "text", "colorSwitch"],
+    slots: ["container", "column", "row", "text", "colorSwitch", "link"],
     base: {
         container: {
             paddingLeft: "2rem",
@@ -47,6 +47,9 @@ const menuFooterCustomStyles = sva({
         colorSwitch: {
             paddingLeft: "2rem",
         },
+        link: {
+            borderBottom: "2px dotted {colors.gray.500}",
+        },
     },
 });
 
@@ -72,7 +75,7 @@ export const MenuFooter = ({
                     No right reserved
                     <br />
                     Written by{" "}
-                    <Link to="https://github.com/nlkomaru">Nikomaru</Link> in
+                    <Link className={classes.link} to="https://github.com/nlkomaru">Nikomaru</Link> in
                     2025
                 </div>
                 <div className={classes.colorSwitch}>

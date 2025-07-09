@@ -45,14 +45,13 @@ export interface MenuButtonProps {
  * allows composition inside molecules like MenuNavbar / MenuFooter.
  */
 export const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>(
-    function MenuButton({ label, icon, path, disabled, className }, ref) {
+    function MenuButton({ label, icon, path, disabled, className, current }, ref) {
         const classes = menuButtonStyles();
-        const location = useLocation();
         return (
             <Button
                 ref={ref}
                 className={`${classes.root} ${className || ""}`}
-                variant={path === location.pathname ? "solid" : "ghost"}
+                variant={current ? "solid" : "ghost"}
                 disabled={disabled}
                 size="xl"
                 asChild

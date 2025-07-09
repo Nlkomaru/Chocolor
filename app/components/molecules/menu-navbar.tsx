@@ -4,6 +4,7 @@ import { VStack } from "@chakra-ui/react";
 import { NAVIGATION_LINKS } from "~/lib/links";
 import { sva } from "../../../styled-system/css";
 import { MenuButton, type MenuButtonProps } from "../atoms/menu-button";
+import { useLocation } from "react-router";
 
 // Styles for the navbar container
 const menuNavbarStyles = sva({
@@ -28,12 +29,12 @@ export const MenuNavbar = ({
     className?: string;
 }) => {
     const classes = menuNavbarStyles();
-
+    const location = useLocation();
     return (
         <div className={`${classes.container} ${className || ""}`}>
             <VStack gap={2} align="stretch">
                 {items.map(({ ...buttonProps }) => (
-                    <MenuButton key={buttonProps.label} {...buttonProps} />
+                    <MenuButton key={buttonProps.label} {...buttonProps} current={buttonProps.path === location.pathname} />
                 ))}
             </VStack>
         </div>

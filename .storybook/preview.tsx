@@ -8,7 +8,6 @@ import {
     withRouter,
 } from "storybook-addon-remix-react-router";
 import { Provider } from "../app/components/ui/provider";
-import React from "react";
 
 export const parameters = {
     screenshot: {

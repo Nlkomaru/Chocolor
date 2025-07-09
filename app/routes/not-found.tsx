@@ -12,7 +12,7 @@ const notFoundStyles = sva({
     slots: ["root", "heading", "text", "button", "vstack"],
     base: {
         root: {
-            minH: "calc(100vh - 4rem)", // 画面全体の高さを確保
+            minH: "calc(100vh - 8rem)", // 画面全体の高さを確保
             display: "flex",
             alignItems: "center", // 縦方向中央揃え
             justifyContent: "center", // 横方向中央揃え
@@ -20,7 +20,7 @@ const notFoundStyles = sva({
         vstack: {
             gap: "2rem", // 余白を大きめに
             textAlign: "center",
-            paddingBottom: "2rem",
+            paddingBottom: "4rem",
         },
         heading: {
             fontSize: "4xl", // かなり大きく
