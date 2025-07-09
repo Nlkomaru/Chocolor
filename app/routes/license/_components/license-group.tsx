@@ -34,7 +34,6 @@ export const LicenseGroup = ({ license, packages }: LicenseGroupProps) => {
                     <LicenseCard
                         key={pkg}
                         pkg={pkg}
-                        license={info.licenses}
                         repository={info.repository}
                         publisher={info.publisher}
                     />

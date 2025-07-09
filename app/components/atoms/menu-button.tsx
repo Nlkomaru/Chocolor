@@ -2,7 +2,7 @@
 
 import { Button } from "@chakra-ui/react";
 import * as React from "react";
-import { Link, useLocation } from "react-router";
+import { Link } from "react-router";
 import { sva } from "../../../styled-system/css";
 
 // Styles for an individual menu button using a single 'root' slot
@@ -45,7 +45,10 @@ export interface MenuButtonProps {
  * allows composition inside molecules like MenuNavbar / MenuFooter.
  */
 export const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>(
-    function MenuButton({ label, icon, path, disabled, className, current }, ref) {
+    function MenuButton(
+        { label, icon, path, disabled, className, current },
+        ref,
+    ) {
         const classes = menuButtonStyles();
         return (
             <Button

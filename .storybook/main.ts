@@ -7,7 +7,6 @@ const config: StorybookConfig = {
         "../app/routes/**/_components/*.stories.@(js|jsx|mjs|ts|tsx)",
     ],
     addons: [
-        "@storybook/addon-onboarding",
         "@chromatic-com/storybook",
         "@storybook/addon-vitest",
         "@storybook/addon-a11y",

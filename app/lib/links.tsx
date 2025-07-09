@@ -34,15 +34,18 @@ export const FOOTER_LINKS: FooterItem[] = [
         id: "open-source",
         label: "Open Source License",
         path: "/license",
+        openInNewTab: false,
     },
     {
-        id: "privacy-policy",
-        label: "Privacy Policy",
-        path: "/privacy",
+        id: "storybook",
+        label: "Storybook",
+        path: "https://storybook.chocolor.nikomaru.dev",
+        openInNewTab: true,
     },
     {
         id: "github",
         label: "Github",
         path: "https://github.com/nlkomaru/chocolor",
+        openInNewTab: true,
     },
 ];

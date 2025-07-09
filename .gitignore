@@ -19,3 +19,4 @@ styled-system-studio
 storybook-static
 
 app/routes/license/data.json
+vitest-report.json

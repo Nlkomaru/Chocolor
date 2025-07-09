@@ -1,6 +1,6 @@
 import { VStack } from "@chakra-ui/react";
 import { Link } from "react-router";
-import { sva } from "@/styled-system/css";
+import { sva } from "../../../styled-system/css";
 
 const titleStyles = sva({
     slots: ["container", "title", "description"],

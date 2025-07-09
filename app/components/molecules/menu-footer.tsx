@@ -2,7 +2,7 @@
 
 import { HStack } from "@chakra-ui/react";
 import { Link } from "react-router";
-import { FOOTER_LINKS } from "~/lib/links";
+import { FOOTER_LINKS } from "../../lib/links";
 import { sva } from "../../../styled-system/css";
 import { ColorSwitch } from "../atoms/color-switch";
 
@@ -10,6 +10,7 @@ export interface FooterItem {
     id: string;
     label: string;
     path: string;
+    openInNewTab: boolean;
 }
 
 // Footer全体のスタイル
@@ -33,7 +34,6 @@ const menuFooterCustomStyles = sva({
             justifyContent: "flex-start",
             alignItems: "flex-start",
             gap: "8px",
-            fontWeight: 500,
         },
         row: {
             // rowは不要だが、拡張性のためslotを用意
@@ -64,8 +64,14 @@ export const MenuFooter = ({
     return (
         <div className={`${classes.container} ${className || ""}`}>
             <div className={classes.column}>
-                {items.map(({ id, label, path }) => (
-                    <Link key={id} id={id} to={path}>
+                {items.map(({ id, label, path, openInNewTab }) => (
+                    <Link
+                        key={id}
+                        id={id}
+                        to={path}
+                        target={openInNewTab ? "_blank" : "_self"}
+                        rel={openInNewTab ? "noopener noreferrer" : undefined}
+                    >
                         {label}
                     </Link>
                 ))}
@@ -75,8 +81,13 @@ export const MenuFooter = ({
                     No right reserved
                     <br />
                     Written by{" "}
-                    <Link className={classes.link} to="https://github.com/nlkomaru">Nikomaru</Link> in
-                    2025
+                    <Link
+                        className={classes.link}
+                        to="https://github.com/nlkomaru"
+                    >
+                        Nikomaru
+                    </Link>{" "}
+                    in 2025
                 </div>
                 <div className={classes.colorSwitch}>
                     <ColorSwitch />

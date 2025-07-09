@@ -2,12 +2,16 @@ import "../app/app.css";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react-vite";
 import { Provider as JotaiProvider } from "jotai";
+import React from "react";
 import { themes } from "storybook/theming";
 import {
     reactRouterParameters,
     withRouter,
 } from "storybook-addon-remix-react-router";
 import { Provider } from "../app/components/ui/provider";
+import { registerAPCACheck } from "./a11y";
+
+const apca = registerAPCACheck("bronze");
 
 export const parameters = {
     screenshot: {
@@ -39,9 +43,10 @@ const preview: Preview = {
             },
         },
         a11y: {
-            test: "todo",
+            test: "error",
             context: "body",
             config: {
+                checks: [...apca.checks],
                 rules: [
                     {
                         id: "autocomplete-valid",
@@ -51,6 +56,15 @@ const preview: Preview = {
                         id: "image-alt",
                         enabled: false,
                     },
+                    {
+                        id: "color-contrast",
+                        enabled: false,
+                    },
+                    {
+                        id: "color-contrast-enhanced",
+                        enabled: false,
+                    },
+                    ...apca.rules,
                 ],
             },
             options: {},

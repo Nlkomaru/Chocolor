@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FOOTER_LINKS, NAVIGATION_LINKS } from "~/lib/links";
+import { FOOTER_LINKS, NAVIGATION_LINKS } from "../../lib/links";
 import { VerticalMenu } from "./vertical-menu";
 
 const meta: Meta<typeof VerticalMenu> = {

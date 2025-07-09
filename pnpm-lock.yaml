@@ -66,6 +66,9 @@ importers:
       '@pandacss/dev':
         specifier: ^0.54.0
         version: 0.54.0(typescript@5.8.3)
+      '@playwright/test':
+        specifier: ^1.53.2
+        version: 1.53.2
       '@react-router/dev':
         specifier: ^7.6.3
         version: 7.6.3(@types/node@24.0.10)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(lightningcss@1.30.1)(react-router@7.6.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1))(wrangler@4.23.0)
@@ -75,14 +78,11 @@ importers:
       '@storybook/addon-docs':
         specifier: ^9.0.15
         version: 9.0.15(@types/react@19.1.8)(storybook@9.0.15(@testing-library/dom@10.4.0)(prettier@3.2.5))
-      '@storybook/addon-onboarding':
-        specifier: ^9.0.15
-        version: 9.0.15(storybook@9.0.15(@testing-library/dom@10.4.0)(prettier@3.2.5))
       '@storybook/addon-themes':
         specifier: ^9.0.15
         version: 9.0.15(storybook@9.0.15(@testing-library/dom@10.4.0)(prettier@3.2.5))
       '@storybook/addon-vitest':
-        specifier: 9.0.15
+        specifier: ^9.0.15
         version: 9.0.15(@vitest/browser@3.2.4)(@vitest/runner@3.2.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@9.0.15(@testing-library/dom@10.4.0)(prettier@3.2.5))(vitest@3.2.4)
       '@storybook/react':
         specifier: ^9.0.15
@@ -111,6 +111,18 @@ importers:
       '@vitest/coverage-v8':
         specifier: ^3.2.4
         version: 3.2.4(@vitest/browser@3.2.4)(vitest@3.2.4)
+      '@vitest/ui':
+        specifier: 3.2.4
+        version: 3.2.4(vitest@3.2.4)
+      apca-check:
+        specifier: ^0.1.1
+        version: 0.1.1(axe-core@4.10.3)
+      apca-w3:
+        specifier: ^0.1.9
+        version: 0.1.9
+      axe-core:
+        specifier: ^4.10.3
+        version: 4.10.3
       axe-playwright:
         specifier: ^2.1.0
         version: 2.1.0(playwright@1.53.2)
@@ -140,7 +152,7 @@ importers:
         version: 5.1.4(typescript@5.8.3)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1))
       vitest:
         specifier: ^3.2.4
-        version: 3.2.4(@types/node@24.0.10)(@vitest/browser@3.2.4)(jiti@2.4.2)(lightningcss@1.30.1)
+        version: 3.2.4(@types/node@24.0.10)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(jiti@2.4.2)(lightningcss@1.30.1)
       wrangler:
         specifier: ^4.23.0
         version: 4.23.0
@@ -1329,6 +1341,11 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
+  '@playwright/test@1.53.2':
+    resolution: {integrity: sha512-tEB2U5z74ebBeyfGNZ3Jfg29AnW+5HlWhvHtb/Mqco9pFdZU1ZLNdVb2UtB5CvmiilNr2ZfVH/qMmAROG/XTzw==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
@@ -1503,11 +1520,6 @@ packages:
 
   '@storybook/addon-docs@9.0.15':
     resolution: {integrity: sha512-HOb45DkF23T1tRzakb9q33qnBRso15S/GM28ippPZWi5ZXR9RAyKVgOSMA/ViEpK4ezASxN+Tee+H7m4ksEFZw==}
-    peerDependencies:
-      storybook: ^9.0.15
-
-  '@storybook/addon-onboarding@9.0.15':
-    resolution: {integrity: sha512-g2FqO0aS6vvjMZdY+0xjV1C7YGcDE0GkuPAv1JqejNYGyX2Z8nuLHy2zqhLIBpfoap4S9PZO+obqEKVeo70Q0Q==}
     peerDependencies:
       storybook: ^9.0.15
 
@@ -1968,6 +1980,11 @@ packages:
   '@vitest/spy@3.2.4':
     resolution: {integrity: sha512-vAfasCOe6AIK70iP5UD11Ac4siNUNJ9i/9PZ3NKx07sG6sUxeag1LWdNrMWeKKYBLlzuK+Gn65Yd5nyL6ds+nw==}
 
+  '@vitest/ui@3.2.4':
+    resolution: {integrity: sha512-hGISOaP18plkzbWEcP/QvtRW1xDXF2+96HbEX6byqQhAUbiS5oH6/9JwW+QsQCIYON2bI6QZBF+2PvOmrRZ9wA==}
+    peerDependencies:
+      vitest: 3.2.4
+
   '@vitest/utils@3.2.4':
     resolution: {integrity: sha512-fB2V0JFrQSMsCo9HiSq3Ezpdv4iYaXRG1Sx8edX3MwxfyNn83mKiGzOcH+Fkxt4MHxr3y42fQi1oeAInqgX2QA==}
 
@@ -2264,6 +2281,14 @@ packages:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
 
+  apca-check@0.1.1:
+    resolution: {integrity: sha512-4sddIrbFb1db+E5IWJFMIcokNYbFc0Q+hYFBys/N0LZfwVf+fzVaUQ+oR9lyo/B4rO7NHiyytY5StP4MMA6eww==}
+    peerDependencies:
+      axe-core: ^4.0.0
+
+  apca-w3@0.1.9:
+    resolution: {integrity: sha512-Zrf6AeBeQjNe/fxK7U1jCo5zfdjDl6T4/kdw5Xlky3G7u+EJTZkyItjMYQGtwf9pkftsINxcYyOpuLkzKf1ITQ==}
+
   append-transform@2.0.0:
     resolution: {integrity: sha512-7yeyCEurROLQJFv5Xj4lEGTy0borxepjFv1g22oAdqFu//SrAlDl1O1Nxx15SH1RoliUml6p8dwJW9jvZughhg==}
     engines: {node: '>=8'}
@@ -2547,6 +2572,9 @@ packages:
   color@4.2.3:
     resolution: {integrity: sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==}
     engines: {node: '>=12.5.0'}
+
+  colorparsley@0.1.8:
+    resolution: {integrity: sha512-rObESTTTE6G5qO5WFwFxWPggpw4KfpxnLC6Ssl8bITBnNVRhDsyCeTRAUxWQNVTx2pRknKlO2nddYTxjkdNFaw==}
 
   combined-stream@1.0.8:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
@@ -2908,6 +2936,9 @@ packages:
       picomatch:
         optional: true
 
+  fflate@0.8.2:
+    resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
+
   file-type@16.5.4:
     resolution: {integrity: sha512-/yFHK0aGjFEgDJjEKP0pWCplsPFPhwyfwevf/pVxiN0tmE4L9LmwWxWukdJSHdoCli4VgQLehjJtwQBnqmsKcw==}
     engines: {node: '>=10'}
@@ -2946,6 +2977,9 @@ packages:
   find-up@7.0.0:
     resolution: {integrity: sha512-YyZM99iHrqLKjmt4LJDj58KI+fYyufRLBSYcqycxf//KpBk9FoewoGX0450m9nB44qrZnovzC2oeP5hUibxc/g==}
     engines: {node: '>=18'}
+
+  flatted@3.3.3:
+    resolution: {integrity: sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==}
 
   follow-redirects@1.15.9:
     resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
@@ -6495,6 +6529,10 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
+  '@playwright/test@1.53.2':
+    dependencies:
+      playwright: 1.53.2
+
   '@polka/url@1.0.0-next.29': {}
 
   '@react-router/dev@7.6.3(@types/node@24.0.10)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(lightningcss@1.30.1)(react-router@7.6.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1))(wrangler@4.23.0)':
@@ -6666,10 +6704,6 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/addon-onboarding@9.0.15(storybook@9.0.15(@testing-library/dom@10.4.0)(prettier@3.2.5))':
-    dependencies:
-      storybook: 9.0.15(@testing-library/dom@10.4.0)(prettier@3.2.5)
-
   '@storybook/addon-themes@9.0.15(storybook@9.0.15(@testing-library/dom@10.4.0)(prettier@3.2.5))':
     dependencies:
       storybook: 9.0.15(@testing-library/dom@10.4.0)(prettier@3.2.5)
@@ -6685,7 +6719,7 @@ snapshots:
     optionalDependencies:
       '@vitest/browser': 3.2.4(playwright@1.53.2)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1))(vitest@3.2.4)
       '@vitest/runner': 3.2.4
-      vitest: 3.2.4(@types/node@24.0.10)(@vitest/browser@3.2.4)(jiti@2.4.2)(lightningcss@1.30.1)
+      vitest: 3.2.4(@types/node@24.0.10)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(jiti@2.4.2)(lightningcss@1.30.1)
     transitivePeerDependencies:
       - react
       - react-dom
@@ -7128,7 +7162,7 @@ snapshots:
       magic-string: 0.30.17
       sirv: 3.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/node@24.0.10)(@vitest/browser@3.2.4)(jiti@2.4.2)(lightningcss@1.30.1)
+      vitest: 3.2.4(@types/node@24.0.10)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(jiti@2.4.2)(lightningcss@1.30.1)
       ws: 8.18.3
     optionalDependencies:
       playwright: 1.53.2
@@ -7153,7 +7187,7 @@ snapshots:
       std-env: 3.9.0
       test-exclude: 7.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/node@24.0.10)(@vitest/browser@3.2.4)(jiti@2.4.2)(lightningcss@1.30.1)
+      vitest: 3.2.4(@types/node@24.0.10)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(jiti@2.4.2)(lightningcss@1.30.1)
     optionalDependencies:
       '@vitest/browser': 3.2.4(playwright@1.53.2)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1))(vitest@3.2.4)
     transitivePeerDependencies:
@@ -7194,6 +7228,17 @@ snapshots:
   '@vitest/spy@3.2.4':
     dependencies:
       tinyspy: 4.0.3
+
+  '@vitest/ui@3.2.4(vitest@3.2.4)':
+    dependencies:
+      '@vitest/utils': 3.2.4
+      fflate: 0.8.2
+      flatted: 3.3.3
+      pathe: 2.0.3
+      sirv: 3.0.1
+      tinyglobby: 0.2.14
+      tinyrainbow: 2.0.0
+      vitest: 3.2.4(@types/node@24.0.10)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(jiti@2.4.2)(lightningcss@1.30.1)
 
   '@vitest/utils@3.2.4':
     dependencies:
@@ -7785,6 +7830,15 @@ snapshots:
       normalize-path: 3.0.0
       picomatch: 2.3.1
 
+  apca-check@0.1.1(axe-core@4.10.3):
+    dependencies:
+      apca-w3: 0.1.9
+      axe-core: 4.10.3
+
+  apca-w3@0.1.9:
+    dependencies:
+      colorparsley: 0.1.8
+
   append-transform@2.0.0:
     dependencies:
       default-require-extensions: 3.0.1
@@ -8103,6 +8157,8 @@ snapshots:
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.1
+
+  colorparsley@0.1.8: {}
 
   combined-stream@1.0.8:
     dependencies:
@@ -8449,6 +8505,8 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.2
 
+  fflate@0.8.2: {}
+
   file-type@16.5.4:
     dependencies:
       readable-web-to-node-stream: 3.0.4
@@ -8494,6 +8552,8 @@ snapshots:
       locate-path: 7.2.0
       path-exists: 5.0.0
       unicorn-magic: 0.1.0
+
+  flatted@3.3.3: {}
 
   follow-redirects@1.15.9: {}
 
@@ -10559,7 +10619,7 @@ snapshots:
       jiti: 2.4.2
       lightningcss: 1.30.1
 
-  vitest@3.2.4(@types/node@24.0.10)(@vitest/browser@3.2.4)(jiti@2.4.2)(lightningcss@1.30.1):
+  vitest@3.2.4(@types/node@24.0.10)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(jiti@2.4.2)(lightningcss@1.30.1):
     dependencies:
       '@types/chai': 5.2.2
       '@vitest/expect': 3.2.4
@@ -10587,6 +10647,7 @@ snapshots:
     optionalDependencies:
       '@types/node': 24.0.10
       '@vitest/browser': 3.2.4(playwright@1.53.2)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1))(vitest@3.2.4)
+      '@vitest/ui': 3.2.4(vitest@3.2.4)
     transitivePeerDependencies:
       - jiti
       - less
