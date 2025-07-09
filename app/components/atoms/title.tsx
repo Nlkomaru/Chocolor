@@ -14,7 +14,7 @@ const titleStyles = sva({
             justifyContent: "center",
         },
         title: {
-            fontSize: "24px",
+            fontSize: "3xl",
             fontWeight: "bold",
         },
         description: {

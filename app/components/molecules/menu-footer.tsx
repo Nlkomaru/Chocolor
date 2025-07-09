@@ -34,7 +34,6 @@ const menuFooterCustomStyles = sva({
             justifyContent: "flex-start",
             alignItems: "flex-start",
             fontSize: "md",
-            fontWeight: "500",
             gap: "8px",
         },
         row: {

@@ -1,5 +1,6 @@
 import { Text } from "@chakra-ui/react";
 import type { Route } from "./+types/page";
+import { DirectorySelector } from "./_components/directory-selector";
 
 export function meta(_: Route.MetaArgs) {
     return [
@@ -14,8 +15,11 @@ export function loader({ context }: Route.LoaderArgs) {
 
 export default function Home(_: Route.ComponentProps) {
     return (
-        <Text fontSize="lg" textAlign="center">
-            2枚の画像をアップロードして、色の変換を行います
-        </Text>
+        <>
+            <Text fontSize="lg" textAlign="center">
+                カラーパレットベースの色変換を行います
+            </Text>
+            <DirectorySelector />
+        </>
     );
 }
