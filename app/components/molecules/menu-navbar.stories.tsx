@@ -4,6 +4,7 @@ import { MenuNavbar } from "./menu-navbar";
 const meta: Meta<typeof MenuNavbar> = {
     title: "Molecules/MenuNavbar",
     component: MenuNavbar,
+    tags: ["autodocs"],
     parameters: { layout: "padded" },
 };
 export default meta;

@@ -1,7 +1,7 @@
+import type { ConformanceLevel } from "./apca";
+import { bronze } from "./bronze";
 import { custom } from "./custom";
 import { silver } from "./silver";
-import { bronze } from "./bronze";
-import type { ConformanceLevel } from "./apca";
 
 export function registerAPCACheck(conformanceLevel: ConformanceLevel) {
     switch (conformanceLevel) {

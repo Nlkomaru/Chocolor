@@ -4,7 +4,7 @@ import APCACheck, { type ConformanceThresholdFn } from "./apca";
 // https://readtech.org/ARC/tests/visual-readability-contrast/?tn=criterion
 
 const APCABronzeConformanceThresholdFn: ConformanceThresholdFn = (fontSize) => {
-    const size = parseFloat(fontSize);
+    const size = Number.parseFloat(fontSize);
     switch (true) {
         case size >= 32:
             return 45;

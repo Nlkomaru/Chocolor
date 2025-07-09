@@ -5,6 +5,7 @@ import { VerticalMenu } from "./vertical-menu";
 const meta: Meta<typeof VerticalMenu> = {
     title: "Organisms/VerticalMenu",
     component: VerticalMenu,
+    tags: ["autodocs"],
     parameters: {
         layout: "padded",
     },

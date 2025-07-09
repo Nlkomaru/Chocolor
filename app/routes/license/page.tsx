@@ -55,12 +55,25 @@ function getGrouedLicense(): LicenseGroupData[] {
         >
     >();
     Object.entries(data).forEach(([pkg, info]) => {
-        const lic = info.licenses ?? "UNKNOWN";
+        let lic = info.licenses ?? "UNKNOWN";
+        overridenLicense.forEach(({ repo, license }) => {
+            if (info.repository?.includes(repo)) {
+                lic = license;
+            }
+        });
         if (!grouped.has(lic)) grouped.set(lic, []);
         grouped.get(lic)?.push([pkg, info]);
     });
 
-    return Array.from(grouped.entries()).sort((a, b) =>
-        a[0].localeCompare(b[0]),
+    //w3を最後に
+    const w3 = grouped.get("W3 License");
+    const withoutW3 = Array.from(grouped.entries()).filter(
+        ([license]) => license !== "W3 License",
     );
+    return [...withoutW3, ["W3 License", w3 ?? []]];
 }
+
+const overridenLicense = [
+    { repo: "Myndex/apca-w3", license: "W3 License" },
+    { repo: "chakra-ui/panda", license: "MIT" },
+];

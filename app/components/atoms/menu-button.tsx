@@ -25,6 +25,7 @@ const menuButtonStyles = sva({
             gap: "2rem",
             alignItems: "center",
             justifyContent: "center",
+            fontSize: "lg",
         },
     },
 });

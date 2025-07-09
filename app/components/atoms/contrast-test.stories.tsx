@@ -4,6 +4,7 @@ import { ContrastTest } from "./contrast-test";
 const meta: Meta<typeof ContrastTest> = {
     title: "Atoms/ContrastTest",
     component: ContrastTest,
+    tags: ["autodocs"],
     parameters: {
         layout: "padded",
     },

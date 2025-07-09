@@ -18,9 +18,12 @@ const titleStyles = sva({
             fontWeight: "bold",
         },
         description: {
-            fontSize: "xs",
-            overflowWrap: "break-word",
+            fontSize: "sm",
+            //折り返し
+            wordBreak: "keep-all",
+            overflowWrap: "anywhere",
             textAlign: "center",
+            color: "var(--chakra-colors-fg-muted)",
         },
     },
 });
@@ -32,7 +35,7 @@ export const Title = () => {
             <VStack gap={2} className={classes.container}>
                 <h1 className={classes.title}>Chocolor</h1>
                 <span className={classes.description}>
-                    「ちょこっと色を変えたい！」を実現するウェブアプリケーションです。
+                    「ちょこっと色を変えたい！」を実現するウェブアプリケーション
                 </span>
                 {/* <Pen size={24} /> */}
             </VStack>

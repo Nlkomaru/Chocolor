@@ -2,7 +2,6 @@ import "../app/app.css";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react-vite";
 import { Provider as JotaiProvider } from "jotai";
-import React from "react";
 import { themes } from "storybook/theming";
 import {
     reactRouterParameters,
@@ -11,7 +10,7 @@ import {
 import { Provider } from "../app/components/ui/provider";
 import { registerAPCACheck } from "./a11y";
 
-const apca = registerAPCACheck("bronze");
+const apca = registerAPCACheck("silver");
 
 export const parameters = {
     screenshot: {

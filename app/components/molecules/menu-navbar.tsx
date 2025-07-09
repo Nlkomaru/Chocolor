@@ -2,8 +2,8 @@
 
 import { VStack } from "@chakra-ui/react";
 import { useLocation } from "react-router";
-import { NAVIGATION_LINKS } from "../../lib/links";
 import { sva } from "../../../styled-system/css";
+import { NAVIGATION_LINKS } from "../../lib/links";
 import { MenuButton, type MenuButtonProps } from "../atoms/menu-button";
 
 // Styles for the navbar container
@@ -14,6 +14,7 @@ const menuNavbarStyles = sva({
             width: "100%",
             display: "flex",
             flexDirection: "column",
+            fontSize: "lg",
             gap: "0.5rem",
         },
     },

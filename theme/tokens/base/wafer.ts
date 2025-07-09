@@ -8,6 +8,9 @@ import { defineTokens } from "@pandacss/dev";
 
 export const wafer = defineTokens.colors({
     wafer: {
+        50: {
+            value: "oklch(0.99 0.016216374724361667 32.01442326686631 / 1)",
+        },
         100: {
             value: "oklch(0.95 0.016216374724361667 32.01442326686631 / 1)",
         },

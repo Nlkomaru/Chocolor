@@ -2,8 +2,8 @@
 
 import { HStack } from "@chakra-ui/react";
 import { Link } from "react-router";
-import { FOOTER_LINKS } from "../../lib/links";
 import { sva } from "../../../styled-system/css";
+import { FOOTER_LINKS } from "../../lib/links";
 import { ColorSwitch } from "../atoms/color-switch";
 
 export interface FooterItem {
@@ -33,6 +33,8 @@ const menuFooterCustomStyles = sva({
             flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "flex-start",
+            fontSize: "md",
+            fontWeight: "500",
             gap: "8px",
         },
         row: {
@@ -40,12 +42,12 @@ const menuFooterCustomStyles = sva({
         },
         text: {
             textAlign: "left",
-            fontSize: "12px",
-            fontWeight: 400,
+            fontSize: "sm",
+            color: "var(--chakra-colors-fg-muted)",
             lineHeight: "1.5",
         },
         colorSwitch: {
-            paddingLeft: "2rem",
+            paddingLeft: "1rem",
         },
         link: {
             borderBottom: "2px dotted {colors.gray.500}",

@@ -6,10 +6,9 @@ import {
     Scripts,
     ScrollRestoration,
 } from "react-router";
-import { Provider } from "./components/ui/provider";
-
 import type { Route } from "./+types/root";
 import stylesheet from "./app.css?url";
+import { Provider } from "./components/ui/provider";
 
 import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/500.css";

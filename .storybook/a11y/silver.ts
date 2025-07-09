@@ -24,8 +24,8 @@ const APCASilverPlusConformanceThresholdFn: ConformanceThresholdFn = (
     fontSize,
     fontWeight,
 ) => {
-    const size = parseFloat(fontSize);
-    const weight = parseFloat(fontWeight);
+    const size = Number.parseFloat(fontSize);
+    const weight = Number.parseFloat(fontWeight);
 
     // Go over the table backwards to find the first matching font size and then the weight.
     // The value null is returned when the combination of font size and weight does not have

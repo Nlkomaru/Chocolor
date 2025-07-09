@@ -25,17 +25,20 @@ export const ContrastTest = ({ variant }: ContrastTestProps) => {
         color: "#cccccc",
         padding: "16px",
         fontSize: "16px",
-        fontWeight: "400", 
+        fontWeight: "400",
         border: "1px solid #ccc",
         borderRadius: "4px",
     });
 
     return (
-        <div className={variant === "good" ? goodContrastStyles : badContrastStyles}>
-            {variant === "good" 
-                ? "このテキストは十分なコントラストを持っているはずです（黒文字/白背景）"
-                : "このテキストはコントラストが不十分です（薄いグレー文字/薄いグレー背景）"
+        <div
+            className={
+                variant === "good" ? goodContrastStyles : badContrastStyles
             }
+        >
+            {variant === "good"
+                ? "このテキストは十分なコントラストを持っているはずです（黒文字/白背景）"
+                : "このテキストはコントラストが不十分です（薄いグレー文字/薄いグレー背景）"}
         </div>
     );
 };

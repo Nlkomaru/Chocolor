@@ -7,7 +7,6 @@ const meta: Meta<typeof LicenseCard> = {
     tags: ["autodocs"],
     args: {
         pkg: "react@18.2.0",
-        license: "MIT",
         repository: "https://github.com/facebook/react",
         publisher: "Facebook",
     },

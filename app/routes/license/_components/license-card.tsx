@@ -1,8 +1,9 @@
 "use client";
 
-import { Box, Heading, LinkBox, LinkOverlay, Text } from "@chakra-ui/react";
+import { Box, Heading, LinkBox, Text } from "@chakra-ui/react";
 import { ExternalLink } from "lucide-react";
 import { sva } from "../../../../styled-system/css";
+import { Link } from "react-router";
 
 // Style definitions for the license card using Panda CSS's sva helper
 const licenseCardStyles = sva({
@@ -25,16 +26,16 @@ const licenseCardStyles = sva({
             },
         },
         heading: {
-            fontSize: "md",
-            fontWeight: "bold",
+            fontSize: "lg",
+            fontWeight: "700",
             overflow: "hidden",
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
         },
         sub: {
-            fontSize: "xs",
-            color: "fg.muted",
-            fontWeight: "thin",
+            fontSize: "sm",
+            color: "var(--chakra-colors-fg-muted)",
+            fontWeight: "400",
         },
     },
 });
@@ -71,7 +72,7 @@ export const LicenseCard = ({
                 className={classes.heading}
                 display="flex"
                 alignItems="center"
-                gap="1"
+                gap="2"
                 fontWeight="normal"
             >
                 {name}
@@ -85,15 +86,15 @@ export const LicenseCard = ({
     );
 
     return repository ? (
-        <LinkBox as="article" className={classes.root}>
-            <LinkOverlay
-                href={repository}
+        <Box asChild className={classes.root}>
+            <Link
+                to={repository}
                 target="_blank"
                 rel="noopener noreferrer"
             >
                 {content}
-            </LinkOverlay>
-        </LinkBox>
+            </Link>
+        </Box>
     ) : (
         <Box as="article" className={classes.root}>
             {content}

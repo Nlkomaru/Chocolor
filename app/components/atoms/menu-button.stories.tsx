@@ -5,6 +5,7 @@ import { MenuButton } from "./menu-button";
 const meta: Meta<typeof MenuButton> = {
     title: "Atoms/MenuButton",
     component: MenuButton,
+    tags: ["autodocs"],
     parameters: {
         layout: "padded",
     },

@@ -66,14 +66,15 @@ export const colors = defineSemanticTokens.colors({
     fg: {
         DEFAULT: {
             value: {
-                _light: "{colors.wafer.900}",
+                _light: "{colors.wafer.1100}",
                 _dark: "{colors.wafer.100}",
             },
         },
         muted: {
+            //対応済み
             value: {
-                _light: "{colors.gray.600}",
-                _dark: "{colors.gray.400}",
+                _light: "{colors.gray.950}",
+                _dark: "{colors.wafer.50}",
             },
         },
         subtle: {
@@ -177,10 +178,7 @@ export const colors = defineSemanticTokens.colors({
             },
         },
         fg: {
-            value: {
-                _light: "{colors.gray.700}",
-                _dark: "{colors.fg.DEFAULT}",
-            },
+            value: "{colors.fg.DEFAULT}",
         },
         subtle: {
             value: {
