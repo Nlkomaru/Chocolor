@@ -1,6 +1,6 @@
 import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { css } from "../../../../styled-system/css";
 import { LicenseCard } from "./license-card";
-import { css } from "styled-system/css";
 
 interface PackageInfo {
     licenses: string;
@@ -49,7 +49,8 @@ export const LicenseGroup = ({ license, packages }: LicenseGroupProps) => {
                     //折り返し
                     wordBreak: "keep-all",
                     overflowWrap: "anywhere",
-                })}>
+                })}
+            >
                 {licenseDescription[license as keyof typeof licenseDescription]}
             </Text>
             <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
@@ -79,7 +80,8 @@ const licenseDescription = {
         "フォントに特化したライセンスで、改変や組み込みは可能だが単体販売は禁止",
     "MIT OR Apache-2.0":
         "利用者がMITまたはApache-2.0を選択可能とする、柔軟性の高い二重ライセンス方式",
-    Unlicense: "Public Domainに非常に近く、帰属の必要がない非常に緩いライセンス",
+    Unlicense:
+        "Public Domainに非常に近く、帰属の必要がない非常に緩いライセンス",
     "MPL-2.0":
-        "変更ファイル単位でのソース公開を義務づける、弱コピーレフト型ライセンス"
+        "変更ファイル単位でのソース公開を義務づける、弱コピーレフト型ライセンス",
 };

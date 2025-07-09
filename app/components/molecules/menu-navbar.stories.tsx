@@ -1,11 +1,25 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { MenuNavbar } from "./menu-navbar";
+import { MenuButtonProps } from "../atoms/menu-button";
+import { MenuNavbar, NavbarItem } from "./menu-navbar";
+
+import { NAVIGATION_LINKS } from "app/lib/links";
+
+//settingだけdisable
+const disabledLinks: MenuButtonProps | undefined = NAVIGATION_LINKS[3];
+
+const items: MenuButtonProps[] = NAVIGATION_LINKS.map((link) => ({
+    ...link,
+    disabled: disabledLinks?.id === link.id,
+}));
 
 const meta: Meta<typeof MenuNavbar> = {
     title: "Molecules/MenuNavbar",
     component: MenuNavbar,
     tags: ["autodocs"],
     parameters: { layout: "padded" },
+    args: {
+        items: items,
+    },
 };
 export default meta;
 

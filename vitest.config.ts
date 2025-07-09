@@ -42,6 +42,11 @@ export default mergeConfig(
                             provider: "playwright",
                             headless: true,
                             instances: [{ browser: "firefox" }],
+                            viewport: {
+                                width: 1920,
+                                height: 1080,
+                            },
+                            
                         },
                         setupFiles: ["./.storybook/vitest.setup.ts"],
                     },

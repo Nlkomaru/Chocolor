@@ -1,9 +1,9 @@
 "use client";
 
-import { Box, Heading, LinkBox, Text } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 import { ExternalLink } from "lucide-react";
-import { sva } from "../../../../styled-system/css";
 import { Link } from "react-router";
+import { sva } from "../../../../styled-system/css";
 
 // Style definitions for the license card using Panda CSS's sva helper
 const licenseCardStyles = sva({
@@ -87,11 +87,7 @@ export const LicenseCard = ({
 
     return repository ? (
         <Box asChild className={classes.root}>
-            <Link
-                to={repository}
-                target="_blank"
-                rel="noopener noreferrer"
-            >
+            <Link to={repository} target="_blank" rel="noopener noreferrer">
                 {content}
             </Link>
         </Box>

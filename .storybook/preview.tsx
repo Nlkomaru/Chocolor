@@ -10,6 +10,12 @@ import {
 import { Provider } from "../app/components/ui/provider";
 import { registerAPCACheck } from "./a11y";
 
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/700.css";
+
+import "@fontsource/zen-kaku-gothic-new/500.css";
+
 const apca = registerAPCACheck("silver");
 
 export const parameters = {
