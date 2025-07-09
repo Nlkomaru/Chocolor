@@ -4,6 +4,7 @@ const config: StorybookConfig = {
     stories: [
         "../app/components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
         "../app/components/**/*.mdx",
+        "../app/routes/**/_components/*.stories.@(js|jsx|mjs|ts|tsx)",
     ],
     addons: [
         "@storybook/addon-onboarding",
@@ -11,6 +12,7 @@ const config: StorybookConfig = {
         "@storybook/addon-vitest",
         "@storybook/addon-a11y",
         "@storybook/addon-docs",
+        "@storybook/addon-themes",
         "storybook-addon-remix-react-router",
     ],
     framework: {

@@ -1,6 +1,6 @@
 import { HStack, Text } from "@chakra-ui/react";
 import { ImageUpload } from "../components/molecules/image-upload";
-import type { Route } from "./+types/home";
+import type { Route } from "./+types/page";
 
 export function meta(_: Route.MetaArgs) {
     return [

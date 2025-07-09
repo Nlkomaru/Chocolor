@@ -20,9 +20,9 @@
 
 - [Palette Based Photo Recoloring](https://www.ohadf.com/papers/ChangFriedLiuDiVerdiFinkelstein_SIGGRAPH2015_small.pdf)
 
-## 開発環境
+## Developing
 
-### 色
+### Color
 
 - [Semantic Token : theme/semantic-tokens/colors.ts](https://github.com/Nlkomaru/Chocolor/blob/master/theme/semantic-tokens/colors.ts)
 - Base Token : [Generate](https://color-palette.nikomaru.workers.dev/?data=%5B%7B%22colorValue%22%3A%22rgba%28219%2C+205%2C+202%2C+1%29%22%2C%22colorId%22%3A%22wafer%22%2C%22uniqueId%22%3A3%7D%2C%7B%22colorValue%22%3A%22rgba%28217%2C+154%2C+154%2C+1%29%22%2C%22colorId%22%3A%22rose%22%2C%22uniqueId%22%3A4%7D%2C%7B%22colorValue%22%3A%22rgba%28242%2C+228%2C+187%2C+1%29%22%2C%22colorId%22%3A%22potato%22%2C%22uniqueId%22%3A5%7D%5D)
@@ -31,11 +31,18 @@
     - [![Static Badge](https://img.shields.io/badge/Potato-oklch(0.88_0.06_091.42)-F2E4BB)](https://github.com/Nlkomaru/Chocolor/blob/master/theme/tokens/base/potato.ts)
 
 
+### Add component
 
+全体で利用するコンポーネントは、
+- `atoms`
+- `molecules`
+- `organisms`
+- `templates`
+の4つのディレクトリに分類されています。
 
-
-
-
+それぞれのページのみで利用するコンポーネントは、
+- `pages/_components`
+に配置されます。
 
 ## License
 

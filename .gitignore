@@ -17,3 +17,5 @@ styled-system
 styled-system-studio
 *storybook.log
 storybook-static
+
+app/routes/license/data.json

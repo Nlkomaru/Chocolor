@@ -23,8 +23,14 @@ const layoutStyles = sva({
             boxShadow: "sm",
         },
         sidebar: {
+            // Fix the sidebar to the viewport so it does not scroll with the page
             width: "320px",
             height: "100vh",
+            position: "fixed",
+            top: 0, // keep it aligned to the very top
+            left: 0, // align it to the left edge of the viewport
+            display: "block",
+            overflowY: "auto", // allow internal scrolling if contents overflow
             bgColor: {
                 _light: "var(--chakra-colors-potato-100)/40",
                 _dark: "var(--chakra-colors-wafer-1200)",
@@ -37,9 +43,10 @@ const layoutStyles = sva({
         },
         content: {
             flex: 1,
-            padding: "0 2rem",
+            padding: "2rem 4rem",
             maxWidth: "1200px",
-            margin: "0 auto",
+            // Offset the content so it does not hide behind the fixed sidebar
+            marginLeft: "320px",
         },
     },
 });

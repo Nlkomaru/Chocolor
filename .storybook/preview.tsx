@@ -8,6 +8,7 @@ import {
     withRouter,
 } from "storybook-addon-remix-react-router";
 import { Provider } from "../app/components/ui/provider";
+import React from "react";
 
 export const parameters = {
     screenshot: {
@@ -57,8 +58,8 @@ const preview: Preview = {
         },
     },
     decorators: [
-        (Story) => (
-            <Provider>
+        (Story, { globals }) => (
+            <Provider forcedTheme={globals.theme}>
                 <JotaiProvider>
                     <Story />
                 </JotaiProvider>

@@ -4,13 +4,14 @@
     "type": "module",
     "scripts": {
         "prepare": "panda codegen ",
-        "dev": "react-router dev",
+        "dev": "pnpm run gen:license && react-router dev",
         "dev:story": "storybook dev -p 6006",
-        "build": "react-router build",
+        "build": "pnpm run gen:license && react-router build",
         "build:story": "storybook build",
         "deploy": "pnpm run build && wrangler deploy",
-        "typecheck": "wrangler types && react-router typegen && tsc -b",
-        "check": "biome check --write ./"
+        "check": "biome check --write ./",
+        "gen:types": "wrangler types && react-router typegen && tsc -b",
+        "gen:license": "pnpm dlx license-checker-rseidelsohn --json --out './app/routes/license/data.json'"
     },
     "dependencies": {
         "@chakra-ui/react": "^3.21.1",
