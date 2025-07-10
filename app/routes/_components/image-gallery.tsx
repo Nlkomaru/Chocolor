@@ -15,4 +15,4 @@ export const ImageGallery = ({ images }: Props) => {
             ))}
         </VStack>
     );
-}; 
+};

@@ -2,6 +2,7 @@ import "../app/app.css";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react-vite";
 import { Provider as JotaiProvider } from "jotai";
+import React from "react";
 import { themes } from "storybook/theming";
 import {
     reactRouterParameters,
@@ -79,7 +80,14 @@ const preview: Preview = {
         (Story, { globals }) => (
             <Provider forcedTheme={globals.theme}>
                 <JotaiProvider>
-                    <Story />
+                    <div
+                        style={{
+                            backgroundColor: "var(--chakra-colors-bg)",
+                            padding: "1rem",
+                        }}
+                    >
+                        <Story />
+                    </div>
                 </JotaiProvider>
             </Provider>
         ),

@@ -1,6 +1,6 @@
 import { Text } from "@chakra-ui/react";
-import type { Route } from "./+types/page";
 import { DirectorySelector } from "./_components/directory-selector";
+import type { Route } from "./+types/page";
 
 export function meta(_: Route.MetaArgs) {
     return [

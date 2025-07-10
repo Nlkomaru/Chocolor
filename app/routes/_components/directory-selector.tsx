@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useRef, useState, useEffect } from "react";
 import { Button, Text, VStack } from "@chakra-ui/react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ImageGallery } from "./image-gallery";
 
 /** 画像拡張子のホワイトリスト */
@@ -51,7 +51,7 @@ function matchesIgnorePattern(path: string): boolean {
  */
 async function collectImageEntries(
     handle: FileSystemDirectoryHandle,
-    prefix = ""
+    prefix = "",
 ): Promise<{ path: string; url: string }[]> {
     const entries: { path: string; url: string }[] = [];
 
@@ -61,7 +61,9 @@ async function collectImageEntries(
 
         if (childHandle.kind === "file") {
             if (isImagePath(name) && !matchesIgnorePattern(currentPath)) {
-                const file = await (childHandle as FileSystemFileHandle).getFile();
+                const file = await (
+                    childHandle as FileSystemFileHandle
+                ).getFile();
                 const url = URL.createObjectURL(file);
                 entries.push({ path: currentPath, url });
             }
@@ -69,7 +71,7 @@ async function collectImageEntries(
             // サブディレクトリの場合は再帰的に走査
             const childEntries = await collectImageEntries(
                 childHandle as FileSystemDirectoryHandle,
-                currentPath
+                currentPath,
             );
             entries.push(...childEntries);
         }
@@ -100,9 +102,11 @@ export const DirectorySelector = () => {
         if ("showDirectoryPicker" in window) {
             try {
                 // 型安全のために cast して呼ぶ
-                const dirHandle = await (window as typeof window & {
-                    showDirectoryPicker: () => Promise<FileSystemDirectoryHandle>;
-                }).showDirectoryPicker();
+                const dirHandle = await (
+                    window as typeof window & {
+                        showDirectoryPicker: () => Promise<FileSystemDirectoryHandle>;
+                    }
+                ).showDirectoryPicker();
 
                 // ディレクトリ名を保持
                 setDirName(dirHandle.name);
@@ -133,7 +137,9 @@ export const DirectorySelector = () => {
         const newImages: ImageEntry[] = [];
         for (const file of Array.from(e.target.files)) {
             if (file.type.startsWith("image/") || isImagePath(file.name)) {
-                const relPath = (file as any).webkitRelativePath as string | undefined;
+                const relPath = (file as any).webkitRelativePath as
+                    | string
+                    | undefined;
                 const finalPath = relPath || file.name;
                 if (!matchesIgnorePattern(finalPath)) {
                     const url = URL.createObjectURL(file);
@@ -154,7 +160,7 @@ export const DirectorySelector = () => {
 
     return (
         <VStack gap="2">
-            <Button colorScheme="potato" onClick={handlePickDirectory}>
+            <Button size="lg" onClick={handlePickDirectory}>
                 ディレクトリを選択
             </Button>
             {dirName && <Text>{dirName} を選択しました</Text>}

@@ -16,6 +16,10 @@ const verticalMenuStyles = sva({
             flexDirection: "column",
             height: "100vh",
             justifyContent: "space-between",
+            bgColor: {
+                _light: "var(--chakra-colors-potato-100)/40",
+                _dark: "var(--chakra-colors-wafer-950)",
+            },
         },
     },
 });

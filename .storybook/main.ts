@@ -14,6 +14,11 @@ const config: StorybookConfig = {
         "@storybook/addon-themes",
         "storybook-addon-remix-react-router",
     ],
+    refs: {
+        "@chakra-ui/react": {
+            disable: true,
+        },
+    },
     framework: {
         name: "@storybook/react-vite",
         options: {

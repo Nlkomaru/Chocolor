@@ -46,7 +46,6 @@ export default mergeConfig(
                                 width: 1920,
                                 height: 1080,
                             },
-                            
                         },
                         setupFiles: ["./.storybook/vitest.setup.ts"],
                     },

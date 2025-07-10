@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { MenuButtonProps } from "../atoms/menu-button";
-import { MenuNavbar, NavbarItem } from "./menu-navbar";
-
 import { NAVIGATION_LINKS } from "app/lib/links";
+import type { MenuButtonProps } from "../atoms/menu-button";
+import { MenuNavbar, NavbarItem } from "./menu-navbar";
 
 //settingだけdisable
 const disabledLinks: MenuButtonProps | undefined = NAVIGATION_LINKS[3];

@@ -26,7 +26,7 @@ const licenseCardStyles = sva({
             },
         },
         heading: {
-            fontSize: "lg",
+            fontSize: "md",
             fontWeight: "700",
             overflow: "hidden",
             textOverflow: "ellipsis",

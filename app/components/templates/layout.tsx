@@ -31,10 +31,6 @@ const layoutStyles = sva({
             left: 0, // align it to the left edge of the viewport
             display: "block",
             overflowY: "auto", // allow internal scrolling if contents overflow
-            bgColor: {
-                _light: "var(--chakra-colors-potato-100)/40",
-                _dark: "var(--chakra-colors-wafer-950)",
-            },
         },
         main: {
             flex: 1,

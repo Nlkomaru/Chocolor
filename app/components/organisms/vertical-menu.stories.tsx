@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { FOOTER_LINKS, NAVIGATION_LINKS } from "../../lib/links";
 import { VerticalMenu } from "./vertical-menu";
 
-
 const overridedNavbarItems = NAVIGATION_LINKS.map((item) => {
     if (item.label === NAVIGATION_LINKS[3].label) {
         return { ...item, disabled: true };

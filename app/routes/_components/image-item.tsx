@@ -1,6 +1,9 @@
-import { Image, Text, VStack } from "@chakra-ui/react";
+import { HStack, Image, Text, VStack } from "@chakra-ui/react";
 import { sva } from "../../../styled-system/css";
 import type { ImageEntry } from "./image-gallery";
+import { getImageInfo } from "app/lib/image";
+import { useEffect, useState } from "react";
+import type { ImageData } from "app/type";
 
 interface Props extends ImageEntry { }
 
@@ -20,23 +23,41 @@ const itemStyle = sva({
             height: "160px",
             objectFit: "cover",
             borderRadius: "sm",
-            bgColor: "white"
+            bgColor: "white",
         },
     },
 });
 
 export const ImageItem = ({ path, url }: Props) => {
     const styles = itemStyle();
+    const [imageData, setImageData] = useState<ImageData | null>(null);
+    useEffect(() => {
+        const fetchImageData = async () => {
+            const data = await getImageInfo(url);
+            setImageData(data);
+        };
+        fetchImageData();
+    }, [url]);
     return (
         <VStack align="start" gap={2} w="full" className={styles.container}>
-            <Text fontSize="xs" wordBreak="break-all">
+            <Text
+                fontSize="md"
+                overflowWrap="anywhere"
+                textOverflow="ellipsis"
+                whiteSpace="pre-line"
+                width="full"
+                fontWeight="400"
+            >
                 {path}
             </Text>
-            <Image
-                src={url}
-                alt={path}
-                className={styles.image}
-            />
+            <HStack>
+                <Image src={url} alt={path} className={styles.image} />
+                <VStack>
+                    <Text>{imageData?.info.width}</Text>
+                    <Text>{imageData?.info.height}</Text>
+                    <Text>{imageData?.info.format}</Text>
+                </VStack>
+            </HStack>
         </VStack>
     );
-};  
+};
