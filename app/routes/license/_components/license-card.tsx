@@ -72,11 +72,11 @@ export const LicenseCard = ({
                 className={classes.heading}
                 display="flex"
                 alignItems="center"
-                gap="2"
+                gap="4"
                 fontWeight="normal"
             >
                 {name}
-                {repository && <ExternalLink size={12} />}
+                {repository && <ExternalLink size={16} />}
             </Heading>
             {version && <Text className={classes.sub}>v{version}</Text>}
             {publisher && (

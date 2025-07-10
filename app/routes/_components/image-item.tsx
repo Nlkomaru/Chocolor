@@ -12,7 +12,7 @@ const itemStyle = sva({
             gap: 2,
             width: "full",
             padding: "1rem 2rem",
-            bgColor: "{colors.rose.100}",
+            bgColor: "var(--chakra-colors-bg-subtle)",
             borderRadius: "md",
         },
         image: {

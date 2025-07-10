@@ -2,6 +2,14 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { FOOTER_LINKS, NAVIGATION_LINKS } from "../../lib/links";
 import { VerticalMenu } from "./vertical-menu";
 
+
+const overridedNavbarItems = NAVIGATION_LINKS.map((item) => {
+    if (item.label === NAVIGATION_LINKS[3].label) {
+        return { ...item, disabled: true };
+    }
+    return item;
+});
+
 const meta: Meta<typeof VerticalMenu> = {
     title: "Organisms/VerticalMenu",
     component: VerticalMenu,
@@ -10,7 +18,7 @@ const meta: Meta<typeof VerticalMenu> = {
         layout: "padded",
     },
     args: {
-        navbarItems: NAVIGATION_LINKS,
+        navbarItems: overridedNavbarItems,
         footerItems: FOOTER_LINKS,
     },
 };

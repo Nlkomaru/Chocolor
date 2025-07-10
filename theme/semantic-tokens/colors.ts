@@ -4,14 +4,14 @@ export const colors = defineSemanticTokens.colors({
     bg: {
         DEFAULT: {
             value: {
-                _light: "{colors.potato.100/30}",
-                _dark: "{colors.wafer.1100}",
+                _light: "{colors.potato.50/30}",
+                _dark: "{colors.wafer.900}",
             },
         },
         subtle: {
             value: {
-                _light: "{colors.potato.50}",
-                _dark: "{colors.wafer.1100}",
+                _light: "{colors.rose.50}",
+                _dark: "{colors.rose.700}",
             },
         },
         muted: {
@@ -66,8 +66,8 @@ export const colors = defineSemanticTokens.colors({
     fg: {
         DEFAULT: {
             value: {
-                _light: "{colors.wafer.1100}",
-                _dark: "{colors.wafer.100}",
+                _light: "{colors.wafer.950}",
+                _dark: "{colors.wafer.50}",
             },
         },
         muted: {
@@ -173,8 +173,8 @@ export const colors = defineSemanticTokens.colors({
     brand: {
         contrast: {
             value: {
-                _light: "{colors.wafer.100}",
-                _dark: "{colors.wafer.100}",
+                _light: "{colors.wafer.50}",
+                _dark: "{colors.wafer.50}",
             },
         },
         fg: {
@@ -183,13 +183,13 @@ export const colors = defineSemanticTokens.colors({
         subtle: {
             value: {
                 _light: "{colors.potato.100}",
-                _dark: "{colors.wafer.1000}",
+                _dark: "{colors.wafer.950}",
             },
         },
         muted: {
             value: {
                 _light: "{colors.rose.200}",
-                _dark: "{colors.rose.800}",
+                _dark: "{colors.bg.800}",
             },
         },
         //対応済み
@@ -203,7 +203,7 @@ export const colors = defineSemanticTokens.colors({
         solid: {
             value: {
                 _light: "{colors.wafer.800}",
-                _dark: "{colors.rose.900}",
+                _dark: "{colors.rose.700}",
             },
         },
         focusRing: {

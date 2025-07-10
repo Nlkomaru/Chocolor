@@ -1,8 +1,6 @@
 import { defineTokens } from "@chakra-ui/react";
-import { mori } from "./base/mori";
 import { potato } from "./base/potato";
 import { rose } from "./base/rose";
-import { umi } from "./base/umi";
 import { wafer } from "./base/wafer";
 
 export const colors = defineTokens.colors({
@@ -438,8 +436,6 @@ export const colors = defineTokens.colors({
             value: "#2c0514",
         },
     },
-    ...mori,
-    ...umi,
     ...rose,
     ...wafer,
     ...potato,
