@@ -21,3 +21,13 @@ export interface ImageData {
     };
     color: ColorSpace[][];
 }
+
+export interface ColorTransform {
+    id: string;
+    imagePath: string;
+    bin: number;
+    palette: {
+        before: string;
+        after: string;
+    }[];
+}

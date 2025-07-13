@@ -1,6 +1,5 @@
-import { intToRGBA } from "@jimp/utils";
 import { Jimp } from "jimp";
-import type { ImageData, RGBA } from "../type";
+import type { ImageData } from "../type";
 
 export async function getImageInfo(url: string): Promise<ImageData> {
     // Read the file into a Jimp image instance
