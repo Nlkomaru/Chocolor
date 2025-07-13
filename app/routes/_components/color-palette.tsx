@@ -1,5 +1,5 @@
 import { HStack } from "@chakra-ui/react";
-import type { ColorTransform } from "app/type";
+import type { ColorTransform } from "app/type/color";
 import { ColorTransform as ColorTransformComponent } from "./color-transform";
 
 interface Props {

@@ -1,6 +1,6 @@
 import { HStack, Image, Text, VStack } from "@chakra-ui/react";
 import { getImageInfo } from "app/lib/image";
-import type { ColorTransform, ImageData } from "app/type";
+import type { ColorTransform, ImageData } from "app/type/color";
 import { useEffect, useState } from "react";
 import { sva } from "../../../styled-system/css";
 import { ColorPalette } from "./color-palette";

@@ -9,10 +9,12 @@ export interface OKLAB {
     l: number;
     a: number;
     b: number;
+    alpha: number;
 }
 
 export type ColorSpace = RGBA | OKLAB;
 
+// loadした画像のデータ
 export interface ImageData {
     info: {
         width: number;
@@ -20,14 +22,4 @@ export interface ImageData {
         format: string;
     };
     color: ColorSpace[][];
-}
-
-export interface ColorTransform {
-    id: string;
-    imagePath: string;
-    bin: number;
-    palette: {
-        before: string;
-        after: string;
-    }[];
 }

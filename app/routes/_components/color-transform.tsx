@@ -51,7 +51,12 @@ const colorPickerStyle = sva({
     },
 });
 
-export const ColorTransform = ({ beforeColor, afterColor }: Props) => {
+export const ColorTransform = ({
+    beforeColor,
+    afterColor,
+    index,
+    image_id,
+}: Props) => {
     const styles = colorPickerStyle();
 
     return (
@@ -60,6 +65,7 @@ export const ColorTransform = ({ beforeColor, afterColor }: Props) => {
             <ColorPicker.Root
                 defaultValue={parseColor(beforeColor)}
                 disabled={true}
+                id={`before-color-${image_id}-${index}`}
                 maxW="200px"
             >
                 <ColorPicker.Control>
@@ -93,6 +99,7 @@ export const ColorTransform = ({ beforeColor, afterColor }: Props) => {
             <ColorPicker.Root
                 defaultValue={parseColor(afterColor)}
                 maxW="200px"
+                id={`after-color-${image_id}-${index}`}
             >
                 <ColorPicker.Control>
                     <ColorPicker.Trigger>

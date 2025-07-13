@@ -1,5 +1,5 @@
 import { Jimp } from "jimp";
-import type { ImageData } from "../type";
+import type { ImageData } from "../type/color";
 
 export async function getImageInfo(url: string): Promise<ImageData> {
     // Read the file into a Jimp image instance

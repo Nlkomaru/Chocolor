@@ -118,7 +118,7 @@ export const colors = defineSemanticTokens.colors({
         DEFAULT: {
             value: {
                 _light: "{colors.rose.300}",
-                _dark: "{colors.rose.500}",
+                _dark: "{colors.rose.400}",
             },
         },
         muted: {
@@ -189,7 +189,7 @@ export const colors = defineSemanticTokens.colors({
         muted: {
             value: {
                 _light: "{colors.rose.200}",
-                _dark: "{colors.bg.800}",
+                _dark: "{colors.rose.800}",
             },
         },
         //対応済み
@@ -208,8 +208,8 @@ export const colors = defineSemanticTokens.colors({
         },
         focusRing: {
             value: {
-                _light: "{colors.cyan.500}",
-                _dark: "{colors.cyan.500}",
+                _light: "{colors.rose.500}",
+                _dark: "{colors.rose.500}",
             },
         },
     },
