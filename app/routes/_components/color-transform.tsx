@@ -5,7 +5,11 @@ import {
     parseColor,
     VStack,
 } from "@chakra-ui/react";
-import { ArrowDown, Equal } from "lucide-react";
+import { pictureDataAtom } from "app/store/palette";
+import type { StoreData } from "app/type/store";
+import { useAtom } from "jotai";
+import { ArrowDown, Check, Equal } from "lucide-react";
+import { useCallback } from "react";
 import { sva } from "../../../styled-system/css";
 
 interface Props {
@@ -16,7 +20,14 @@ interface Props {
 }
 
 const colorPickerStyle = sva({
-    slots: ["container", "colorBox", "colorLabel", "arrow", "equal"],
+    slots: [
+        "container",
+        "colorBox",
+        "colorLabel",
+        "arrow",
+        "equal",
+        "disabledColorBox",
+    ],
     base: {
         container: {
             gap: 3,
@@ -48,6 +59,11 @@ const colorPickerStyle = sva({
             fontWeight: "bold",
             transform: "rotate(90deg)",
         },
+        disabledColorBox: {
+            _hover: {
+                cursor: "not-allowed",
+            },
+        },
     },
 });
 
@@ -58,14 +74,39 @@ export const ColorTransform = ({
     image_id,
 }: Props) => {
     const styles = colorPickerStyle();
+    const [data, setData] = useAtom(pictureDataAtom(image_id));
+
+    // afterカラーを更新する関数
+    const updateAfterColor = useCallback(
+        (newColor: string) => {
+            setData((prev: StoreData) => ({
+                ...prev,
+                pictureData: prev.pictureData.map((picture) =>
+                    picture.id === image_id
+                        ? {
+                              ...picture,
+                              palette: picture.palette.map((color, i) =>
+                                  i === index
+                                      ? { ...color, after: newColor }
+                                      : color,
+                              ),
+                          }
+                        : picture,
+                ),
+                updatedAt: new Date().toISOString(),
+            }));
+        },
+        [setData, index, image_id],
+    );
 
     return (
         <VStack align="center" className={styles.container}>
             {/* Before Color */}
             <ColorPicker.Root
                 defaultValue={parseColor(beforeColor)}
-                disabled={true}
+                // disabled={true}
                 id={`before-color-${image_id}-${index}`}
+                size="lg"
                 maxW="200px"
             >
                 <ColorPicker.Control>
@@ -76,15 +117,23 @@ export const ColorTransform = ({
                 <Portal>
                     <ColorPicker.Positioner>
                         <ColorPicker.Content>
-                            <ColorPicker.Area />
-                            <HStack>
-                                <ColorPicker.EyeDropper
-                                    size="sm"
-                                    variant="outline"
-                                />
-                                <ColorPicker.Sliders />
-                            </HStack>
-                            <ColorPicker.ChannelInput channel="hex" />
+                            <ColorPicker.SwatchGroup>
+                                {data.favoriteColor.map((item: string) => (
+                                    <ColorPicker.SwatchTrigger
+                                        key={item}
+                                        value={item}
+                                    >
+                                        <ColorPicker.Swatch
+                                            boxSize="4.5"
+                                            value={item}
+                                        >
+                                            <ColorPicker.SwatchIndicator>
+                                                <Check />
+                                            </ColorPicker.SwatchIndicator>
+                                        </ColorPicker.Swatch>
+                                    </ColorPicker.SwatchTrigger>
+                                ))}
+                            </ColorPicker.SwatchGroup>
                         </ColorPicker.Content>
                     </ColorPicker.Positioner>
                 </Portal>
@@ -97,9 +146,13 @@ export const ColorTransform = ({
             )}
 
             <ColorPicker.Root
-                defaultValue={parseColor(afterColor)}
+                value={parseColor(afterColor)}
                 maxW="200px"
                 id={`after-color-${image_id}-${index}`}
+                size="lg"
+                onValueChange={(details) => {
+                    updateAfterColor(details.value.toString("hex"));
+                }}
             >
                 <ColorPicker.Control>
                     <ColorPicker.Trigger>

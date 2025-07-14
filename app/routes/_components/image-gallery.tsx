@@ -1,7 +1,6 @@
 import { VStack } from "@chakra-ui/react";
+import type { ImageEntry } from "../../type/store";
 import { ImageItem } from "./image-item";
-
-export type ImageEntry = { path: string; url: string };
 
 interface Props {
     images: ImageEntry[];

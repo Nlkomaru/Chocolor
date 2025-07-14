@@ -1,5 +1,5 @@
 import { Text } from "@chakra-ui/react";
-import { DirectorySelector } from "./_components/directory-selector";
+import { FileSelector } from "./_components/file-selector";
 import type { Route } from "./+types/page";
 
 export function meta(_: Route.MetaArgs) {
@@ -19,7 +19,7 @@ export default function Home(_: Route.ComponentProps) {
             <Text fontSize="lg" textAlign="center">
                 カラーパレットベースの色変換を行います
             </Text>
-            <DirectorySelector />
+            <FileSelector />
         </>
     );
 }
