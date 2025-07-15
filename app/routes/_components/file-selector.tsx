@@ -148,7 +148,7 @@ const FileUploader = ({
                         画像ファイルを選択またはドラッグ＆ドロップ
                     </Text>
                     <Text fontSize="sm" color="chakra-colors-fg-muted" mt={2}>
-                        PNG, JPG, GIF, WebP, BMP, SVG対応
+                        PNG, JPG, WebP, BMP対応
                     </Text>
                 </FileUpload.Label>
             </FileUpload.Dropzone>

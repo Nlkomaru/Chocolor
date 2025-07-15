@@ -1,6 +1,5 @@
 import { atom } from "jotai";
 import type { Setting } from "../type/setting";
-import type { FileSelectionData } from "../type/store";
 
 // LocalStorage付きのatomを作成するためのヘルパー関数
 const atomWithLocalStorage = <T>(key: string, initialValue: T) => {
@@ -48,7 +47,7 @@ const atomWithLocalStorage = <T>(key: string, initialValue: T) => {
 // 設定のデフォルト値
 const defaultSetting: Setting = {
     colorSpace: "RGBA",
-    defaultBins: 10,
+    paletteSize: 3,
 };
 
 // 設定を永続化するatom
@@ -56,12 +55,3 @@ export const settingAtom = atomWithLocalStorage<Setting>(
     "chocolor-setting",
     defaultSetting,
 );
-
-// ファイル選択のデフォルト値
-const defaultFileSelection: FileSelectionData = {
-    selectedCount: 0,
-    images: [],
-};
-
-// ファイル選択に関するatom（セッション中のみ、永続化しない）
-export const fileSelectionAtom = atom<FileSelectionData>(defaultFileSelection);

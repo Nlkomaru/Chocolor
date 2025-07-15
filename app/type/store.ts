@@ -1,10 +1,9 @@
-export interface StoreData {
+export interface Palette {
     id: string;
     name: string;
     createdAt: string;
     updatedAt: string;
     favoriteColor: string[];
-    pictureIdArray: string[]; // グループで使用
     pictureData: PictureData[]; // カラーパレット用に追加
 }
 

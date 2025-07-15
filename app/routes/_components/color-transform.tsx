@@ -102,42 +102,12 @@ export const ColorTransform = ({
     return (
         <VStack align="center" className={styles.container}>
             {/* Before Color */}
-            <ColorPicker.Root
-                defaultValue={parseColor(beforeColor)}
-                // disabled={true}
-                id={`before-color-${image_id}-${index}`}
-                size="lg"
-                maxW="200px"
-            >
-                <ColorPicker.Control>
-                    <ColorPicker.Trigger>
-                        <ColorPicker.ValueSwatch />
-                    </ColorPicker.Trigger>
-                </ColorPicker.Control>
-                <Portal>
-                    <ColorPicker.Positioner>
-                        <ColorPicker.Content>
-                            <ColorPicker.SwatchGroup>
-                                {data.favoriteColor.map((item: string) => (
-                                    <ColorPicker.SwatchTrigger
-                                        key={item}
-                                        value={item}
-                                    >
-                                        <ColorPicker.Swatch
-                                            boxSize="4.5"
-                                            value={item}
-                                        >
-                                            <ColorPicker.SwatchIndicator>
-                                                <Check />
-                                            </ColorPicker.SwatchIndicator>
-                                        </ColorPicker.Swatch>
-                                    </ColorPicker.SwatchTrigger>
-                                ))}
-                            </ColorPicker.SwatchGroup>
-                        </ColorPicker.Content>
-                    </ColorPicker.Positioner>
-                </Portal>
-            </ColorPicker.Root>
+            <BeforeColorPicker
+                beforeColor={beforeColor}
+                image_id={image_id}
+                index={index}
+                favoriteColor={data.favoriteColor}
+            />
 
             {beforeColor !== afterColor ? (
                 <ArrowDown />
@@ -145,36 +115,108 @@ export const ColorTransform = ({
                 <Equal className={styles.equal} />
             )}
 
-            <ColorPicker.Root
-                value={parseColor(afterColor)}
-                maxW="200px"
-                id={`after-color-${image_id}-${index}`}
-                size="lg"
-                onValueChange={(details) => {
-                    updateAfterColor(details.value.toString("hex"));
-                }}
-            >
-                <ColorPicker.Control>
-                    <ColorPicker.Trigger>
-                        <ColorPicker.ValueSwatch />
-                    </ColorPicker.Trigger>
-                </ColorPicker.Control>
-                <Portal>
-                    <ColorPicker.Positioner>
-                        <ColorPicker.Content>
-                            <ColorPicker.Area />
-                            <HStack>
-                                <ColorPicker.EyeDropper
-                                    size="sm"
-                                    variant="outline"
-                                />
-                                <ColorPicker.Sliders />
-                            </HStack>
-                            <ColorPicker.ChannelInput channel="hex" />
-                        </ColorPicker.Content>
-                    </ColorPicker.Positioner>
-                </Portal>
-            </ColorPicker.Root>
+            <AfterColorPicker
+                afterColor={afterColor}
+                image_id={image_id}
+                index={index}
+                updateAfterColor={updateAfterColor}
+            />
         </VStack>
+    );
+};
+
+const BeforeColorPicker = ({
+    beforeColor,
+    image_id,
+    index,
+    favoriteColor,
+}: {
+    beforeColor: string;
+    image_id: string;
+    index: number;
+    favoriteColor: string[];
+}) => {
+    return (
+        <ColorPicker.Root
+            defaultValue={parseColor(beforeColor)}
+            // disabled={true}
+            id={`before-color-${image_id}-${index}`}
+            size="lg"
+            maxW="200px"
+        >
+            <ColorPicker.Control>
+                <ColorPicker.Trigger>
+                    <ColorPicker.ValueSwatch />
+                </ColorPicker.Trigger>
+            </ColorPicker.Control>
+            <Portal>
+                <ColorPicker.Positioner>
+                    <ColorPicker.Content>
+                        <ColorPicker.SwatchGroup>
+                            {favoriteColor.map((item: string) => (
+                                <ColorPicker.SwatchTrigger
+                                    key={item}
+                                    value={item}
+                                >
+                                    <ColorPicker.Swatch
+                                        boxSize="4.5"
+                                        value={item}
+                                    >
+                                        <ColorPicker.SwatchIndicator>
+                                            <Check />
+                                        </ColorPicker.SwatchIndicator>
+                                    </ColorPicker.Swatch>
+                                </ColorPicker.SwatchTrigger>
+                            ))}
+                        </ColorPicker.SwatchGroup>
+                    </ColorPicker.Content>
+                </ColorPicker.Positioner>
+            </Portal>
+        </ColorPicker.Root>
+    );
+};
+
+const AfterColorPicker = ({
+    afterColor,
+    image_id,
+    index,
+    updateAfterColor,
+}: {
+    afterColor: string;
+    image_id: string;
+    index: number;
+    updateAfterColor: (newColor: string) => void;
+}) => {
+    return (
+        <ColorPicker.Root
+            value={parseColor(afterColor)}
+            maxW="200px"
+            id={`after-color-${image_id}-${index}`}
+            size="lg"
+            onValueChange={(details) => {
+                updateAfterColor(details.value.toString("hex"));
+            }}
+        >
+            <ColorPicker.Control>
+                <ColorPicker.Trigger>
+                    <ColorPicker.ValueSwatch />
+                </ColorPicker.Trigger>
+            </ColorPicker.Control>
+            <Portal>
+                <ColorPicker.Positioner>
+                    <ColorPicker.Content>
+                        <ColorPicker.Area />
+                        <HStack>
+                            <ColorPicker.EyeDropper
+                                size="sm"
+                                variant="outline"
+                            />
+                            <ColorPicker.Sliders />
+                        </HStack>
+                        <ColorPicker.ChannelInput channel="hex" />
+                    </ColorPicker.Content>
+                </ColorPicker.Positioner>
+            </Portal>
+        </ColorPicker.Root>
     );
 };

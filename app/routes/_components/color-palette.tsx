@@ -1,11 +1,9 @@
 import { HStack } from "@chakra-ui/react";
-import type { PictureData, StoreData } from "app/type/store";
+import type { StoreData } from "app/type/store";
 import { ColorTransform as ColorTransformComponent } from "./color-transform";
 
 interface Props {
-    // StoreData には pictureData プロパティが含まれる想定
-    // 型安全のために PictureData[] をマージしておく
-    data: StoreData & { pictureData: PictureData[] };
+    data: StoreData;
 }
 
 export const ColorPalette = ({ data }: Props) => {

@@ -31,6 +31,13 @@ const meta: Meta<typeof ColorPalette> = {
                             before: "#E53E3E",
                             after: "#C53030",
                         },
+                    ],
+                },
+                {
+                    id: "2",
+                    imagePath: "path/to/image.png",
+                    bin: 2,
+                    palette: [
                         {
                             before: "#B91C1C",
                             after: "#DC2626",
@@ -38,18 +45,6 @@ const meta: Meta<typeof ColorPalette> = {
                         {
                             before: "#EF4444",
                             after: "#F56565",
-                        },
-                        {
-                            before: "#FC8181",
-                            after: "#FEB2B2",
-                        },
-                        {
-                            before: "#FED7D7",
-                            after: "#FED7D7",
-                        },
-                        {
-                            before: "#FFCDD2",
-                            after: "#FFBABA",
                         },
                     ],
                 },
@@ -79,7 +74,19 @@ export const EmptyPictureData: Story = {
             createdAt: "2024-01-01T00:00:00Z",
             updatedAt: "2024-01-01T00:00:00Z",
             favoriteColor: [],
-            pictureData: [],
+            pictureData: [
+                {
+                    id: "1",
+                    imagePath: "path/to/image.png",
+                    bin: 1,
+                    palette: [
+                        {
+                            before: "#E53E3E",
+                            after: "#C53030",
+                        },
+                    ],
+                },
+            ],
         },
     },
     parameters: {

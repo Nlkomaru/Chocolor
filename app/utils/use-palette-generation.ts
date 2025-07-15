@@ -4,6 +4,9 @@ import {
     paletteGenerationAtom,
     pictureDataAtom,
 } from "app/store/palette";
+import { settingAtom } from "app/store/setting";
+import type { Setting } from "app/type/setting";
+import type { PictureData } from "app/type/store";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { useCallback, useEffect } from "react";
 
@@ -23,11 +26,14 @@ export const usePaletteGeneration = ({
     const [data, setData] = useAtom(pictureDataAtom(id));
     const paletteGeneration = useAtomValue(paletteGenerationAtom);
     const setPaletteGeneration = useSetAtom(paletteGenerationAtom);
+    const setting: Setting = useAtomValue(settingAtom);
 
     const isGeneratingPalette = paletteGeneration[id] || false;
 
     const generatePalette = useCallback(async () => {
-        const existingPicture = data.pictureData.find((p) => p.id === id);
+        const existingPicture = data.pictureData.find(
+            (p: PictureData) => p.id === id,
+        );
         if (existingPicture || isGeneratingPalette) {
             return;
         }
@@ -44,7 +50,7 @@ export const usePaletteGeneration = ({
             const newPictureData = {
                 id,
                 imagePath: path,
-                bin: data.pictureData.length + 1,
+                bin: setting.paletteSize,
                 palette,
             };
 
@@ -71,6 +77,7 @@ export const usePaletteGeneration = ({
         isGeneratingPalette,
         setData,
         setPaletteGeneration,
+        setting.paletteSize,
     ]);
 
     useEffect(() => {

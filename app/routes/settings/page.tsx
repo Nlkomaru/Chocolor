@@ -4,6 +4,7 @@ import { sva } from "../../../styled-system/css";
 import { settingAtom } from "../../store/setting";
 import { ColorSpace } from "./_components/color-space";
 import { DebugPanel } from "./_components/debug-panel";
+import { PaletteSize } from "./_components/palette-size";
 
 // panda-cssのsvaでスタイルバリアントを定義
 const settingStyles = sva({
@@ -26,7 +27,7 @@ export default function SettingPage() {
 
                 <VStack gap={4} align="stretch">
                     <ColorSpace />
-
+                    <PaletteSize />
                     <DebugPanel />
                 </VStack>
             </VStack>

@@ -2,6 +2,7 @@ import { Heading, HStack, RadioCard, Text } from "@chakra-ui/react";
 import { useAtom } from "jotai";
 import { settingAtom } from "../../../store/setting";
 import type { Setting } from "../../../type/setting";
+import { settingStyle } from "./setting-style";
 
 const colorSpaceItems = [
     {
@@ -18,6 +19,7 @@ const colorSpaceItems = [
 
 export const ColorSpace = () => {
     const [setting, setSetting] = useAtom(settingAtom);
+    const styles = settingStyle();
 
     const handleColorSpaceChange = (colorSpace: Setting["colorSpace"]) => {
         setSetting((prev: Setting) => ({
@@ -28,10 +30,10 @@ export const ColorSpace = () => {
 
     return (
         <>
-            <Heading size="md" marginBottom={1}>
+            <Heading size="md" className={styles.heading}>
                 色空間
             </Heading>
-            <Text fontSize="sm" marginBottom={2}>
+            <Text fontSize="sm" className={styles.text}>
                 画像の色変換に使用する色空間を選択してください。
             </Text>
 
