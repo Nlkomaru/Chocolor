@@ -10,7 +10,7 @@ interface Props extends ImageEntry {}
 export const ImageItem = ({ path, url, id }: Props) => {
     const styles = imageItemStyles();
     const imageData = useImageData(url);
-    const { data, isGeneratingPalette } = usePaletteGeneration({
+    const { data: imagePalette, isGeneratingPalette } = usePaletteGeneration({
         id,
         url,
         path,
@@ -39,7 +39,7 @@ export const ImageItem = ({ path, url, id }: Props) => {
                     isGeneratingPalette={isGeneratingPalette}
                 />
 
-                <ColorPalette data={data} />
+                <ColorPalette data={imagePalette} />
             </HStack>
         </VStack>
     );

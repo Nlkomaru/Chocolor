@@ -21,9 +21,12 @@ export const PaletteSize = () => {
                 ビンの数
             </Heading>
             <Text fontSize="sm" className={styles.text}>
-                画像の色変換に使用するデフォルトのパレットの数を選択してください。 <br />
-                パレット数を増やすと、性能が上がるというものではないです。<br />
-                元のテクスチャに合わせて、変更ページ側で適宜パレット数を調整することを推奨します。<br />
+                画像の色変換に使用するデフォルトのパレットの数を選択してください。{" "}
+                <br />
+                パレット数を増やすと、性能が上がるというものではないです。
+                <br />
+                元のテクスチャに合わせて、変更ページ側で適宜パレット数を調整することを推奨します。
+                <br />
             </Text>
 
             <Slider.Root
@@ -32,9 +35,7 @@ export const PaletteSize = () => {
                 defaultValue={[setting.paletteSize || 3]}
                 max={15}
                 onValueChange={(value) =>
-                    handlePaletteSizeChange(
-                        value.value[0] as number,
-                    )
+                    handlePaletteSizeChange(value.value[0] as number)
                 }
             >
                 <HStack justify="space-between">

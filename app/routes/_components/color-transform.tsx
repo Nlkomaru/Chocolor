@@ -5,9 +5,10 @@ import {
     parseColor,
     VStack,
 } from "@chakra-ui/react";
-import { pictureDataAtom } from "app/store/palette";
-import type { StoreData } from "app/type/store";
-import { useAtom } from "jotai";
+import { groupSettingsAtom, imagePaletteAtom } from "app/store/palette";
+import { currentGroupAtom } from "app/store/state";
+import type { ImagePalette } from "app/type/store";
+import { useAtom, useAtomValue } from "jotai";
 import { ArrowDown, Check, Equal } from "lucide-react";
 import { useCallback } from "react";
 import { sva } from "../../../styled-system/css";
@@ -74,29 +75,27 @@ export const ColorTransform = ({
     image_id,
 }: Props) => {
     const styles = colorPickerStyle();
-    const [data, setData] = useAtom(pictureDataAtom(image_id));
+    const [imagePalette, setImagePalette] = useAtom(imagePaletteAtom(image_id));
+    const currentGroup = useAtomValue(currentGroupAtom);
+    const [groupSettings] = useAtom(
+        groupSettingsAtom(currentGroup || "default-group"),
+    );
 
     // afterカラーを更新する関数
     const updateAfterColor = useCallback(
         (newColor: string) => {
-            setData((prev: StoreData) => ({
-                ...prev,
-                pictureData: prev.pictureData.map((picture) =>
-                    picture.id === image_id
-                        ? {
-                              ...picture,
-                              palette: picture.palette.map((color, i) =>
-                                  i === index
-                                      ? { ...color, after: newColor }
-                                      : color,
-                              ),
-                          }
-                        : picture,
-                ),
-                updatedAt: new Date().toISOString(),
-            }));
+            if (imagePalette) {
+                const updatedPalette: ImagePalette = {
+                    ...imagePalette,
+                    palette: imagePalette.palette.map((color, i) =>
+                        i === index ? { ...color, after: newColor } : color,
+                    ),
+                    updatedAt: new Date().toISOString(),
+                };
+                setImagePalette(updatedPalette);
+            }
         },
-        [setData, index, image_id],
+        [imagePalette, setImagePalette, index],
     );
 
     return (
@@ -106,7 +105,7 @@ export const ColorTransform = ({
                 beforeColor={beforeColor}
                 image_id={image_id}
                 index={index}
-                favoriteColor={data.favoriteColor}
+                favoriteColor={groupSettings.favoriteColor || []}
             />
 
             {beforeColor !== afterColor ? (

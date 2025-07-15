@@ -4,7 +4,7 @@ import { FileUpload, Text, VStack } from "@chakra-ui/react";
 import { useAtom } from "jotai";
 import { useState } from "react";
 import { sva } from "../../../styled-system/css";
-import { fileSelectionAtom } from "../../store/setting";
+import { fileSelectionAtom } from "../../store/state";
 import type { ImageEntry } from "../../type/store";
 import { generateFileHash } from "../../utils/file-hash";
 import { ImageGallery } from "./image-gallery";

@@ -1,99 +1,67 @@
 import { generateColorPalette } from "app/lib/image";
-import {
-    addPictureToGroupAtom,
-    paletteGenerationAtom,
-    pictureDataAtom,
-} from "app/store/palette";
+import { imagePaletteAtom } from "app/store/palette";
 import { settingAtom } from "app/store/setting";
 import type { Setting } from "app/type/setting";
-import type { PictureData } from "app/type/store";
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
-import { useCallback, useEffect } from "react";
+import type { ImagePalette } from "app/type/store";
+import { useAtom, useAtomValue } from "jotai";
+import { useRef, useState } from "react";
 
 interface UsePaletteGenerationProps {
     id: string;
     url: string;
     path: string;
-    groupId?: string; // グループIDを追加（オプション）
 }
 
 export const usePaletteGeneration = ({
     id,
     url,
     path,
-    groupId,
 }: UsePaletteGenerationProps) => {
-    const [data, setData] = useAtom(pictureDataAtom(id));
-    const paletteGeneration = useAtomValue(paletteGenerationAtom);
-    const setPaletteGeneration = useSetAtom(paletteGenerationAtom);
+    const [imagePalette, setImagePalette] = useAtom(imagePaletteAtom(id));
     const setting: Setting = useAtomValue(settingAtom);
+    const [isGeneratingPalette, setIsGeneratingPalette] =
+        useState<boolean>(false);
+    const hasStartedRef = useRef<boolean>(false);
 
-    const isGeneratingPalette = paletteGeneration[id] || false;
-
-    const generatePalette = useCallback(async () => {
-        const existingPicture = data.pictureData.find(
-            (p: PictureData) => p.id === id,
-        );
-        if (existingPicture || isGeneratingPalette) {
+    // パレット生成関数（useCallbackなし）
+    const generatePalette = async () => {
+        // 実行時に状態をチェック
+        if (isGeneratingPalette || hasStartedRef.current || imagePalette) {
             return;
         }
 
+        hasStartedRef.current = true;
+
         try {
-            setPaletteGeneration((prev) => ({
-                ...prev,
-                [id]: true,
-            }));
+            setIsGeneratingPalette(true);
 
             const palette = await generateColorPalette(url);
             const now = new Date().toISOString();
 
-            const newPictureData = {
+            const newImagePalette: ImagePalette = {
                 id,
                 imagePath: path,
                 bin: setting.paletteSize,
+                createdAt: now,
+                updatedAt: now,
                 palette,
             };
 
-            setData((prev) => ({
-                ...prev,
-                name: prev.name || path,
-                createdAt: prev.createdAt || now,
-                updatedAt: now,
-                pictureData: [...prev.pictureData, newPictureData],
-            }));
+            setImagePalette(newImagePalette);
         } catch (error) {
             console.error("パレット生成エラー:", error);
         } finally {
-            setPaletteGeneration((prev) => ({
-                ...prev,
-                [id]: false,
-            }));
+            setIsGeneratingPalette(false);
         }
-    }, [
-        id,
-        url,
-        path,
-        data.pictureData,
-        isGeneratingPalette,
-        setData,
-        setPaletteGeneration,
-        setting.paletteSize,
-    ]);
+    };
 
-    useEffect(() => {
+    // データが存在しない場合に直接実行
+    if (!imagePalette && !hasStartedRef.current && !isGeneratingPalette) {
         generatePalette();
-    }, [generatePalette]);
-
-    // グループIDが渡されている場合、groupIdにpictureIdを追加
-    const addPictureToGroup = useSetAtom(addPictureToGroupAtom);
-    useEffect(() => {
-        if (groupId) {
-            addPictureToGroup({ groupId, pictureId: id });
-        }
-    }, [groupId, id, addPictureToGroup]);
+    }
 
     return {
-        data,
+        data: imagePalette,
         isGeneratingPalette,
     };
 };
