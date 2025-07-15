@@ -1,4 +1,4 @@
-import { Heading, HStack, RadioCard, Text } from "@chakra-ui/react";
+import { Box, Heading, HStack, RadioCard, Text } from "@chakra-ui/react";
 import { useAtom } from "jotai";
 import { settingAtom } from "../../../store/setting";
 import type { Setting } from "../../../type/setting";
@@ -29,11 +29,11 @@ export const ColorSpace = () => {
     };
 
     return (
-        <>
-            <Heading size="md" className={styles.heading}>
+        <Box as="section" className={styles.container}>
+            <Heading className={styles.heading}>
                 色空間
             </Heading>
-            <Text fontSize="sm" className={styles.text}>
+            <Text className={styles.text}>
                 画像の色変換に使用する色空間を選択してください。
             </Text>
 
@@ -64,6 +64,6 @@ export const ColorSpace = () => {
                     ))}
                 </HStack>
             </RadioCard.Root>
-        </>
+        </Box>
     );
 };

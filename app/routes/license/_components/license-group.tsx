@@ -29,16 +29,7 @@ export const LicenseGroup = ({ license, packages }: LicenseGroupProps) => {
         <Box as="section" mb={8}>
             {license === "W3 License" && (
                 // 横線
-                <>
-                    <Box
-                        borderBottom="1px solid"
-                        borderColor="bg.default"
-                        mb={4}
-                    />
-                    <Text mb={4} fontSize="xl" fontWeight="bold">
-                        オープンソースライセンスではないライセンス
-                    </Text>
-                </>
+                <W3Component />
             )}
             <Heading as="h2" size="lg" mb={4}>
                 {license}
@@ -64,6 +55,21 @@ export const LicenseGroup = ({ license, packages }: LicenseGroupProps) => {
                 ))}
             </SimpleGrid>
         </Box>
+    );
+};
+
+const W3Component = () => {
+    return (
+        <>
+                    <Box
+                        borderBottom="1px solid"
+                        borderColor="bg.default"
+                        mb={4}
+                    />
+                    <Text mb={4} fontSize="xl" fontWeight="bold">
+                        オープンソースライセンスではないライセンス
+                    </Text>
+                </>
     );
 };
 

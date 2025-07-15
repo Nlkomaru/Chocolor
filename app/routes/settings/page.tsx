@@ -1,4 +1,4 @@
-import { Heading, VStack } from "@chakra-ui/react";
+import { Container, Heading, VStack } from "@chakra-ui/react";
 import { useAtom } from "jotai";
 import { sva } from "../../../styled-system/css";
 import { settingAtom } from "../../store/setting";
@@ -8,10 +8,14 @@ import { PaletteSize } from "./_components/palette-size";
 
 // panda-cssのsvaでスタイルバリアントを定義
 const settingStyles = sva({
-    slots: ["container", "debugPanel"],
+    slots: ["container", "heading", ],
     base: {
         container: {
             padding: "2rem",
+        },
+        heading: {
+            fontSize: "2xl",
+            mb: "10",
         },
     },
 });
@@ -21,16 +25,16 @@ export default function SettingPage() {
     const styles = settingStyles();
 
     return (
-        <div className={styles.container}>
-            <VStack gap={8} align="stretch">
-                <Heading size="xl">設定</Heading>
+        <Container>
+            <Heading as="h1" className={styles.heading}>
+                設定
+            </Heading>
 
-                <VStack gap={4} align="stretch">
-                    <ColorSpace />
-                    <PaletteSize />
-                    <DebugPanel />
-                </VStack>
+            <VStack gap={10} align="stretch">
+                <ColorSpace />
+                <PaletteSize />
+                <DebugPanel />
             </VStack>
-        </div>
+        </Container>
     );
 }
