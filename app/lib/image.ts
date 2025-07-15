@@ -29,11 +29,11 @@ function extractDominantColors(
 ): [number, number, number][] {
     if (pixels.length === 0) return [];
 
-    // 初期のクラスタ中心点をランダムに選択
+    // 初期のクラスタ中心点を均等に分散して選択（決定的な初期化）
     const centroids: [number, number, number][] = [];
     for (let i = 0; i < k; i++) {
-        const randomIndex = Math.floor(Math.random() * pixels.length);
-        centroids.push([...pixels[randomIndex]]);
+        const index = Math.floor((pixels.length / k) * i);
+        centroids.push([...pixels[index]]);
     }
 
     const maxIterations = 20;
