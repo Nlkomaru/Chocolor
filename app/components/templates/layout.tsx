@@ -38,8 +38,8 @@ const layoutStyles = sva({
         },
         content: {
             flex: 1,
-            padding: "4rem 6rem",
-            maxWidth: "1200px",
+            padding: "4rem 8rem",
+            maxWidth: "1800px",
             // Offset the content so it does not hide behind the fixed sidebar
             marginLeft: "320px",
             "& h1": {

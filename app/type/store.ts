@@ -1,8 +1,7 @@
 // 画像エントリー
-export interface ImageEntry {
-    id: string; // 画像のID
-    url: string; // 画像のURL
-    path: string; // 画像のパス
+export interface GroupInfo {
+    id: string;
+    images: string[];
 }
 
 // 画像単位のパレットデータ
@@ -16,4 +15,12 @@ export interface ImagePalette {
         before: string; // パレットの色 ex: rgba(60, 25, 25, 0.5)
         after: string; // パレットの色 ex: rgba(148, 129, 129, 0.57)
     }[];
+}
+
+export interface ImagePaletteGroup {
+    id: string; // グループのID (UUIDv7) ex: 1234567890-1234-1234-1234-123456789012
+    name: string; // グループの名前 ex: グループ1
+    createdAt: string; // 作成日時 ex: 2025-01-01T00:00:00.000Z
+    updatedAt: string; // 更新日時 ex: 2025-01-01T00:00:00.000Z
+    palettes: string[]; // パレットのIDの配列 ex: ["1234567890-1234-1234-1234-123456789012", "1234567890-1234-1234-1234-123456789012"]
 }

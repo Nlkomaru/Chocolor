@@ -1,6 +1,6 @@
 import { Box, Heading, HStack, RadioCard, Text } from "@chakra-ui/react";
 import { useAtom } from "jotai";
-import { settingAtom } from "../../../store/setting";
+import { settingAtom } from "../../../state/setting";
 import type { Setting } from "../../../type/setting";
 import { settingStyle } from "./setting-style";
 

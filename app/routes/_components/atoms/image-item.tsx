@@ -1,22 +1,24 @@
 import { HStack, Image, Text, VStack } from "@chakra-ui/react";
-import type { ImageEntry } from "app/type/store";
+import { imagePaletteAtom } from "app/state/palette";
+import type { ImagePalette } from "app/type/store";
 import { useImageData } from "app/utils/use-image-data";
-// import { usePaletteGeneration } from "app/utils/use-palette-generation";
-import { ColorPalette } from "./color-palette";
+import { usePaletteGeneration } from "app/utils/use-palette-generation";
+import { useAtomValue } from "jotai";
+import { useMemo } from "react";
+import { ColorPalette } from "../molecules/color-palette";
 import { imageItemStyles } from "./image-item.styles";
 
-interface Props extends ImageEntry {}
+interface Props {
+    id: string;
+}
 
-export const ImageItem = ({ path, url, id }: Props) => {
+export const ImageItem = ({ id }: Props) => {
     const styles = imageItemStyles();
-    const imageData = useImageData(url);
-    // const { data: imagePalette, isGeneratingPalette } = usePaletteGeneration({
-    //     id,
-    //     url,
-    //     path,
-    // });
-    const imagePalette = null;
-    const isGeneratingPalette = false;
+    const paletteAtom = useMemo(() => imagePaletteAtom(id), [id]);
+    const imageData = useImageData(id);
+    // 画像のパレットを（未生成なら）自動生成
+    const { isGenerating } = usePaletteGeneration(id);
+    const imagePalette = useAtomValue(paletteAtom) as ImagePalette | null;
 
     return (
         <VStack align="start" className={styles.container}>
@@ -30,18 +32,24 @@ export const ImageItem = ({ path, url, id }: Props) => {
                 fontWeight="400"
                 color="var(--chakra-colors-fg-default)"
             >
-                {path}
+                {imagePalette?.imagePath}
             </Text>
 
             <HStack align="start" gap={6}>
-                <Image src={url} alt={path} className={styles.image} />
+                <Image
+                    src={imagePalette?.imagePath || ""}
+                    alt={id}
+                    className={styles.image}
+                />
 
                 <Stats
                     imageData={imageData}
-                    isGeneratingPalette={isGeneratingPalette}
+                    isGeneratingPalette={
+                        isGenerating || imagePalette?.palette.length === 0
+                    }
                 />
 
-                <ColorPalette data={imagePalette} />
+                <ColorPalette imageId={id} />
             </HStack>
         </VStack>
     );

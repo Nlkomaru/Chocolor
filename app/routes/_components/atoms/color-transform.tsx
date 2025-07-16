@@ -5,11 +5,11 @@ import {
     parseColor,
     VStack,
 } from "@chakra-ui/react";
-import { imagePaletteAtom } from "app/store/palette";
+import { imagePaletteAtom } from "app/state/palette";
 import type { ImagePalette } from "app/type/store";
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { ArrowDown, Check, Equal } from "lucide-react";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { sva } from "styled-system/css";
 
 interface Props {
@@ -74,7 +74,9 @@ export const ColorTransform = ({
     image_id,
 }: Props) => {
     const styles = colorPickerStyle();
-    const [imagePalette, setImagePalette] = useAtom(imagePaletteAtom(image_id));
+    const paletteAtom = useMemo(() => imagePaletteAtom(image_id), [image_id]);
+    const [_, setImagePalette] = useAtom(paletteAtom);
+    const imagePalette = useAtomValue(paletteAtom) as ImagePalette | null;
 
     // afterカラーを更新する関数
     const updateAfterColor = useCallback(

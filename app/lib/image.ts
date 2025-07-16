@@ -1,3 +1,4 @@
+import type { ImagePalette } from "app/type/store";
 import { Jimp } from "jimp";
 import type { ImageData } from "../type/color";
 
@@ -25,7 +26,7 @@ function colorDistance(
 // K-meansクラスタリングで代表色を抽出
 function extractDominantColors(
     pixels: [number, number, number][],
-    k = 6,
+    k: number,
 ): [number, number, number][] {
     if (pixels.length === 0) return [];
 
@@ -114,6 +115,7 @@ function extractDominantColors(
 // 画像からカラーパレットを生成
 export async function generateColorPalette(
     url: string,
+    k = 3,
 ): Promise<{ before: string; after: string }[]> {
     const img = await Jimp.read(url);
 
@@ -141,7 +143,7 @@ export async function generateColorPalette(
     }
 
     // K-meansクラスタリングで代表色を抽出
-    const dominantColors = extractDominantColors(pixels, 6);
+    const dominantColors = extractDominantColors(pixels, k);
 
     // 明度順にソート（明るい順）
     const sortedColors = dominantColors.sort(([r1, g1, b1], [r2, g2, b2]) => {
@@ -160,24 +162,48 @@ export async function generateColorPalette(
     });
 }
 
-export async function getImageInfo(url: string): Promise<ImageData> {
-    // Read the file into a Jimp image instance
-    const img = await Jimp.read(url);
+// ブラウザ上で画像サイズだけを取得する簡易ヘルパー
+async function getImageInfoInBrowser(url: string): Promise<ImageData> {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+            resolve({
+                info: {
+                    width: img.width,
+                    height: img.height,
+                    format: "", // format は不要なので空文字
+                },
+                color: [],
+            });
+        };
+        img.onerror = () => reject(new Error("Failed to load image"));
+        img.src = url;
+    });
+}
 
-    // Extract basic information and per-pixel RGBA values
+export async function getImageInfo(
+    imagePalette: ImagePalette,
+): Promise<ImageData> {
+    if (!imagePalette) {
+        throw new Error("Image not found");
+    }
+
+    const path = imagePalette.imagePath;
+
+    // blob: や data: スキームの場合はブラウザ API で取得
+    if (path.startsWith("blob:") || path.startsWith("data:")) {
+        return await getImageInfoInBrowser(path);
+    }
+
+    // それ以外（http/https/file など）は Jimp で処理
+    const img = await Jimp.read(path);
+
     const imageData: ImageData = {
         info: {
             width: img.width,
             height: img.height,
-            // Jimp sets mime after reading; fallback to empty string if undefined
             format: img.mime || "",
         },
-        // color: Array.from({ length: img.width }, (_, x) =>
-        //     Array.from({ length: img.height }, (_, y) => {
-        //         const rgb = intToRGBA(img.getPixelColor(x, y));
-        //         return rgb as RGBA;
-        //     }),
-        // ),
         color: [],
     };
 
