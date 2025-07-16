@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ImageGallery } from "./image-gallery";
 import { imagePaletteAtom } from "app/state/palette";
+import { ImageGallery } from "./image-gallery";
 
 const meta: Meta<typeof ImageGallery> = {
     title: "root/ImageGallery",
@@ -82,4 +82,3 @@ export const SingleImage: Story = {
         images: ["1"],
     },
 };
-

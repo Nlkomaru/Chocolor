@@ -6,7 +6,15 @@ import { safeJsonParse, safeLocalStorage } from "./utils";
 const groupAtomCache: Map<string, any> = new Map();
 
 // 現在のグループID（一度生成したら同セッション内では固定）
-export const currentGroupAtom = atom<string>(crypto.randomUUID());
+// Cloudflare Workers ではグローバルスコープでの乱数生成が禁止のため onMount で生成する
+export const currentGroupAtom = (() => {
+    const baseAtom = atom<string>("");
+    (baseAtom as any).onMount = (set: (v: string) => void) => {
+        // 実際にクライアント側で購読されたときに UUID を生成
+        set(crypto.randomUUID());
+    };
+    return baseAtom;
+})();
 
 export const groupInfoAtom = (group: string) => {
     // 既に生成済みならキャッシュを返す

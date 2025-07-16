@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ImageItem } from "./image-item";
 import { imagePaletteAtom } from "app/state/palette";
+import { ImageItem } from "./image-item";
 
 const meta: Meta<typeof ImageItem> = {
     title: "root/ImageItem",
@@ -70,4 +70,3 @@ export const Default: Story = {
         },
     },
 };
-
