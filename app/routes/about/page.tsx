@@ -80,7 +80,10 @@ export default function About() {
                     listStyleType: "disc",
                 },
             })}
-        >   
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>        </div>
+        >
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {markdown}
+            </ReactMarkdown>{" "}
+        </div>
     );
 }

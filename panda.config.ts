@@ -8,9 +8,6 @@ const globalCss = defineGlobalStyles({
         height: "100%",
         boxSizing: "border-box",
     },
-    h2: {
-        fontSize: "1.5rem",
-    },
     "*, *::before, *::after": {
         boxSizing: "inherit",
     },

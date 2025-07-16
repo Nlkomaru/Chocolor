@@ -76,7 +76,7 @@ export const imagePaletteAtom = (imageId: string) => {
     // baseAtomに初期値を設定
     const baseAtom = atom(getInitialValue());
 
-    const derivedAtom = atom(
+    const _derivedAtom = atom(
         // get: baseAtomから取得
         (get) => get(baseAtom),
         // set: baseAtomとlocalStorageの両方を更新

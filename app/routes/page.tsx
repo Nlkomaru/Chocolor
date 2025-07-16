@@ -1,6 +1,4 @@
-import { Container, Heading } from "@chakra-ui/react";
-import { sva } from "styled-system/css";
-import { FileSelector } from "./_components/file-selector";
+import { Heading } from "@chakra-ui/react";
 import type { Route } from "./+types/page";
 
 export function meta(_: Route.MetaArgs) {
@@ -15,10 +13,5 @@ export function loader({ context }: Route.LoaderArgs) {
 }
 
 export default function Home(_: Route.ComponentProps) {
-    return (
-        <>
-            <Heading as="h1">色変換</Heading>
-            <FileSelector />
-        </>
-    );
+    return <Heading as="h1">色変換</Heading>;
 }

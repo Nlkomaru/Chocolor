@@ -16,7 +16,7 @@ import "@fontsource/poppins/700.css";
 
 import "@fontsource/zen-kaku-gothic-new/500.css";
 
-import '@fontsource-variable/jetbrains-mono';
+import "@fontsource-variable/jetbrains-mono";
 
 import { css } from "../styled-system/css";
 

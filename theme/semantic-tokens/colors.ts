@@ -5,7 +5,7 @@ export const colors = defineSemanticTokens.colors({
         DEFAULT: {
             value: {
                 _light: "color-mix(in oklab, var(--chakra-colors-potato-50) 30%, white)",
-                _dark: "{colors.wafer.900}",
+                _dark: "color-mix(in oklab, var(--chakra-colors-wafer-950) 95%, white)",
             },
         },
         subtle: {

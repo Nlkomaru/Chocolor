@@ -1,5 +1,4 @@
-import { VStack } from "@chakra-ui/react";
-import { sva } from "../../../styled-system/css";
+import { sva } from "styled-system/css";
 import { FOOTER_LINKS, NAVIGATION_LINKS } from "../../lib/links";
 import type { MenuButtonProps } from "../atoms/menu-button";
 import type { FooterItem } from "../molecules/menu-footer";
@@ -82,11 +81,7 @@ export const Layout = ({
                 )}
 
                 {/* コンテンツエリア */}
-                <div className={styles.content}>
-                    <VStack gap={8} align="stretch">
-                        {children}
-                    </VStack>
-                </div>
+                <div className={styles.content}>{children}</div>
             </main>
         </div>
     );

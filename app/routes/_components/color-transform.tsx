@@ -10,7 +10,7 @@ import type { ImagePalette } from "app/type/store";
 import { useAtom } from "jotai";
 import { ArrowDown, Check, Equal } from "lucide-react";
 import { useCallback } from "react";
-import { sva } from "../../../styled-system/css";
+import { sva } from "styled-system/css";
 
 interface Props {
     image_id: string;

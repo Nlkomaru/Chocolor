@@ -1,4 +1,4 @@
-import { Container, Heading, VStack } from "@chakra-ui/react";
+import { Heading, VStack } from "@chakra-ui/react";
 import { LicenseGroup } from "./_components/license-group";
 import type { Route } from "./+types/page";
 import data from "./data.json";

@@ -1,6 +1,5 @@
-import { Container, Heading, VStack } from "@chakra-ui/react";
+import { Heading, VStack } from "@chakra-ui/react";
 import { useAtom } from "jotai";
-import { sva } from "../../../styled-system/css";
 import { settingAtom } from "../../store/setting";
 import { ColorSpace } from "./_components/color-space";
 import { DebugPanel } from "./_components/debug-panel";

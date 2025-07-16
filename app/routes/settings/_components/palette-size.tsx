@@ -28,8 +28,8 @@ export const PaletteSize = () => {
             </Text>
 
             <Slider.Root
-                maxW="sm"
-                size="sm"
+                maxW="lg"
+                size="lg"
                 defaultValue={[setting.paletteSize || 3]}
                 max={15}
                 onValueChange={(value) =>
