@@ -1,8 +1,21 @@
 import { atom } from "jotai";
-import type { Setting } from "../type/setting";
+
+export const safeLocalStorage =
+    typeof window !== "undefined" ? window.localStorage : null;
+
+export const safeJsonParse = <T>(
+    jsonString: string | null,
+    defaultValue: T,
+    _storageKey?: string,
+): T => {
+    if (safeLocalStorage && jsonString) {
+        return JSON.parse(jsonString) as T;
+    }
+    return defaultValue;
+};
 
 // LocalStorage付きのatomを作成するためのヘルパー関数
-const atomWithLocalStorage = <T>(key: string, initialValue: T) => {
+export const atomWithLocalStorage = <T>(key: string, initialValue: T) => {
     const getInitialValue = () => {
         // サーバーサイドレンダリング対応のチェック
         if (typeof window === "undefined") return initialValue;
@@ -43,15 +56,3 @@ const atomWithLocalStorage = <T>(key: string, initialValue: T) => {
 
     return derivedAtom;
 };
-
-// 設定のデフォルト値
-const defaultSetting: Setting = {
-    colorSpace: "RGBA",
-    paletteSize: 3,
-};
-
-// 設定を永続化するatom
-export const settingAtom = atomWithLocalStorage<Setting>(
-    "chocolor-setting",
-    defaultSetting,
-);

@@ -9,6 +9,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
     css: {
         postcss: {
+            // @ts-ignore
             plugins: [pandacss, autoprefixer],
         },
     },

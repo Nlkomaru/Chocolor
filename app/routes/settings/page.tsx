@@ -1,36 +1,20 @@
 import { Heading, VStack } from "@chakra-ui/react";
-import { useAtom } from "jotai";
-import { sva } from "../../../styled-system/css";
-import { settingAtom } from "../../store/setting";
+import { ClearLocalStorage } from "./_components/clear-localstorage";
 import { ColorSpace } from "./_components/color-space";
 import { DebugPanel } from "./_components/debug-panel";
 import { PaletteSize } from "./_components/palette-size";
 
-// panda-cssのsvaでスタイルバリアントを定義
-const settingStyles = sva({
-    slots: ["container", "debugPanel"],
-    base: {
-        container: {
-            padding: "2rem",
-        },
-    },
-});
-
 export default function SettingPage() {
-    const [_setting] = useAtom(settingAtom);
-    const styles = settingStyles();
-
     return (
-        <div className={styles.container}>
-            <VStack gap={8} align="stretch">
-                <Heading size="xl">設定</Heading>
+        <>
+            <Heading as="h1">設定</Heading>
 
-                <VStack gap={4} align="stretch">
-                    <ColorSpace />
-                    <PaletteSize />
-                    <DebugPanel />
-                </VStack>
+            <VStack gap={6} align="stretch">
+                <ColorSpace />
+                <PaletteSize />
+                <ClearLocalStorage />
+                <DebugPanel />
             </VStack>
-        </div>
+        </>
     );
 }

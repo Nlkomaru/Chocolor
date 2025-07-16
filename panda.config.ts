@@ -1,5 +1,4 @@
-import { defineGlobalStyles } from "@chakra-ui/react";
-import { defineConfig } from "@pandacss/dev";
+import { defineConfig, defineGlobalStyles } from "@pandacss/dev";
 
 const globalCss = defineGlobalStyles({
     // リセットスタイル - 白色の縁を削除

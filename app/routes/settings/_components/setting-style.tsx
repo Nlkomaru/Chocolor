@@ -4,13 +4,14 @@ export const settingStyle = sva({
     slots: ["container", "heading", "text"],
     base: {
         container: {
-            padding: "2rem",
+            mb: "8",
         },
         heading: {
-            marginTop: "4",
+            fontSize: "lg",
+            marginBottom: "4",
         },
         text: {
-            marginBottom: "2",
+            marginBottom: "4",
         },
     },
 });

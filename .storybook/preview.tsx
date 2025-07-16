@@ -1,7 +1,7 @@
 import "../app/app.css";
 import { withThemeByClassName } from "@storybook/addon-themes";
-import type { Preview } from "@storybook/react-vite";
-import { Provider as JotaiProvider } from "jotai";
+import type { Preview, StoryContext } from "@storybook/react-vite";
+import { createStore, Provider as JotaiProvider } from "jotai";
 import { themes } from "storybook/theming";
 import {
     reactRouterParameters,
@@ -15,6 +15,7 @@ import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/700.css";
 
 import "@fontsource/zen-kaku-gothic-new/500.css";
+import { useEffect, useState } from "react";
 
 const apca = registerAPCACheck("silver");
 
@@ -25,6 +26,33 @@ export const parameters = {
         },
     },
 };
+
+const withJotai = (Story: Function, context: StoryContext) => {
+    const { atoms, values } = context.parameters.jotai ?? {};
+    const [store] = useState(createStore());
+
+    useEffect(() => {
+        if (atoms == null) {
+            return;
+        }
+        for (const atomName of Object.keys(atoms)) {
+            const atom = atoms[atomName];
+            const value = values[atomName];
+            store.set(atom, value);
+        }
+    }, [store, atoms, values[atomName]]);
+
+    if (atoms == null) {
+        return <Story />;
+    }
+
+    return (
+        <JotaiProvider store={store}>
+            <Story />
+        </JotaiProvider>
+    );
+};
+
 const preview: Preview = {
     parameters: {
         options: {
@@ -78,16 +106,14 @@ const preview: Preview = {
     decorators: [
         (Story, { globals }) => (
             <Provider forcedTheme={globals.theme}>
-                <JotaiProvider>
-                    <div
-                        style={{
-                            backgroundColor: "var(--chakra-colors-bg)",
-                            padding: "1rem",
-                        }}
-                    >
-                        <Story />
-                    </div>
-                </JotaiProvider>
+                <div
+                    style={{
+                        backgroundColor: "var(--chakra-colors-bg)",
+                        padding: "1rem",
+                    }}
+                >
+                    <Story />
+                </div>
             </Provider>
         ),
         withThemeByClassName({
@@ -95,6 +121,7 @@ const preview: Preview = {
             themes: { light: "", dark: "dark" },
         }),
         withRouter,
+        withJotai,
     ],
 };
 

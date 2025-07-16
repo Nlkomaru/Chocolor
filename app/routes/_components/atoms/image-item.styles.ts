@@ -1,4 +1,4 @@
-import { sva } from "../../../styled-system/css";
+import { sva } from "../../../../styled-system/css";
 
 export const imageItemStyles = sva({
     slots: ["container", "image", "statsContainer", "statsTitle", "statValue"],
@@ -22,7 +22,6 @@ export const imageItemStyles = sva({
         statsContainer: {
             gap: 4,
             alignItems: "flex-start",
-            paddingTop: "1rem",
             flex: 1,
         },
         statsTitle: {
