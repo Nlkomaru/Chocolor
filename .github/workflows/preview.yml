@@ -59,7 +59,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_KEY }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: versions upload -c wrangler-storybook.json --message "Deployed storybook by GitHub Actions branch ${{ github.ref_name }}" 
+          command: versions upload -c wrangler-storybook.jsonc --message "Deployed storybook by GitHub Actions branch ${{ github.ref_name }}" 
           
       - name: Create comment file
         id: create-comment-file
