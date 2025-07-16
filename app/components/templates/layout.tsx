@@ -39,10 +39,18 @@ const layoutStyles = sva({
         },
         content: {
             flex: 1,
-            padding: "4rem",
+            padding: "4rem 6rem",
             maxWidth: "1200px",
             // Offset the content so it does not hide behind the fixed sidebar
             marginLeft: "320px",
+            "& h1": {
+                fontSize: "2xl",
+                mb: "8",
+            },
+            "& h2": {
+                fontSize: "xl",
+                mb: "4",
+            },
         },
     },
 });

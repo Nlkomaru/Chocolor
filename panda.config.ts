@@ -1,5 +1,4 @@
-import { defineGlobalStyles } from "@chakra-ui/react";
-import { defineConfig } from "@pandacss/dev";
+import { defineConfig, defineGlobalStyles } from "@pandacss/dev";
 
 const globalCss = defineGlobalStyles({
     // リセットスタイル - 白色の縁を削除
@@ -8,6 +7,9 @@ const globalCss = defineGlobalStyles({
         padding: 0,
         height: "100%",
         boxSizing: "border-box",
+    },
+    h2: {
+        fontSize: "1.5rem",
     },
     "*, *::before, *::after": {
         boxSizing: "inherit",

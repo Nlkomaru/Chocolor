@@ -1,8 +1,7 @@
-import { Container, Heading, Text, VStack } from "@chakra-ui/react";
-import { groupAtom } from "app/store/palette";
-import { useAtomValue } from "jotai";
+import { Heading, Text, VStack } from "@chakra-ui/react";
+// import { groupAtom } from "app/store/palette";
+// import { useAtomValue } from "jotai";
 import type { Route } from "./+types/page";
-import { LicenseGroup } from "../license/_components/license-group";
 
 export function meta(_: Route.MetaArgs) {
     return [
@@ -16,21 +15,18 @@ export function loader({ context }: Route.LoaderArgs) {
 }
 
 export default function PageName(_: Route.ComponentProps) {
-    const group = useAtomValue(groupAtom);
+    // const group = useAtomValue(groupAtom);
+    const group: string[] = [];
     return (
         <>
-            <Container>
-            <Heading as="h1" size="2xl" mb={10}>
-                履歴
-            </Heading>
-            <VStack align="stretch" gap={10}>
+            <Heading as="h1">履歴</Heading>
+            <VStack align="stretch" gap={6}>
                 {group.map((groupId) => (
                     <div key={groupId}>
                         <Text>{groupId}</Text>
                     </div>
                 ))}
             </VStack>
-        </Container>
         </>
     );
 }

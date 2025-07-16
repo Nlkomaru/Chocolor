@@ -72,7 +72,9 @@ export const FileSelector = () => {
             const imageFiles = details.files.filter(isImageFile);
 
             // 古い ObjectURL を解放
-            fileSelection.images.forEach((img) => URL.revokeObjectURL(img.url));
+            fileSelection.forEach((img: ImageEntry) =>
+                URL.revokeObjectURL(img.url),
+            );
 
             // 各ファイルごとにユニークなハッシュIDを生成
             const newImages: ImageEntry[] = await Promise.all(

@@ -1,7 +1,7 @@
 import { HStack, Image, Text, VStack } from "@chakra-ui/react";
 import type { ImageEntry } from "app/type/store";
 import { useImageData } from "app/utils/use-image-data";
-import { usePaletteGeneration } from "app/utils/use-palette-generation";
+// import { usePaletteGeneration } from "app/utils/use-palette-generation";
 import { ColorPalette } from "./color-palette";
 import { imageItemStyles } from "./image-item.styles";
 
@@ -10,11 +10,13 @@ interface Props extends ImageEntry {}
 export const ImageItem = ({ path, url, id }: Props) => {
     const styles = imageItemStyles();
     const imageData = useImageData(url);
-    const { data: imagePalette, isGeneratingPalette } = usePaletteGeneration({
-        id,
-        url,
-        path,
-    });
+    // const { data: imagePalette, isGeneratingPalette } = usePaletteGeneration({
+    //     id,
+    //     url,
+    //     path,
+    // });
+    const imagePalette = null;
+    const isGeneratingPalette = false;
 
     return (
         <VStack align="start" className={styles.container}>

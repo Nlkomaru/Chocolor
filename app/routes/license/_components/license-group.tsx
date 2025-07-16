@@ -61,15 +61,11 @@ export const LicenseGroup = ({ license, packages }: LicenseGroupProps) => {
 const W3Component = () => {
     return (
         <>
-                    <Box
-                        borderBottom="1px solid"
-                        borderColor="bg.default"
-                        mb={4}
-                    />
-                    <Text mb={4} fontSize="xl" fontWeight="bold">
-                        オープンソースライセンスではないライセンス
-                    </Text>
-                </>
+            <Box borderBottom="1px solid" borderColor="bg.default" mb={4} />
+            <Text mb={4} fontSize="xl" fontWeight="bold">
+                オープンソースライセンスではないライセンス
+            </Text>
+        </>
     );
 };
 

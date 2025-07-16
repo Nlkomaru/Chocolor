@@ -27,11 +27,9 @@ export default function LicensePage(_: Route.ComponentProps) {
     const groups = getGrouedLicense();
 
     return (
-        <Container>
-            <Heading as="h1" size="2xl" mb={10}>
-                オープンソースソフトウェアライセンス一覧
-            </Heading>
-            <VStack align="stretch" gap={10}>
+        <>
+            <Heading as="h1">オープンソースソフトウェアライセンス一覧</Heading>
+            <VStack align="stretch" gap={6}>
                 {groups.map(([license, packages]) => (
                     <LicenseGroup
                         key={license}
@@ -40,7 +38,7 @@ export default function LicensePage(_: Route.ComponentProps) {
                     />
                 ))}
             </VStack>
-        </Container>
+        </>
     );
 }
 

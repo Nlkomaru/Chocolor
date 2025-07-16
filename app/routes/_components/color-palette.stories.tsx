@@ -18,35 +18,21 @@ const meta: Meta<typeof ColorPalette> = {
         data: {
             id: "story-1",
             name: "サンプル画像",
+            imagePath: "path/to/image.png",
             createdAt: "2024-01-01T00:00:00Z",
             updatedAt: "2024-01-01T00:00:00Z",
-            favoriteColor: ["#E53E3E"],
-            pictureData: [
+            palette: [
                 {
-                    id: "1",
-                    imagePath: "path/to/image.png",
-                    bin: 1,
-                    palette: [
-                        {
-                            before: "#E53E3E",
-                            after: "#C53030",
-                        },
-                    ],
+                    before: "#E53E3E",
+                    after: "#C53030",
                 },
                 {
-                    id: "2",
-                    imagePath: "path/to/image.png",
-                    bin: 2,
-                    palette: [
-                        {
-                            before: "#B91C1C",
-                            after: "#DC2626",
-                        },
-                        {
-                            before: "#EF4444",
-                            after: "#F56565",
-                        },
-                    ],
+                    before: "#B91C1C",
+                    after: "#DC2626",
+                },
+                {
+                    before: "#EF4444",
+                    after: "#F56565",
                 },
             ],
         },
@@ -66,33 +52,21 @@ export const Default: Story = {
     },
 };
 
-export const EmptyPictureData: Story = {
+export const EmptyPalette: Story = {
     args: {
         data: {
             id: "story-2",
             name: "空のデータ",
+            imagePath: "path/to/image.png",
             createdAt: "2024-01-01T00:00:00Z",
             updatedAt: "2024-01-01T00:00:00Z",
-            favoriteColor: [],
-            pictureData: [
-                {
-                    id: "1",
-                    imagePath: "path/to/image.png",
-                    bin: 1,
-                    palette: [
-                        {
-                            before: "#E53E3E",
-                            after: "#C53030",
-                        },
-                    ],
-                },
-            ],
+            palette: [],
         },
     },
     parameters: {
         docs: {
             description: {
-                story: "pictureDataが空の場合。何も表示されません。",
+                story: "paletteが空の場合。何も表示されません。",
             },
         },
     },

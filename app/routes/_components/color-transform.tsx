@@ -5,10 +5,9 @@ import {
     parseColor,
     VStack,
 } from "@chakra-ui/react";
-import { groupSettingsAtom, imagePaletteAtom } from "app/store/palette";
-import { currentGroupAtom } from "app/store/state";
+import { imagePaletteAtom } from "app/store/palette";
 import type { ImagePalette } from "app/type/store";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom } from "jotai";
 import { ArrowDown, Check, Equal } from "lucide-react";
 import { useCallback } from "react";
 import { sva } from "../../../styled-system/css";
@@ -76,10 +75,6 @@ export const ColorTransform = ({
 }: Props) => {
     const styles = colorPickerStyle();
     const [imagePalette, setImagePalette] = useAtom(imagePaletteAtom(image_id));
-    const currentGroup = useAtomValue(currentGroupAtom);
-    const [groupSettings] = useAtom(
-        groupSettingsAtom(currentGroup || "default-group"),
-    );
 
     // afterカラーを更新する関数
     const updateAfterColor = useCallback(
@@ -105,7 +100,7 @@ export const ColorTransform = ({
                 beforeColor={beforeColor}
                 image_id={image_id}
                 index={index}
-                favoriteColor={groupSettings.favoriteColor || []}
+                favoriteColor={[]}
             />
 
             {beforeColor !== afterColor ? (

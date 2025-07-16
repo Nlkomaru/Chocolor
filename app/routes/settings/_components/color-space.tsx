@@ -30,9 +30,7 @@ export const ColorSpace = () => {
 
     return (
         <Box as="section" className={styles.container}>
-            <Heading className={styles.heading}>
-                色空間
-            </Heading>
+            <Heading className={styles.heading}>色空間</Heading>
             <Text className={styles.text}>
                 画像の色変換に使用する色空間を選択してください。
             </Text>

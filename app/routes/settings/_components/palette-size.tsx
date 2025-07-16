@@ -1,4 +1,4 @@
-import { Box, Container, Heading, HStack, Slider, Text } from "@chakra-ui/react";
+import { Box, Heading, HStack, Slider, Text } from "@chakra-ui/react";
 import { useAtom } from "jotai";
 import { settingAtom } from "../../../store/setting";
 import type { Setting } from "../../../type/setting";
@@ -17,9 +17,7 @@ export const PaletteSize = () => {
 
     return (
         <Box as="section" className={styles.container}>
-            <Heading className={styles.heading}>
-                ビンの数
-            </Heading>
+            <Heading className={styles.heading}>ビンの数</Heading>
             <Text className={styles.text}>
                 画像の色変換に使用するデフォルトのパレットの数を選択してください。{" "}
                 <br />
