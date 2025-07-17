@@ -72,7 +72,7 @@ export const Layout = ({
         <div className={styles.container}>
             <main className={styles.main}>
                 {navbarItems.length > 0 && (
-                    <aside className={styles.sidebar}>
+                    <aside className={styles.sidebar} suppressHydrationWarning>
                         <VerticalMenu
                             navbarItems={navbarItems}
                             footerItems={footerItems}
@@ -81,7 +81,9 @@ export const Layout = ({
                 )}
 
                 {/* コンテンツエリア */}
-                <div className={styles.content}>{children}</div>
+                <div className={styles.content} suppressHydrationWarning>
+                    {children}
+                </div>
             </main>
         </div>
     );

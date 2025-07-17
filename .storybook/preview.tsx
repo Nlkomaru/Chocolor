@@ -15,7 +15,7 @@ import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/700.css";
 
 import "@fontsource/zen-kaku-gothic-new/500.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const apca = registerAPCACheck("silver");
 
@@ -40,7 +40,7 @@ const withJotai = (Story: Function, context: StoryContext) => {
             const value = values[atomName];
             store.set(atom, value);
         }
-    }, [store, atoms, values[atomName]]);
+    }, [store, atoms, values]);
 
     if (atoms == null) {
         return <Story />;

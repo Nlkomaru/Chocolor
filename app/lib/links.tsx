@@ -14,6 +14,7 @@ export const NAVIGATION_LINKS: MenuButtonProps[] = [
         path: "/history",
         icon: <History />,
         id: "history",
+        disabled: true,
     },
 
     {
@@ -21,12 +22,14 @@ export const NAVIGATION_LINKS: MenuButtonProps[] = [
         path: "/settings",
         icon: <Settings />,
         id: "settings",
+        disabled: true,
     },
     {
         label: "About",
         path: "/about",
         icon: <Info />,
         id: "about",
+        disabled: true,
     },
 ];
 
@@ -36,6 +39,12 @@ export const FOOTER_LINKS: FooterItem[] = [
         label: "Open Source License",
         path: "/license",
         openInNewTab: false,
+    },
+    {
+        id: "refrence-paper",
+        label: "Reference Paper",
+        path: "https://www.ohadf.com/papers/ChangFriedLiuDiVerdiFinkelstein_SIGGRAPH2015_small.pdf",
+        openInNewTab: true,
     },
     {
         id: "storybook",

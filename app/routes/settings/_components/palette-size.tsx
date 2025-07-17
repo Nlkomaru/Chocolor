@@ -17,7 +17,7 @@ export const PaletteSize = () => {
 
     return (
         <Box as="section" className={styles.container}>
-            <Heading className={styles.heading}>ビンの数</Heading>
+            <Heading className={styles.heading}>パレットの数</Heading>
             <Text className={styles.text}>
                 画像の色変換に使用するデフォルトのパレットの数を選択してください。{" "}
                 <br />
@@ -31,7 +31,7 @@ export const PaletteSize = () => {
                 maxW="lg"
                 size="lg"
                 defaultValue={[setting.paletteSize || 3]}
-                max={15}
+                max={10}
                 onValueChange={(value) =>
                     handlePaletteSizeChange(value.value[0] as number)
                 }

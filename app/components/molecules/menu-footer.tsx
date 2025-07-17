@@ -1,6 +1,7 @@
 "use client";
 
-import { HStack } from "@chakra-ui/react";
+import { HStack, Icon } from "@chakra-ui/react";
+import { ExternalLink } from "lucide-react";
 import { Link } from "react-router";
 import { sva } from "../../../styled-system/css";
 import { FOOTER_LINKS } from "../../lib/links";
@@ -73,7 +74,12 @@ export const MenuFooter = ({
                         target={openInNewTab ? "_blank" : "_self"}
                         rel={openInNewTab ? "noopener noreferrer" : undefined}
                     >
-                        {label}
+                        <HStack gap="0.5rem">
+                            {label}
+                            {openInNewTab && (
+                                <Icon as={ExternalLink} size="sm" />
+                            )}
+                        </HStack>
                     </Link>
                 ))}
             </div>

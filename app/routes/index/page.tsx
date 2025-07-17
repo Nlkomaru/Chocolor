@@ -4,9 +4,9 @@ import type { GroupInfo } from "app/type/store";
 import { useAtom, useAtomValue } from "jotai";
 import { useMemo } from "react";
 import { css } from "styled-system/css";
-import { ImageGallery } from "./_components/molecules/image-gallery";
+import type { Route } from "../+types/page";
+import { ImageGallery } from "./_components/organisms/image-gallery";
 import { FileHeader } from "./_components/organisms/file-header";
-import type { Route } from "./+types/page";
 
 export function meta(_: Route.MetaArgs) {
     return [

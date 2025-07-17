@@ -44,6 +44,12 @@
 - `pages/_components`
 に配置されます。
 
+## Code Stats
+
+```bash
+cloc --exclude-dir=theme --exclude-ext=json,yaml --vcs=git
+```
+
 ## License
 
 Written in 2025 by Nikomaru. No Rights Reserved.
