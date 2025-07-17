@@ -57,6 +57,7 @@ export const FileUploader = () => {
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString(),
                     palette: [],
+                    paletteSize: null,
                 });
             }
 
