@@ -20,6 +20,8 @@ const imageItemStyles = sva({
             bgColor: "var(--chakra-colors-bg-default)",
             border: "1px solid var(--chakra-colors-border)",
             borderRadius: "md",
+            overflow: "scroll",
+            fontWeight: "400",
         },
         image: {
             width: "160px",
@@ -74,7 +76,7 @@ export const ImageItem = ({ id }: Props) => {
                     }
                 />
 
-                <VStack align="start" minW="120px">
+                <VStack align="start" minW="160px">
                     <PaletteSizeSlider imageId={id} />
                 </VStack>
 

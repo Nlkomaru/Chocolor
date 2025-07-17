@@ -9,7 +9,7 @@ import { imagePaletteAtom } from "app/state/palette";
 import type { ImagePalette } from "app/type/store";
 import { useAtom, useAtomValue } from "jotai";
 import { ArrowDown, Check, Equal } from "lucide-react";
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { sva } from "styled-system/css";
 
 interface Props {
@@ -183,13 +183,18 @@ const AfterColorPicker = ({
     index: number;
     updateAfterColor: (newColor: string) => void;
 }) => {
+    const [ previewColor, setPreviewColor ] = useState<string>(afterColor);
     return (
         <ColorPicker.Root
-            value={parseColor(afterColor)}
+            value={parseColor(previewColor)}
             maxW="200px"
             id={`after-color-${image_id}-${index}`}
             size="lg"
             onValueChange={(details) => {
+                setPreviewColor(details.value.toString("hex"));
+            }}
+            onValueChangeEnd={(details) => {
+                setPreviewColor(details.value.toString("hex"));
                 updateAfterColor(details.value.toString("hex"));
             }}
         >

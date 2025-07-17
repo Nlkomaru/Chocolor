@@ -11,6 +11,7 @@ const imageItemStyles = sva({
     base: {
         statsContainer: {
             gap: 4,
+            minW: "160px",
             alignItems: "flex-start",
         },
         statsTitle: {
@@ -35,14 +36,16 @@ export const Stats = ({
     imageData: ReturnType<typeof useImageData>;
     isGeneratingPalette: boolean;
 }) => {
-    const imagePalette = useAtomValue(imagePaletteAtom(imageId)) as ImagePalette;
+    const imagePalette = useAtomValue(
+        imagePaletteAtom(imageId),
+    ) as ImagePalette;
     const setting = useAtomValue(settingAtom);
     const styles = imageItemStyles();
     return (
         <VStack className={styles.statsContainer} align="start">
             <Text className={styles.statsTitle}>Stats</Text>
 
-            <VStack align="start" gap={1} width="120px">
+            <VStack align="start" gap={1} minW="160px">
                 <Text className={styles.statValue}>
                     Width: {imageData?.imageData?.info.width || "..."}
                 </Text>
@@ -58,7 +61,8 @@ export const Stats = ({
                     </Text>
                 ) : (
                     <Text className={styles.statValue}>
-                        PaletteSize: {imagePalette?.paletteSize || setting.paletteSize}
+                        PaletteSize:{" "}
+                        {imagePalette?.paletteSize || setting.paletteSize}
                     </Text>
                 )}
             </VStack>

@@ -14,6 +14,7 @@ export const NAVIGATION_LINKS: MenuButtonProps[] = [
         path: "/history",
         icon: <History />,
         id: "history",
+        disabled: true,
     },
 
     {
@@ -27,6 +28,7 @@ export const NAVIGATION_LINKS: MenuButtonProps[] = [
         path: "/about",
         icon: <Info />,
         id: "about",
+        disabled: true,
     },
 ];
 
