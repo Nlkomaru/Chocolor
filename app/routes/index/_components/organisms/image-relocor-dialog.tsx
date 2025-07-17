@@ -1,11 +1,12 @@
 import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react";
+import { Eye } from "lucide-react";
 
 export default function ImageRelocorDialog() {
     return (
-        <Dialog.Root size="full" motionPreset="slide-in-bottom" lazyMount>
+        <Dialog.Root size="cover" motionPreset="slide-in-bottom" lazyMount>
             <Dialog.Trigger asChild>
-                <Button variant="outline" size="sm">
-                    Open Dialog
+                <Button size="lg" w="160px">
+                    Preview <Eye />
                 </Button>
             </Dialog.Trigger>
             <Portal>

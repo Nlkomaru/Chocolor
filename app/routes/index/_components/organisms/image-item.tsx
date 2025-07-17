@@ -1,4 +1,4 @@
-import { HStack, Image, Text, VStack } from "@chakra-ui/react";
+import { Button, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import { useImageData } from "app/lib/use-image-data";
 import { usePaletteGeneration } from "app/lib/use-palette-generation";
 import { imagePaletteAtom } from "app/state/palette";
@@ -6,9 +6,8 @@ import type { ImagePalette } from "app/type/store";
 import { useAtomValue } from "jotai";
 import { useMemo } from "react";
 import { sva } from "styled-system/css";
-import { PaletteSizeSlider } from "../atoms/palette-size-slider";
-import { Stats } from "../atoms/stats";
-import { ColorPalette } from "./color-palette";
+import { ColorPalette } from "../molecules/color-palette";
+import { Control } from "../molecules/control";
 
 const imageItemStyles = sva({
     slots: ["container", "image", "statsContainer", "statsTitle", "statValue"],
@@ -61,24 +60,19 @@ export const ImageItem = ({ id }: Props) => {
                 {imagePalette?.filePath}
             </Text>
 
-            <HStack align="start" w="full" gap={6}>
+            <HStack align="start" w="full" gap={6} height="100%">
                 <Image
                     src={imagePalette?.url || ""}
                     alt={id}
                     className={styles.image}
                 />
 
-                <Stats
-                    imageId={id}
+                <Control
+                    id={id}
                     imageData={imageData}
-                    isGeneratingPalette={
-                        isGenerating || imagePalette?.palette.length === 0
-                    }
+                    isGenerating={isGenerating}
+                    imagePalette={imagePalette}
                 />
-
-                <VStack align="start" minW="160px">
-                    <PaletteSizeSlider imageId={id} />
-                </VStack>
 
                 <ColorPalette imageId={id} />
             </HStack>

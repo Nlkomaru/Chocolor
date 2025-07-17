@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ColorTransform } from "./color-transform";
 
 const meta: Meta<typeof ColorTransform> = {
-    title: "root/ColorTransform",
+    title: "Index/Atoms/ColorTransform",
     component: ColorTransform,
     tags: ["autodocs"],
     parameters: {

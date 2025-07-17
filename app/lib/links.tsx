@@ -22,6 +22,7 @@ export const NAVIGATION_LINKS: MenuButtonProps[] = [
         path: "/settings",
         icon: <Settings />,
         id: "settings",
+        disabled: true,
     },
     {
         label: "About",

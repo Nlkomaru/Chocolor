@@ -17,7 +17,7 @@ const samplePalette = [
 const baseImageId = "storybook-image";
 
 const meta: Meta<typeof ColorPalette> = {
-    title: "root/ColorPalette",
+    title: "Index/Molecules/ColorPalette",
     component: ColorPalette,
     args: {
         imageId: baseImageId,

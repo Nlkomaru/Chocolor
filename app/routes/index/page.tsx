@@ -5,7 +5,7 @@ import { useAtom, useAtomValue } from "jotai";
 import { useMemo } from "react";
 import { css } from "styled-system/css";
 import type { Route } from "../+types/page";
-import { ImageGallery } from "./_components/molecules/image-gallery";
+import { ImageGallery } from "./_components/organisms/image-gallery";
 import { FileHeader } from "./_components/organisms/file-header";
 
 export function meta(_: Route.MetaArgs) {
