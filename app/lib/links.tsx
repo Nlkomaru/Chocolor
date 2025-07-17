@@ -40,6 +40,12 @@ export const FOOTER_LINKS: FooterItem[] = [
         openInNewTab: false,
     },
     {
+        id: "refrence-paper",
+        label: "Reference Paper",
+        path: "https://www.ohadf.com/papers/ChangFriedLiuDiVerdiFinkelstein_SIGGRAPH2015_small.pdf",
+        openInNewTab: true,
+    },
+    {
         id: "storybook",
         label: "Storybook",
         path: "https://storybook.chocolor.nikomaru.dev",

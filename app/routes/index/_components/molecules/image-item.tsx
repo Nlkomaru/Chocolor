@@ -1,8 +1,8 @@
 import { HStack, Image, Text, VStack } from "@chakra-ui/react";
+import { useImageData } from "app/lib/use-image-data";
+import { usePaletteGeneration } from "app/lib/use-palette-generation";
 import { imagePaletteAtom } from "app/state/palette";
 import type { ImagePalette } from "app/type/store";
-import { useImageData } from "app/utils/use-image-data";
-import { usePaletteGeneration } from "app/utils/use-palette-generation";
 import { useAtomValue } from "jotai";
 import { useMemo } from "react";
 import { sva } from "styled-system/css";

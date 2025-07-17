@@ -17,8 +17,8 @@ const meta: Meta<typeof ColorTransform> = {
     args: {
         image_id: "1",
         index: 0,
-        beforeColor: "#FF0000",
-        afterColor: "#00FF00",
+        beforeColor: "#FF0000FF",
+        afterColor: "#00FF00FF",
     },
 };
 
@@ -37,8 +37,8 @@ export const Default: Story = {
 
 export const BlueToYellow: Story = {
     args: {
-        beforeColor: "#0066CC",
-        afterColor: "#FFCC00",
+        beforeColor: "#0066CCFF",
+        afterColor: "#FFCC0088",
     },
     parameters: {
         docs: {
@@ -51,8 +51,8 @@ export const BlueToYellow: Story = {
 
 export const DarkToLight: Story = {
     args: {
-        beforeColor: "#2D3748",
-        afterColor: "#F7FAFC",
+        beforeColor: "#2D3748FF",
+        afterColor: "#F7FAFCFF",
     },
     parameters: {
         docs: {
@@ -65,8 +65,8 @@ export const DarkToLight: Story = {
 
 export const SimilarColors: Story = {
     args: {
-        beforeColor: "#E53E3E",
-        afterColor: "#FC8181",
+        beforeColor: "#E53E3EFF",
+        afterColor: "#FC8181FF",
     },
     parameters: {
         docs: {
@@ -79,7 +79,7 @@ export const SimilarColors: Story = {
 
 export const EqualColors: Story = {
     args: {
-        beforeColor: "#000000",
-        afterColor: "#000000",
+        beforeColor: "#000000FF",
+        afterColor: "#000000FF",
     },
 };

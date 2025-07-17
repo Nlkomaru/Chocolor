@@ -1,23 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { FOOTER_LINKS } from "../../lib/links";
 import { type FooterItem, MenuFooter } from "./menu-footer";
-
-const items = [
-    {
-        id: "open-source",
-        label: "Open Source License",
-        path: "/license",
-    },
-    {
-        id: "privacy-policy",
-        label: "Privacy Policy",
-        path: "/privacy",
-    },
-    {
-        id: "github",
-        label: "Github",
-        path: "https://github.com/nikomaru",
-    },
-];
 
 const meta: Meta<typeof MenuFooter> = {
     title: "Molecules/MenuFooter",
@@ -27,7 +10,7 @@ const meta: Meta<typeof MenuFooter> = {
         layout: "padded",
     },
     args: {
-        items: items as FooterItem[],
+        items: FOOTER_LINKS as FooterItem[],
     },
 };
 export default meta;

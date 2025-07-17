@@ -1,8 +1,8 @@
 import { Text, VStack } from "@chakra-ui/react";
+import type { useImageData } from "app/lib/use-image-data";
 import { imagePaletteAtom } from "app/state/palette";
 import { settingAtom } from "app/state/setting";
 import type { ImagePalette } from "app/type/store";
-import type { useImageData } from "app/utils/use-image-data";
 import { useAtomValue } from "jotai";
 import { sva } from "styled-system/css";
 
