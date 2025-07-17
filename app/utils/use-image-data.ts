@@ -13,7 +13,7 @@ export function useImageData(id: string) {
     const [isLoading, setIsLoading] = useState(false);
     const paletteAtom = useMemo(() => imagePaletteAtom(id), [id]);
     const imagePalette = useAtomValue(paletteAtom) as ImagePalette | null;
-    const imagePath = imagePalette?.imagePath;
+    const url = imagePalette?.url;
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -22,13 +22,13 @@ export function useImageData(id: string) {
                 setIsLoading(true);
                 setError(null);
 
-                if (!imagePath || !imagePalette) {
+                if (!url || !imagePalette) {
                     throw new Error("Image not found in atom");
                 }
 
                 const imgData = await getImageInfo({
                     ...imagePalette,
-                    imagePath,
+                    url,
                 });
                 setImageData(imgData);
             } catch (err) {
@@ -40,7 +40,7 @@ export function useImageData(id: string) {
         };
 
         fetchImageData();
-    }, [imagePath, imagePalette]);
+    }, [url, imagePalette]);
 
     return { imageData, isLoading, error };
 }

@@ -5,8 +5,32 @@ import { useImageData } from "app/utils/use-image-data";
 import { usePaletteGeneration } from "app/utils/use-palette-generation";
 import { useAtomValue } from "jotai";
 import { useMemo } from "react";
-import { ColorPalette } from "../molecules/color-palette";
-import { imageItemStyles } from "./image-item.styles";
+import { sva } from "styled-system/css";
+import { PaletteSizeSlider } from "../atoms/palette-size-slider";
+import { Stats } from "../atoms/stats";
+import { ColorPalette } from "./color-palette";
+
+const imageItemStyles = sva({
+    slots: ["container", "image", "statsContainer", "statsTitle", "statValue"],
+    base: {
+        container: {
+            gap: 3,
+            width: "full",
+            padding: "1rem 2rem",
+            bgColor: "var(--chakra-colors-bg-default)",
+            border: "1px solid var(--chakra-colors-border)",
+            borderRadius: "md",
+        },
+        image: {
+            width: "160px",
+            height: "160px",
+            objectFit: "cover",
+            borderRadius: "sm",
+            bgColor: "white",
+            flexShrink: 0,
+        },
+    },
+});
 
 interface Props {
     id: string;
@@ -32,58 +56,30 @@ export const ImageItem = ({ id }: Props) => {
                 fontWeight="400"
                 color="var(--chakra-colors-fg-default)"
             >
-                {imagePalette?.imagePath}
+                {imagePalette?.filePath}
             </Text>
 
-            <HStack align="start" gap={6}>
+            <HStack align="start" w="full" gap={6}>
                 <Image
-                    src={imagePalette?.imagePath || ""}
+                    src={imagePalette?.url || ""}
                     alt={id}
                     className={styles.image}
                 />
 
                 <Stats
+                    imageId={id}
                     imageData={imageData}
                     isGeneratingPalette={
                         isGenerating || imagePalette?.palette.length === 0
                     }
                 />
 
+                <VStack align="start" minW="120px">
+                    <PaletteSizeSlider imageId={id} />
+                </VStack>
+
                 <ColorPalette imageId={id} />
             </HStack>
-        </VStack>
-    );
-};
-
-const Stats = ({
-    imageData,
-    isGeneratingPalette,
-}: {
-    imageData: ReturnType<typeof useImageData>;
-    isGeneratingPalette: boolean;
-}) => {
-    const styles = imageItemStyles();
-
-    return (
-        <VStack align="start" className={styles.statsContainer}>
-            <Text className={styles.statsTitle}>Stats</Text>
-
-            <VStack align="start" gap={1} width="120px">
-                <Text className={styles.statValue}>
-                    Width: {imageData?.imageData?.info.width || "..."}
-                </Text>
-                <Text className={styles.statValue}>
-                    Height: {imageData?.imageData?.info.height || "..."}
-                </Text>
-                {isGeneratingPalette && (
-                    <Text
-                        className={styles.statValue}
-                        color="var(--chakra-colors-fg-muted)"
-                    >
-                        パレット生成中...
-                    </Text>
-                )}
-            </VStack>
         </VStack>
     );
 };

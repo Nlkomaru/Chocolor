@@ -188,15 +188,15 @@ export async function getImageInfo(
         throw new Error("Image not found");
     }
 
-    const path = imagePalette.imagePath;
+    const url = imagePalette.url;
 
     // blob: や data: スキームの場合はブラウザ API で取得
-    if (path.startsWith("blob:") || path.startsWith("data:")) {
-        return await getImageInfoInBrowser(path);
+    if (url.startsWith("blob:") || url.startsWith("data:")) {
+        return await getImageInfoInBrowser(url);
     }
 
     // それ以外（http/https/file など）は Jimp で処理
-    const img = await Jimp.read(path);
+    const img = await Jimp.read(url);
 
     const imageData: ImageData = {
         info: {

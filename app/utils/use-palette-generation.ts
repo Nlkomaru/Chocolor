@@ -30,8 +30,8 @@ export function usePaletteGeneration(imageId: string) {
             try {
                 setIsGenerating(true);
                 const palette = await generateColorPalette(
-                    imagePalette?.imagePath || "",
-                    setting.paletteSize,
+                    imagePalette?.url || "",
+                    imagePalette?.paletteSize || setting.paletteSize,
                 );
                 setImagePalette({
                     ...imagePalette,

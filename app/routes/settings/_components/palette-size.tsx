@@ -31,7 +31,7 @@ export const PaletteSize = () => {
                 maxW="lg"
                 size="lg"
                 defaultValue={[setting.paletteSize || 3]}
-                max={15}
+                max={10}
                 onValueChange={(value) =>
                     handlePaletteSizeChange(value.value[0] as number)
                 }

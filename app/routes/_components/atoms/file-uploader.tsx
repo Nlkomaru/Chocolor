@@ -52,7 +52,8 @@ export const FileUploader = () => {
                 store.set(paletteAtom, {
                     id,
                     name: file.name,
-                    imagePath: URL.createObjectURL(file),
+                    url: URL.createObjectURL(file),
+                    filePath: file.name,
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString(),
                     palette: [],

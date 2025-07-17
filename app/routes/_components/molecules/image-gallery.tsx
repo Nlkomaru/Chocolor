@@ -1,5 +1,5 @@
 import { VStack } from "@chakra-ui/react";
-import { ImageItem } from "../atoms/image-item";
+import { ImageItem } from "./image-item";
 
 interface Props {
     images: string[];

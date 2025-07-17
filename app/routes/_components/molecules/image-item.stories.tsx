@@ -16,7 +16,8 @@ const meta: Meta<typeof ImageItem> = {
                 palette: {
                     id: "storybook-image",
                     name: "storybook-img",
-                    imagePath: "https://picsum.photos/200/200?random=1",
+                    url: "https://picsum.photos/200/200?random=1",
+                    filePath: "storybook-img.png",
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString(),
                     palette: [
@@ -57,7 +58,8 @@ export const Default: Story = {
                 palette: {
                     id: "storybook-image",
                     name: "storybook-img",
-                    imagePath: "https://picsum.photos/200/200?random=1",
+                    url: "https://picsum.photos/200/200?random=1",
+                    filePath: "storybook-img.png",
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString(),
                     palette: [
