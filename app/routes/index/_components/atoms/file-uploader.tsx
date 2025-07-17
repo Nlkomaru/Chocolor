@@ -3,8 +3,8 @@ import { imagePaletteAtom } from "app/state/palette";
 import { useAtom, useStore } from "jotai";
 import { useMemo, useState } from "react";
 import { v7 as uuidv7 } from "uuid";
-import { sva } from "../../../../styled-system/css";
-import { currentGroupAtom, groupInfoAtom } from "../../../state/group";
+import { sva } from "../../../../../styled-system/css";
+import { currentGroupAtom, groupInfoAtom } from "../../../../state/group";
 
 const fileUploaderStyles = sva({
     slots: ["uploadArea"],

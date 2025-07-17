@@ -183,7 +183,7 @@ const AfterColorPicker = ({
     index: number;
     updateAfterColor: (newColor: string) => void;
 }) => {
-    const [ previewColor, setPreviewColor ] = useState<string>(afterColor);
+    const [previewColor, setPreviewColor] = useState<string>(afterColor);
     return (
         <ColorPicker.Root
             value={parseColor(previewColor)}
