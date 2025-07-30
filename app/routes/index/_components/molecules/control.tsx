@@ -36,7 +36,7 @@ export const Control = ({ id, imageData, isGenerating, imagePalette }: Props) =>
             </HStack>
 
             <HStack align="start" justifyContent="space-between" w="344px" gap={2}>
-                <ImageRelocorDialog />
+                <ImageRelocorDialog imageId={id} />
                 <Button size="lg" w="160px">
                     Download <Download />
                 </Button>

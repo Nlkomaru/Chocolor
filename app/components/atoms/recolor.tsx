@@ -7,10 +7,10 @@ import { ColorPalette } from "app/routes/index/_components/molecules/color-palet
 import { imagePaletteAtom } from "../../state/palette";
 export const progressAtom = atom<number>(0);
 
-export const Recolor = () => {
+export const Recolor = ({ imageId }: { imageId: string }) => {
     const [recoloredImage, setRecoloredImage] = useState<string | null>(null);
     const [progress, setProgress] = useAtom(progressAtom);
-    const [imagePalette, setImagePalette] = useAtom(imagePaletteAtom("1")) as [ImagePalette, (palette: ImagePalette) => void];
+    const [imagePalette, setImagePalette] = useAtom(imagePaletteAtom(imageId)) as [ImagePalette, (palette: ImagePalette) => void];
     setImagePalette(imagePalette);
     useEffect(() => {
         const fetchRecoloredImage = async () => {

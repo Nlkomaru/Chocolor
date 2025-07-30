@@ -1,7 +1,14 @@
 import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react";
 import { Eye } from "lucide-react";
+import { Recolor } from "app/components/atoms/recolor";
 
-export default function ImageRelocorDialog() {
+type ImageRelocorDialogProps = {
+    imageId: string;
+};
+
+export default function ImageRelocorDialog({
+    imageId,
+}: ImageRelocorDialogProps) {
     return (
         <Dialog.Root size="cover" motionPreset="slide-in-bottom" lazyMount>
             <Dialog.Trigger asChild>
@@ -17,11 +24,7 @@ export default function ImageRelocorDialog() {
                             <Dialog.Title>Dialog Title</Dialog.Title>
                         </Dialog.Header>
                         <Dialog.Body>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
-                            </p>
+                            <Recolor imageId={imageId} />
                         </Dialog.Body>
                         <Dialog.Footer>
                             <Dialog.ActionTrigger asChild>
