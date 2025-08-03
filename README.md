@@ -19,6 +19,7 @@
 ## Refrence
 
 - [Palette Based Photo Recoloring](https://www.ohadf.com/papers/ChangFriedLiuDiVerdiFinkelstein_SIGGRAPH2015_small.pdf)
+- [基於移動最小二乘的圖像重着色](https://zhengjun-du.github.io/papers/202408/%E5%9F%BA%E4%BA%8E%E7%A7%BB%E5%8A%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E7%9A%84%E5%9B%BE%E5%83%8F%E9%87%8D%E7%9D%80%E8%89%B2.pdf)
 
 ## Developing
 

@@ -5,18 +5,11 @@ import { differenceCiede2000, Lab, Rgb, parse, converter } from "culori";
 const lab = converter("lab")
 const rgb = converter("rgb")
 
-const readPixelRgb = (data: Buffer, idx: number): Rgb => {
-    const r = data[idx + 0] / 255;
-    const g = data[idx + 1] / 255;
-    const b = data[idx + 2] / 255;
-    const a = data[idx + 3] / 255.0;
-    return { mode: 'rgb', r, g, b, alpha: a };
-};
 
 const writePixelRgb = (data: Buffer, idx: number, rgbColor: Rgb) => {
-    data[idx + 0] = Math.round((rgbColor.r ?? 0) * 255);
-    data[idx + 1] = Math.round((rgbColor.g ?? 0) * 255);
-    data[idx + 2] = Math.round((rgbColor.b ?? 0) * 255);
+    data[idx + 0] = Math.round((rgbColor.r ?? 0) * 255.0);
+    data[idx + 1] = Math.round((rgbColor.g ?? 0) * 255.0);
+    data[idx + 2] = Math.round((rgbColor.b ?? 0) * 255.0);
     data[idx + 3] = Math.round(((rgbColor.alpha ?? 1) * 255.0));
 };
 
@@ -24,8 +17,10 @@ const writePixelRgb = (data: Buffer, idx: number, rgbColor: Rgb) => {
 export const recolor = async (palette: ImagePalette, resize = true, threshold = 15, progressCallback?: (progress: number) => void): Promise<string> => {
 
     const image = await Jimp.read(palette.url);
-    // image.resize({ w: 600 });
-    // return image.getBase64("image/png");
+
+    if (resize) {
+        image.resize({ w: 800 });
+    }
 
     const processedPalette = palette.palette.map(p => {
         const beforeRgb = parse(p.before);
@@ -42,54 +37,70 @@ export const recolor = async (palette: ImagePalette, resize = true, threshold = 
         };
     }).filter((p): p is { beforeLab: Lab; afterLab: Lab } => p !== null);
 
-    let processedPixels = 0;
     let percentage = 0;
 
-    if (resize) {
-        image.resize({ w: 600 });
-    }
+    // Pre-compute the CIEDE2000 deltaE function once for reuse
+    const deltaE = differenceCiede2000();
 
-    for (let y = 0; y < image.bitmap.height; y++) {
-        for (let x = 0; x < image.bitmap.width; x++) {
-            const idx = (image.bitmap.width * y + x) * 4; // RGBA is 4 bytes per pixel
-            const pixelRgb = readPixelRgb(image.bitmap.data, idx);
-            processedPixels++;
 
-            const newPercentage = Math.round((processedPixels / (image.bitmap.width * image.bitmap.height)) * 100);
+    // console.log removed to improve performance
+
+    // ------------------------------------------------------------
+    // Fast flat-array scan (RGBA as 4 bytes per pixel)
+    // ------------------------------------------------------------
+    const { data, width, height } = image.bitmap;
+    const totalPixels = width * height;
+
+    for (let idx = 0, pixelIndex = 0; idx < data.length; idx += 4, pixelIndex++) {
+        // Convert 8-bit integers to normalized 0-1 floats
+        const pixelRgb: Rgb = {
+            mode: 'rgb',
+            r: data[idx] / 255.0,
+            g: data[idx + 1] / 255.0,
+            b: data[idx + 2] / 255.0,
+            alpha: data[idx + 3] / 255.0,
+        };
+
+        // Progress update roughly every 16 384 pixels (~1 % for 1600×1000 image)
+        if ((pixelIndex & 0x3fff) === 0) {
+            const newPercentage = Math.round((pixelIndex / totalPixels) * 100);
             if (Math.floor(newPercentage / 10) !== Math.floor(percentage / 10)) {
-                percentage = newPercentage;  // percentageを更新
-                progressCallback?.(percentage);  // 新しい値を渡す
+                percentage = newPercentage;
+                progressCallback?.(percentage);
             }
+        }
 
-            const pixelLab = lab(pixelRgb);
+        const pixelLab = lab(pixelRgb);
 
-            let minDistance = Infinity;
-            let bestMatch: { beforeLab: Lab; afterLab: Lab } | null = null;
+        let minDistance = Infinity;
+        let bestMatch: { beforeLab: Lab; afterLab: Lab } | null = null;
 
-            for (const entry of processedPalette) {
-                const distance = differenceCiede2000()(pixelLab, entry.beforeLab);
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    bestMatch = entry;
-                }
+        for (const entry of processedPalette) {
+            const distance = deltaE(pixelLab, entry.beforeLab);
+            if (distance < minDistance) {
+                minDistance = distance;
+                bestMatch = entry;
             }
+        }
 
-            if (bestMatch && minDistance < threshold) {
-                // 距離に基づく重み（0から1）
-                const weight = 1 - (minDistance / threshold);
+        if (bestMatch && minDistance < threshold) {
+            const weight = 1 - (minDistance / threshold);
 
-                // 元の色と新しい色を補間
-                const newLab: Lab = {
-                    mode: 'lab',
-                    l: pixelLab.l * (1 - weight) + bestMatch.afterLab.l * weight,
-                    a: pixelLab.a * (1 - weight) + bestMatch.afterLab.a * weight,
-                    b: pixelLab.b * (1 - weight) + bestMatch.afterLab.b * weight,
-                    alpha: pixelLab.alpha ?? 1,
-                };
+            // Interpolate in Lab space
+            const newLab: Lab = {
+                mode: 'lab',
+                l: pixelLab.l * (1 - weight) + bestMatch.afterLab.l * weight,
+                a: pixelLab.a * (1 - weight) + bestMatch.afterLab.a * weight,
+                b: pixelLab.b * (1 - weight) + bestMatch.afterLab.b * weight,
+                alpha: pixelLab.alpha ?? 1,
+            };
 
-                const newRgb = rgb(newLab);
-                writePixelRgb(image.bitmap.data, idx, newRgb);
-            }
+            const newRgb = rgb(newLab);
+            // Inline write to avoid function-call overhead
+            data[idx + 0] = Math.round((newRgb.r ?? 0) * 255);
+            data[idx + 1] = Math.round((newRgb.g ?? 0) * 255);
+            data[idx + 2] = Math.round((newRgb.b ?? 0) * 255);
+            data[idx + 3] = Math.round(((newRgb.alpha ?? 1) * 255));
         }
     }
 
