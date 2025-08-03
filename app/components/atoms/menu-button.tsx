@@ -61,7 +61,7 @@ export const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>(
                 asChild
             >
                 {/* Render icon + label */}
-                <Link to={path || "/"}>
+                <Link to={!disabled ? path || "/" : "#"}>
                     <span className={classes.label}>
                         {icon}
                         {label}

@@ -26,6 +26,7 @@
         "@fontsource/zen-kaku-gothic-new": "^5.2.6",
         "@jimp/types": "^1.6.0",
         "@jimp/utils": "^1.6.0",
+        "@types/culori": "^4.0.0",
         "add": "^2.0.6",
         "autoprefixer": "^10.4.21",
         "culori": "^4.0.2",

@@ -3,7 +3,7 @@ import { imagePaletteAtom } from "app/state/palette";
 import { ImageGallery } from "./image-gallery";
 
 const meta: Meta<typeof ImageGallery> = {
-    title: "root/ImageGallery",
+    title: "Index/Organisms/ImageGallery",
     component: ImageGallery,
     tags: ["autodocs"],
     parameters: {
@@ -18,7 +18,8 @@ const meta: Meta<typeof ImageGallery> = {
                 palette1: {
                     id: "1",
                     name: "storybook-img1",
-                    imagePath: "https://picsum.photos/200/200?random=1",
+                    filePath: "storybook-img1.png",
+                    url: "https://picsum.photos/200/200?random=1",
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString(),
                     palette: [
@@ -30,7 +31,8 @@ const meta: Meta<typeof ImageGallery> = {
                 palette2: {
                     id: "2",
                     name: "storybook-img2",
-                    imagePath: "https://picsum.photos/200/200?random=2",
+                    filePath: "storybook-img2.png",
+                    url: "https://picsum.photos/200/200?random=2",
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString(),
                     palette: [
@@ -43,7 +45,8 @@ const meta: Meta<typeof ImageGallery> = {
                 palette3: {
                     id: "3",
                     name: "storybook-img3",
-                    imagePath: "https://picsum.photos/200/200?random=3",
+                    filePath: "storybook-img3.png",
+                    url: "https://picsum.photos/200/200?random=3",
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString(),
                     palette: [

@@ -9,7 +9,7 @@ export const ColorPalette = ({ imageId }: { imageId: string }) => {
     const paletteAtom = useMemo(() => imagePaletteAtom(imageId), [imageId]);
     const imagePalette = useAtomValue(paletteAtom) as ImagePalette | null;
     return (
-        <HStack align="start" gap={2} height="100%">
+        <HStack align="start" gap={2} height="160px" w="full" paddingLeft={8}>
             {/*
                 palette（色変換前後の配列）をループして ColorTransformComponent を生成
             */}

@@ -9,7 +9,7 @@ import { imagePaletteAtom } from "app/state/palette";
 import type { ImagePalette } from "app/type/store";
 import { useAtom, useAtomValue } from "jotai";
 import { ArrowDown, Check, Equal } from "lucide-react";
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { sva } from "styled-system/css";
 
 interface Props {
@@ -30,17 +30,9 @@ const colorPickerStyle = sva({
     ],
     base: {
         container: {
-            gap: 3,
+            justifyContent: "space-between",
             alignItems: "center",
-            padding: "0.5rem",
             height: "100%",
-        },
-        colorBox: {
-            width: "40px",
-            height: "40px",
-            borderRadius: "md",
-            border: "2px solid var(--chakra-colors-border-default)",
-            boxShadow: "sm",
         },
         colorLabel: {
             fontSize: "xs",
@@ -49,12 +41,12 @@ const colorPickerStyle = sva({
             color: "var(--chakra-colors-fg-muted)",
         },
         arrow: {
-            fontSize: "lg",
+            fontSize: "2xl",
             color: "var(--chakra-colors-fg-muted)",
             fontWeight: "bold",
         },
         equal: {
-            fontSize: "lg",
+            fontSize: "2xl",
             color: "var(--chakra-colors-fg-muted)",
             fontWeight: "bold",
             transform: "rotate(90deg)",
@@ -106,7 +98,7 @@ export const ColorTransform = ({
             />
 
             {beforeColor !== afterColor ? (
-                <ArrowDown />
+                <ArrowDown className={styles.arrow} />
             ) : (
                 <Equal className={styles.equal} />
             )}
@@ -132,17 +124,18 @@ const BeforeColorPicker = ({
     index: number;
     favoriteColor: string[];
 }) => {
+    const styles = colorPickerStyle();
     return (
         <ColorPicker.Root
             defaultValue={parseColor(beforeColor)}
             // disabled={true}
             id={`before-color-${image_id}-${index}`}
-            size="lg"
+            size="xl"
             maxW="200px"
         >
             <ColorPicker.Control>
                 <ColorPicker.Trigger>
-                    <ColorPicker.ValueSwatch />
+                    <ColorPicker.ValueSwatch/>
                 </ColorPicker.Trigger>
             </ColorPicker.Control>
             <Portal>
@@ -155,7 +148,6 @@ const BeforeColorPicker = ({
                                     value={item}
                                 >
                                     <ColorPicker.Swatch
-                                        boxSize="4.5"
                                         value={item}
                                     >
                                         <ColorPicker.SwatchIndicator>
@@ -183,13 +175,19 @@ const AfterColorPicker = ({
     index: number;
     updateAfterColor: (newColor: string) => void;
 }) => {
+    const [previewColor, setPreviewColor] = useState<string>(afterColor);
+    const styles = colorPickerStyle();
     return (
         <ColorPicker.Root
-            value={parseColor(afterColor)}
+            value={parseColor(previewColor)}
             maxW="200px"
             id={`after-color-${image_id}-${index}`}
-            size="lg"
+            size="xl"
             onValueChange={(details) => {
+                setPreviewColor(details.value.toString("hex"));
+            }}
+            onValueChangeEnd={(details) => {
+                setPreviewColor(details.value.toString("hex"));
                 updateAfterColor(details.value.toString("hex"));
             }}
         >

@@ -1,4 +1,4 @@
-import { generateColorPalette } from "app/lib/image";
+import { generateColorPalette } from "app/lib/color";
 import { imagePaletteAtom } from "app/state/palette";
 import { settingAtom } from "app/state/setting";
 import type { ImagePalette } from "app/type/store";
@@ -30,8 +30,8 @@ export function usePaletteGeneration(imageId: string) {
             try {
                 setIsGenerating(true);
                 const palette = await generateColorPalette(
-                    imagePalette?.imagePath || "",
-                    setting.paletteSize,
+                    imagePalette?.url || "",
+                    imagePalette?.paletteSize || setting.paletteSize,
                 );
                 setImagePalette({
                     ...imagePalette,

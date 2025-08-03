@@ -3,7 +3,7 @@ import { imagePaletteAtom } from "app/state/palette";
 import { ImageItem } from "./image-item";
 
 const meta: Meta<typeof ImageItem> = {
-    title: "root/ImageItem",
+    title: "Index/Organisms/ImageItem",
     component: ImageItem,
     tags: ["autodocs"],
     parameters: {
@@ -16,7 +16,8 @@ const meta: Meta<typeof ImageItem> = {
                 palette: {
                     id: "storybook-image",
                     name: "storybook-img",
-                    imagePath: "https://picsum.photos/200/200?random=1",
+                    url: "https://picsum.photos/200/200?random=1",
+                    filePath: "storybook-img.png",
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString(),
                     palette: [
@@ -55,9 +56,10 @@ export const Default: Story = {
             },
             values: {
                 palette: {
-                    id: "storybook-image",
+                    id: "1",
                     name: "storybook-img",
-                    imagePath: "https://picsum.photos/200/200?random=1",
+                    url: "https://picsum.photos/200/200?random=1",
+                    filePath: "storybook-img.png",
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString(),
                     palette: [
