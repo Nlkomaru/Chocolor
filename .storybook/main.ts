@@ -3,7 +3,6 @@ import type { StorybookConfig } from "@storybook/react-vite";
 const config: StorybookConfig = {
     stories: [
         "../app/components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-        "../app/components/**/*.mdx",
         "../app/routes/**/_components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     ],
     addons: [
@@ -14,11 +13,7 @@ const config: StorybookConfig = {
         "@storybook/addon-themes",
         "storybook-addon-remix-react-router",
     ],
-    refs: {
-        "@chakra-ui/react": {
-            disable: true,
-        },
-    },
+
     framework: {
         name: "@storybook/react-vite",
         options: {

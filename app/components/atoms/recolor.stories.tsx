@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { progressAtom, Recolor } from "./recolor";
 import { imagePaletteAtom } from "../../state/palette";
+import { progressAtom, Recolor } from "./recolor";
 
 const meta: Meta<typeof Recolor> = {
     title: "Atoms/Recolor",
@@ -24,10 +24,10 @@ const meta: Meta<typeof Recolor> = {
                     updatedAt: "2021-01-01",
                     paletteSize: 3,
                     palette: [
-                        { "before": "#96866dff", "after": "#96866dff" },
-                        { "before": "#553f34ff", "after": "#553f34ff" },
-                        { "before": "#121b29ff", "after": "#121b29ff" },
-                        { "before": "#121b29ff", "after": "#3D76E0" },
+                        { before: "#96866dff", after: "#96866dff" },
+                        { before: "#553f34ff", after: "#553f34ff" },
+                        { before: "#121b29ff", after: "#121b29ff" },
+                        { before: "#121b29ff", after: "#3D76E0" },
                     ],
                 },
             },

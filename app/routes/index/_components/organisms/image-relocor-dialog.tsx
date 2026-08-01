@@ -1,6 +1,6 @@
 import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react";
-import { Eye } from "lucide-react";
 import { Recolor } from "app/components/atoms/recolor";
+import { Eye } from "lucide-react";
 
 type ImageRelocorDialogProps = {
     imageId: string;

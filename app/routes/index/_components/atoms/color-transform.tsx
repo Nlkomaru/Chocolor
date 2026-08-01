@@ -135,7 +135,7 @@ const BeforeColorPicker = ({
         >
             <ColorPicker.Control>
                 <ColorPicker.Trigger>
-                    <ColorPicker.ValueSwatch/>
+                    <ColorPicker.ValueSwatch />
                 </ColorPicker.Trigger>
             </ColorPicker.Control>
             <Portal>
@@ -147,9 +147,7 @@ const BeforeColorPicker = ({
                                     key={item}
                                     value={item}
                                 >
-                                    <ColorPicker.Swatch
-                                        value={item}
-                                    >
+                                    <ColorPicker.Swatch value={item}>
                                         <ColorPicker.SwatchIndicator>
                                             <Check />
                                         </ColorPicker.SwatchIndicator>

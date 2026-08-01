@@ -1,12 +1,10 @@
-import { Button, HStack } from "@chakra-ui/react"
-
-import { VStack } from "@chakra-ui/react"
-import { Stats } from "../atoms/stats"
-import { PaletteSizeSlider } from "../atoms/palette-size-slider"
-import { Download, Eye } from "lucide-react"
-import { ImagePalette } from "app/type/store"
-import { ImageData } from "app/type/color"
-import ImageRelocorDialog from "../organisms/image-relocor-dialog"
+import { Button, HStack, VStack } from "@chakra-ui/react";
+import type { ImageData } from "app/type/color";
+import type { ImagePalette } from "app/type/store";
+import { Download, Eye } from "lucide-react";
+import { PaletteSizeSlider } from "../atoms/palette-size-slider";
+import { Stats } from "../atoms/stats";
+import ImageRelocorDialog from "../organisms/image-relocor-dialog";
 
 interface Props {
     id: string;
@@ -18,7 +16,12 @@ interface Props {
     isGenerating: boolean;
     imagePalette: ImagePalette | null;
 }
-export const Control = ({ id, imageData, isGenerating, imagePalette }: Props) => {
+export const Control = ({
+    id,
+    imageData,
+    isGenerating,
+    imagePalette,
+}: Props) => {
     return (
         <VStack align="start" height="160px" justifyContent="space-between">
             <HStack align="start" gap={6}>
@@ -35,12 +38,17 @@ export const Control = ({ id, imageData, isGenerating, imagePalette }: Props) =>
                 </VStack>
             </HStack>
 
-            <HStack align="start" justifyContent="space-between" w="344px" gap={2}>
+            <HStack
+                align="start"
+                justifyContent="space-between"
+                w="344px"
+                gap={2}
+            >
                 <ImageRelocorDialog imageId={id} />
                 <Button size="lg" w="160px">
                     Download <Download />
                 </Button>
             </HStack>
         </VStack>
-    )
-}
+    );
+};

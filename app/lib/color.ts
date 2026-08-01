@@ -139,7 +139,9 @@ function extractDominantColors(pixels: Rgb[], k: number): Color[] {
                 r: cluster.reduce((s, p) => s + p.r, 0) / cluster.length,
                 g: cluster.reduce((s, p) => s + p.g, 0) / cluster.length,
                 b: cluster.reduce((s, p) => s + p.b, 0) / cluster.length,
-                alpha: cluster.reduce((s, p) => s + (p.alpha ?? 1), 0) / cluster.length,
+                alpha:
+                    cluster.reduce((s, p) => s + (p.alpha ?? 1), 0) /
+                    cluster.length,
                 mode: "rgb",
             };
 

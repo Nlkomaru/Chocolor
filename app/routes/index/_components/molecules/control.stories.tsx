@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Control } from "./control";
 import { imagePaletteAtom } from "app/state/palette";
 import type { ImagePalette } from "app/type/store";
+import { Control } from "./control";
 
 const baseId = "storybook-image";
 
@@ -28,7 +28,7 @@ const meta: Meta<typeof Control> = {
         layout: "padded",
         docs: {
             description: {
-                component: "Control コンポーネントの Story" ,
+                component: "Control コンポーネントの Story",
             },
         },
     },
